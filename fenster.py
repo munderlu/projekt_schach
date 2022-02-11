@@ -1,6 +1,6 @@
 from tkinter import *
 fenster = Tk()
-fenster.geometry("300x600")
+fenster.geometry("500x500")
 text=Label(text="Test")
-text.pack()
+text.pack(expand=1)
 fenster.mainloop()
