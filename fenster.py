@@ -31,7 +31,7 @@ bauer8_w.place(y=333, x=382)
 
 #zwei Türme weiß
 turm_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Turm_weiß.png"))
-turm1_w = Label(rahmen, image=turm_w_bild)
+turm1_w = Button(rahmen, image=turm_w_bild)
 turm1_w.place(y=383, x=52)
 turm2_w = Button(rahmen, image=turm_w_bild)
 turm2_w.place(y=383, x=382)
