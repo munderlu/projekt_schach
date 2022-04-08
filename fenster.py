@@ -13,61 +13,96 @@ felder = {1:{"x":50, "y":379,"figure":"turm1_w"},2:{"x":97, "y":379,"figure":"sp
 #Funktionen der acht weißen Bauern
 gruener_punkt_bild = ImageTk.PhotoImage(Image.open("Bilder\Gruener_Punkt.png"))
 punkt=Button(rahmen, image=gruener_punkt_bild)
+punkt2=Button(rahmen, image=gruener_punkt_bild)
+weristdran="weiß"
 class Bauer_weiß(Button):
     def zeige_bauer_weiß (self, figur):
-        figurgefunden=False
-        figurPlatz="?"
-        for i in felder:
-            if felder[i]["figure"] == figur:
-                figurPlatz=i
-                moeglichesZiel = figurPlatz+8
-                xKoordinate=felder[moeglichesZiel]["x"]
-                yKoordinate=felder[moeglichesZiel]["y"]
-                def punktBewegtBauerWeiß():
-                    felder[i]["figure"]="none"
-                    felder[moeglichesZiel]["figure"]=figur
-                    self.place(x=xKoordinate, y=yKoordinate)
-                    punkt.place(x=1000, y=1000)
-                if felder[moeglichesZiel]["figure"]=="none":
-                    figurgefunden=True
-                    punkt["command"]=punktBewegtBauerWeiß
-                    punkt.place(x=xKoordinate, y=yKoordinate)
-                    break
-                else:
-                    figurgefunden=False
-                    break
-        if figurgefunden:
-            print("Die Figur kann nach ",moeglichesZiel,"fahren")
-        else:
-            print("Nein")
+        def punktBewegtBauerWeiß():
+            global weristdran
+            felder[i]["figure"]="none"
+            print("feld gelöscht")
+            felder[moeglichesZiel[0]]["figure"]=figur
+            self.place(x=xKoordinate[0], y=yKoordinate[0])
+            punkt.place_forget()
+            punkt2.place_forget()
+            weristdran="schwarz"
+        def punkt2BewegtBauerWeiß():
+            global weristdran
+            felder[i]["figure"]="none"
+            print("feld gelöscht")
+            felder[moeglichesZiel[1]]["figure"]=figur
+            self.place(x=xKoordinate[1], y=yKoordinate[1])
+            punkt.place_forget()
+            punkt2.place_forget()
+            weristdran="schwarz"
+        global weristdran
+        if weristdran=="weiß":
+            figurgefunden=False
+            figurPlatz="?"
+            for i in felder:
+                if felder[i]["figure"] == figur:
+                    figurPlatz=i
+                    print("man hat ne figur gefunen", figurPlatz)
+                    moeglichesZiel=[0,0]
+                    xKoordinate=[0,0]
+                    yKoordinate=[0,0]
+                    moeglichesZiel[0] = figurPlatz+8
+                    xKoordinate[0]=felder[moeglichesZiel[0]]["x"]
+                    yKoordinate[0]=felder[moeglichesZiel[0]]["y"]
+                    if felder[moeglichesZiel[0]]["figure"]=="none":
+                        figurgefunden=True
+                        punkt2.place_forget()
+                        punkt["command"]=punktBewegtBauerWeiß
+                        punkt.place(x=xKoordinate[0], y=yKoordinate[0])
+                    else:
+                        figurgefunden=False
+                        print(moeglichesZiel)
+                        break
+                    if figurPlatz >= 9 and figurPlatz <=16:#
+                        moeglichesZiel[1] = figurPlatz+16
+                        xKoordinate[1]=felder[moeglichesZiel[1]]["x"]
+                        yKoordinate[1]=felder[moeglichesZiel[1]]["y"]
+                        if felder[moeglichesZiel[1]]["figure"]=="none":
+                            figurgefunden=True
+                            punkt2["command"]=punkt2BewegtBauerWeiß
+                            punkt2.place(x=xKoordinate[1], y=yKoordinate[1])
+                            break
+            if figurgefunden:
+                print("Die Figur kann nach ",moeglichesZiel,"fahren")
+            else:
+                print("Nein")
 
 class Bauer_schwarz(Button):
     def zeige_bauer_schwarz (self, figur):
-        figurgefunden=False
-        figurPlatz="?"
-        for i in felder:
-            if felder[i]["figure"] == figur:
-                figurPlatz=i
-                moeglichesZiel = figurPlatz-8
-                xKoordinate=felder[moeglichesZiel]["x"]
-                yKoordinate=felder[moeglichesZiel]["y"]
-                def punktBewegtBauerWeiß():
-                    felder[i]["figure"]="none"
-                    felder[moeglichesZiel]["figure"]=figur
-                    self.place(x=xKoordinate, y=yKoordinate)
-                    punkt.place(x=1000, y=1000)
-                if felder[moeglichesZiel]["figure"]=="none":
-                    figurgefunden=True
-                    punkt["command"]=punktBewegtBauerWeiß
-                    punkt.place(x=xKoordinate, y=yKoordinate)
-                    break
-                else:
-                    figurgefunden=False
-                    break
-        if figurgefunden:
-            print("Die Figur kann nach ",moeglichesZiel,"fahren")
-        else:
-            print("Nein")
+        global weristdran
+        if weristdran=="schwarz":
+            figurgefunden=False
+            figurPlatz="?"
+            for i in felder:
+                if felder[i]["figure"] == figur:
+                    figurPlatz=i
+                    moeglichesZiel = figurPlatz-8
+                    xKoordinate=felder[moeglichesZiel]["x"]
+                    yKoordinate=felder[moeglichesZiel]["y"]
+                    def punktBewegtBauerWeiß():
+                        global weristdran
+                        felder[i]["figure"]="none"
+                        felder[moeglichesZiel]["figure"]=figur
+                        self.place(x=xKoordinate, y=yKoordinate)
+                        punkt.place_forget()
+                        weristdran="weiß"
+                    if felder[moeglichesZiel]["figure"]=="none":
+                        figurgefunden=True
+                        punkt["command"]=punktBewegtBauerWeiß
+                        punkt.place(x=xKoordinate, y=yKoordinate)
+                        break
+                    else:
+                        figurgefunden=False
+                        break
+            if figurgefunden:
+                print("Die Figur kann nach ",moeglichesZiel,"fahren")
+            else:
+                print("Nein")
 
 #acht Bauern weiß
 bauer_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Bauer_weiß.png"))
