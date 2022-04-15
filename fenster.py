@@ -22,7 +22,6 @@ class Bauer_weiß(Button):
             #das passiert wenn auf den ersten Knopf gedrückt wird
             global weristdran
             felder[figurPlatz]["figure"]="none"
-            print("feld gelöscht")
             felder[moeglichesZiel[0]]["figure"]=figur
             self.place(x=xKoordinate[0], y=yKoordinate[0])
             punkt.place_forget()
@@ -32,7 +31,6 @@ class Bauer_weiß(Button):
             #das passiert, wenn auf den zweiten Knopf gedrückt wird
             global weristdran
             felder[figurPlatz]["figure"]="none"
-            print("feld gelöscht")
             felder[moeglichesZiel[1]]["figure"]=figur
             self.place(x=xKoordinate[1], y=yKoordinate[1])
             punkt.place_forget()
@@ -42,10 +40,9 @@ class Bauer_weiß(Button):
         if weristdran=="weiß": #nur wenn weiß dran ist, passiert was
             figurgefunden=False
             figurPlatz="?"
-            for i in felder: #das Dictionary mit den Feldern wird durchgesucht
+            for i in felder: #das Dictionary mit den Feldern wird durchsucht
                 if felder[i]["figure"] == figur: #wenn die Figur gefunden wurde
                     figurPlatz=i
-                    print("man hat ne figur gefunen", figurPlatz)
                     moeglichesZiel=[0,0]
                     xKoordinate=[0,0]
                     yKoordinate=[0,0]
@@ -78,31 +75,57 @@ class Bauer_weiß(Button):
                 print("Nein")
 
 class Bauer_schwarz(Button):
-    def zeige_bauer_schwarz (self, figur):
+    def zeige_bauer_schwarz (self, figur): #das passiert, wenn der Bauer gedrückt wird
+        def punktBewegtBauerSchwarz():
+            #das passiert wenn auf den ersten Knopf gedrückt wird
+            global weristdran
+            felder[figurPlatz]["figure"]="none"
+            felder[moeglichesZiel[0]]["figure"]=figur
+            self.place(x=xKoordinate[0], y=yKoordinate[0])
+            punkt.place_forget()
+            punkt2.place_forget()
+            weristdran="weiß"
+        def punkt2BewegtBauerSchwarz():
+            #das passiert, wenn auf den zweiten Knopf gedrückt wird
+            global weristdran
+            felder[figurPlatz]["figure"]="none"
+            felder[moeglichesZiel[1]]["figure"]=figur
+            self.place(x=xKoordinate[1], y=yKoordinate[1])
+            punkt.place_forget()
+            punkt2.place_forget()
+            weristdran="weiß"
         global weristdran
-        if weristdran=="schwarz":
+        if weristdran=="schwarz": #nur wenn schwarz dran ist, passiert was
             figurgefunden=False
             figurPlatz="?"
-            for i in felder:
-                if felder[i]["figure"] == figur:
+            for i in felder: #das Dictionary mit den Feldern wird durchsucht
+                if felder[i]["figure"] == figur: #wenn die Figur gefunden wurde
                     figurPlatz=i
-                    moeglichesZiel = figurPlatz-8
-                    xKoordinate=felder[moeglichesZiel]["x"]
-                    yKoordinate=felder[moeglichesZiel]["y"]
-                    def punktBewegtBauerWeiß():
-                        global weristdran
-                        felder[i]["figure"]="none"
-                        felder[moeglichesZiel]["figure"]=figur
-                        self.place(x=xKoordinate, y=yKoordinate)
-                        punkt.place_forget()
-                        weristdran="weiß"
-                    if felder[moeglichesZiel]["figure"]=="none":
+                    moeglichesZiel=[0,0]
+                    xKoordinate=[0,0]
+                    yKoordinate=[0,0]
+                    moeglichesZiel[0] = figurPlatz-8
+                    xKoordinate[0]=felder[moeglichesZiel[0]]["x"]
+                    yKoordinate[0]=felder[moeglichesZiel[0]]["y"]
+                    if felder[moeglichesZiel[0]]["figure"]=="none": #es wird geprüft, ob auf dem Feld eine Figur steht
                         figurgefunden=True
-                        punkt["command"]=punktBewegtBauerWeiß
-                        punkt.place(x=xKoordinate, y=yKoordinate)
-                        break
+                        punkt2.place_forget()
+                        punkt["command"]=punktBewegtBauerSchwarz #ein Punkt wird platziert
+                        punkt.place(x=xKoordinate[0], y=yKoordinate[0])
                     else:
                         figurgefunden=False
+                        print(moeglichesZiel)
+                        break
+                    if figurPlatz >= 49 and figurPlatz <=56: #wenn der Bauer auf der zweiten Reihe steht, wird noch ein zweiter Punkt hinzugefügt
+                        moeglichesZiel[1] = figurPlatz-16
+                        xKoordinate[1]=felder[moeglichesZiel[1]]["x"]
+                        yKoordinate[1]=felder[moeglichesZiel[1]]["y"]
+                        if felder[moeglichesZiel[1]]["figure"]=="none": #es wird geprüft, ob auf dem Feld eine Figur steht
+                            figurgefunden=True
+                            punkt2["command"]=punkt2BewegtBauerSchwarz
+                            punkt2.place(x=xKoordinate[1], y=yKoordinate[1])
+                            break
+                    else:
                         break
             if figurgefunden:
                 print("Die Figur kann nach ",moeglichesZiel,"fahren")
