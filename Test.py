@@ -1,7 +1,4 @@
-from ast import IfExp
-from multiprocessing.connection import wait
 from tkinter import *
-from turtle import filling
 from PIL import ImageTk, Image
 fenster = Tk()
 fenster.title("Schach Projekt")
@@ -11,18 +8,87 @@ schachbrett_bild = ImageTk.PhotoImage(Image.open("Bilder\Schachbrett.png"))
 schachbrett = Label(rahmen, image=schachbrett_bild)
 schachbrett.pack(expand=True, padx=30, pady=30)
 
-mögliche_ziele={1:{"x":"none", "y":"none"}, 2:{"x":"none", "y":"none"}, 3:{"x":"none", "y":"none"}, 4:{"x":"none", "y":"none"}, 5:{"x":"none", "y":"none"}, 6:{"x":"none", "y":"none"}, 7:{"x":"none", "y":"none"}, 8:{"x":"none", "y":"none"}, 9:{"x":"none", "y":"none"}, 10:{"x":"none", "y":"none"}, 11:{"x":"none", "y":"none"}, 12:{"x":"none", "y":"none"}, 13:{"x":"none", "y":"none"}, 14:{"x":"none", "y":"none"}, 15:{"x":"none", "y":"none"}, 16:{"x":"none", "y":"none"}, 17:{"x":"none", "y":"none"}, 18:{"x":"none", "y":"none"}, 19:{"x":"none", "y":"none"}, 20:{"x":"none", "y":"none"}, 21:{"x":"none", "y":"none"}, 22:{"x":"none", "y":"none"}, 23:{"x":"none", "y":"none"}, 24:{"x":"none", "y":"none"}, 25:{"x":"none", "y":"none"}, 26:{"x":"none", "y":"none"}, 27:{"x":"none", "y":"none"}}
+moegliche_ziele={1:{"platz": "none", "x":"none", "y":"none"}, 2:{"platz": "none", "x":"none", "y":"none"}, 3:{"platz": "none", "x":"none", "y":"none"}, 4:{"platz": "none", "x":"none", "y":"none"}, 5:{"platz": "none", "x":"none", "y":"none"}, 6:{"platz": "none", "x":"none", "y":"none"}, 7:{"platz": "none", "x":"none", "y":"none"}, 8:{"platz": "none", "x":"none", "y":"none"}, 9:{"platz": "none", "x":"none", "y":"none"}, 10:{"platz": "none", "x":"none", "y":"none"}, 11:{"platz": "none", "x":"none", "y":"none"}, 12:{"platz": "none", "x":"none", "y":"none"}, 13:{"platz": "none", "x":"none", "y":"none"}, 14:{"platz": "none", "x":"none", "y":"none"}, 15:{"platz": "none", "x":"none", "y":"none"}, 16:{"platz": "none", "x":"none", "y":"none"}, 17:{"platz": "none", "x":"none", "y":"none"}, 18:{"platz": "none", "x":"none", "y":"none"}, 19:{"platz": "none", "x":"none", "y":"none"}, 20:{"platz": "none", "x":"none", "y":"none"}, 21:{"platz": "none", "x":"none", "y":"none"}, 22:{"platz": "none", "x":"none", "y":"none"}, 23:{"platz": "none", "x":"none", "y":"none"}, 24:{"platz": "none", "x":"none", "y":"none"}, 25:{"platz": "none", "x":"none", "y":"none"}, 26:{"platz": "none", "x":"none", "y":"none"}, 27:{"platz": "none", "x":"none", "y":"none"}}
+
+def setzeZieleAufNull():
+    moegliche_ziele={1:{"platz": "none", "x":"none", "y":"none"}, 2:{"platz": "none", "x":"none", "y":"none"}, 3:{"platz": "none", "x":"none", "y":"none"}, 4:{"platz": "none", "x":"none", "y":"none"}, 5:{"platz": "none", "x":"none", "y":"none"}, 6:{"platz": "none", "x":"none", "y":"none"}, 7:{"platz": "none", "x":"none", "y":"none"}, 8:{"platz": "none", "x":"none", "y":"none"}, 9:{"platz": "none", "x":"none", "y":"none"}, 10:{"platz": "none", "x":"none", "y":"none"}, 11:{"platz": "none", "x":"none", "y":"none"}, 12:{"platz": "none", "x":"none", "y":"none"}, 13:{"platz": "none", "x":"none", "y":"none"}, 14:{"platz": "none", "x":"none", "y":"none"}, 15:{"platz": "none", "x":"none", "y":"none"}, 16:{"platz": "none", "x":"none", "y":"none"}, 17:{"platz": "none", "x":"none", "y":"none"}, 18:{"platz": "none", "x":"none", "y":"none"}, 19:{"platz": "none", "x":"none", "y":"none"}, 20:{"platz": "none", "x":"none", "y":"none"}, 21:{"platz": "none", "x":"none", "y":"none"}, 22:{"platz": "none", "x":"none", "y":"none"}, 23:{"platz": "none", "x":"none", "y":"none"}, 24:{"platz": "none", "x":"none", "y":"none"}, 25:{"platz": "none", "x":"none", "y":"none"}, 26:{"platz": "none", "x":"none", "y":"none"}, 27:{"platz": "none", "x":"none", "y":"none"}}
+weristdran="weiß"
+
+#Funktion der weißen Bauern
+def zuege_bauer_weiß(figur_name):
+        def punkt1BewegtBauerWeiß():
+            felder[figurPlatz]["figure"]="none"
+            print(moegliche_ziele[1], "punkt1")
+            felder[moegliche_ziele[1]["platz"]]["figure"]=figur_name
+            punkt1.place_forget()
+            punkt2.place_forget()
+            punkt3.place_forget()
+            plazieren("figuren")
+            setzeZieleAufNull()
+            print(felder)
+        def punkt2BewegtBauerWeiß():
+            felder[figurPlatz]["figure"]="none"
+            print(moegliche_ziele[2], "punkt2")
+            felder[moegliche_ziele[2]["platz"]]["figure"]=figur_name
+            punkt1.place_forget()
+            punkt2.place_forget()
+            punkt3.place_forget()
+            plazieren("figuren")
+            setzeZieleAufNull()
+            print(felder)
+        global weristdran
+        if weristdran=="weiß": #nur wenn weiß dran ist, passiert was
+            figurgefunden=False
+            figurPlatz="?"
+            for i in felder: #das Dictionary mit den Feldern wird durchsucht
+                if felder[i]["figure"] == figur_name: #wenn die Figur gefunden wurde
+                    figurPlatz=i
+                    moegliche_ziele[1]["platz"] = figurPlatz+8
+                    if felder[moegliche_ziele[1]["platz"]]["figure"]=="none": #es wird geprüft, ob auf dem Feld eine Figur steht
+                        figurgefunden=True
+                        moegliche_ziele[1]["x"]=felder[moegliche_ziele[1]["platz"]]["x"]
+                        moegliche_ziele[1]["y"]=felder[moegliche_ziele[1]["platz"]]["y"]
+                        punkt2.place_forget()
+                        punkt3.place_forget()
+                        punkt1["command"]=punkt1BewegtBauerWeiß #ein Punkt wird platziert
+                        plazieren("figuren")
+                        plazieren("ziele")
+                    if figurPlatz >= 9 and figurPlatz <=16: #wenn der Bauer auf der zweiten Reihe steht, wird noch ein zweiter Punkt hinzugefügt
+                        moegliche_ziele[2]["platz"] = figurPlatz+16
+                        if felder[moegliche_ziele[1]["platz"]]["figure"]=="none": #es wird geprüft, ob auf dem Feld eine Figur steht
+                            moegliche_ziele[2]["x"]=felder[moegliche_ziele[2]["platz"]]["x"]
+                            moegliche_ziele[2]["y"]=felder[moegliche_ziele[2]["platz"]]["y"]
+                            punkt2["command"]=punkt2BewegtBauerWeiß
+                            plazieren("figuren")
+                            plazieren("ziele")
+                    figurX=felder[figurPlatz]["x"]
+                    figurY=felder[figurPlatz]["y"]
+                    for j in felder:
+                        if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX-47:
+                            moegliche_ziele[3]["platz"]=j
+                            if felder[j]["figure"][-1]=="s":
+                                figurgefunden=True
+                                moegliche_ziele[3]["x"]=felder[j]["x"]
+                                moegliche_ziele[3]["y"]=felder[j]["y"]
+                                punkt3["command"]=punkt3BewegtBauerWeiß
+                                plazieren("figuren")
+                                plazieren("ziele")
+                            break
+            if figurgefunden:
+                print("Die Figur kann fahren")
+            else:
+                print("Nein")
 
 #acht Bauern weiß
 bauer_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Bauer_weiß.png"))
-bauer1_w = Button(rahmen, image=bauer_w_bild, command=lambda:bauer1_w.zeige_bauer_weiß("bauer1_w"))
-bauer2_w = Button(rahmen, image=bauer_w_bild, command=lambda:bauer2_w.zeige_bauer_weiß("bauer2_w"))
-bauer3_w = Button(rahmen, image=bauer_w_bild, command=lambda:bauer3_w.zeige_bauer_weiß("bauer3_w"))
-bauer4_w = Button(rahmen, image=bauer_w_bild, command=lambda:bauer4_w.zeige_bauer_weiß("bauer4_w"))
-bauer5_w = Button(rahmen, image=bauer_w_bild, command=lambda:bauer5_w.zeige_bauer_weiß("bauer5_w"))
-bauer6_w = Button(rahmen, image=bauer_w_bild, command=lambda:bauer6_w.zeige_bauer_weiß("bauer6_w"))
-bauer7_w = Button(rahmen, image=bauer_w_bild, command=lambda:bauer7_w.zeige_bauer_weiß("bauer7_w"))
-bauer8_w = Button(rahmen, image=bauer_w_bild, command=lambda:bauer8_w.zeige_bauer_weiß("bauer8_w"))
+bauer1_w = Button(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer1_w))
+bauer2_w = Button(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer2_w))
+bauer3_w = Button(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer3_w))
+bauer4_w = Button(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer4_w))
+bauer5_w = Button(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer5_w))
+bauer6_w = Button(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer6_w))
+bauer7_w = Button(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer7_w))
+bauer8_w = Button(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer8_w))
 
 #zwei Türme weiß
 turm_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Turm_weiß.png"))
@@ -118,18 +184,10 @@ def plazieren(x):
             if felder[i]["figure"]!="none":
                 felder[i]["figure"].place(x=felder[i]["x"], y=felder[i]["y"])
     elif x == "ziele":
-        for i in mögliche_ziele:
-            if mögliche_ziele[i]["x"]!="none":
-                ziele[i].place(x=mögliche_ziele[i]["x"], y=mögliche_ziele[i]["y"])
-
-            
-
-
-
-
-    
+        for i in moegliche_ziele:
+            if moegliche_ziele[i]["x"]!="none":
+                ziele[i-1].place(x=moegliche_ziele[i]["x"], y=moegliche_ziele[i]["y"])
 
 plazieren("figuren")
-plazieren("ziele")
 
 fenster.mainloop()
