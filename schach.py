@@ -23,12 +23,16 @@ def zuege_bauer_weiß(figur_name):
         def punktBewegtBauerWeiß(punkt_name):
             felder[figurPlatz]["figure"]="none"
             print(moegliche_ziele[punkt_name], punkt_name)
+            if felder[moegliche_ziele[punkt_name]["platz"]]["figure"]!="none":
+                geschlageneFiguren.append(felder[moegliche_ziele[punkt_name]["platz"]]["figure"])
             felder[moegliche_ziele[punkt_name]["platz"]]["figure"]=figur_name
             plazieren("figuren")
             setzeZieleAufNull()
             #global weristdran
             #weristdran="schwarz"
         global weristdran
+        setzeZieleAufNull()
+        plazieren("ziele")
         if weristdran=="weiß": #nur wenn weiß dran ist, passiert was
             figurgefunden=False
             figurPlatz="?"
@@ -57,13 +61,15 @@ def zuege_bauer_weiß(figur_name):
                     for j in felder:
                         if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX-47:
                             moegliche_ziele[3]["platz"]=j
-                            if felder[j]["figure"][-1]=="s":
+                            print(int(str(felder[j]["figure"])[-2:]))
+                            #if felder[j]["figure"]!="none" braucht man das????????
+                            if int(str(felder[j]["figure"])[-2:])>=17:
                                 figurgefunden=True
                                 moegliche_ziele[3]["x"]=felder[j]["x"]
                                 moegliche_ziele[3]["y"]=felder[j]["y"]
                                 punkt3["command"]=lambda: punktBewegtBauerWeiß(3)
                                 plazieren("ziele")
-                            break
+                                break
             if figurgefunden:
                 print("Die Figur kann fahren")
             else:
