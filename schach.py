@@ -21,71 +21,223 @@ def setzeZieleAufNull():
 
 weristdran="weiß"
 
-#Funktion der weißen Bauern
 def zuege_bauer_weiß(figur_name):
-        def punktBewegtBauerWeiß(punkt_name):
-            felder[figurPlatz]["figure"]="none"
-            print(moegliche_ziele[punkt_name], punkt_name)
-            if felder[moegliche_ziele[punkt_name]["platz"]]["figure"]!="none":
-                geschlageneFiguren.append(felder[moegliche_ziele[punkt_name]["platz"]]["figure"])
-            felder[moegliche_ziele[punkt_name]["platz"]]["figure"]=figur_name
-            plazieren("figuren")
-            setzeZieleAufNull()
-            #global weristdran
-            #weristdran="schwarz"
+    def punktBewegtBauerWeiß(punkt_name):
+        felder[figurPlatz]["figure"]="none"
+        print(moegliche_ziele[punkt_name], punkt_name)
+        if felder[moegliche_ziele[punkt_name]["platz"]]["figure"]!="none":
+            geschlageneFiguren.append(felder[moegliche_ziele[punkt_name]["platz"]]["figure"])
+        felder[moegliche_ziele[punkt_name]["platz"]]["figure"]=figur_name
+        plazieren("figuren")
+        setzeZieleAufNull()
         global weristdran
+        weristdran="schwarz"
+    global weristdran
+    if weristdran=="weiß": #nur wenn weiß dran ist, passiert was
         setzeZieleAufNull()
         plazieren("ziele")
-        if weristdran=="weiß": #nur wenn weiß dran ist, passiert was
-            figurgefunden=False
-            figurPlatz="?"
-            for i in felder: #das Dictionary mit den Feldern wird durchsucht
-                if felder[i]["figure"] == figur_name: #wenn die Figur gefunden wurde
-                    figurPlatz=i
-                    print(figurPlatz)
-                    moegliche_ziele[1]["platz"] = figurPlatz+8
+        figurgefunden=False
+        figurPlatz="?"
+        for i in felder: #das Dictionary mit den Feldern wird durchsucht
+            if felder[i]["figure"] == figur_name: #wenn die Figur gefunden wurde
+                figurPlatz=i
+                print(figurPlatz)
+                moegliche_ziele[1]["platz"] = figurPlatz+8
+                if felder[moegliche_ziele[1]["platz"]]["figure"]=="none": #es wird geprüft, ob auf dem Feld eine Figur steht
+                    figurgefunden=True
+                    moegliche_ziele[1]["x"]=felder[moegliche_ziele[1]["platz"]]["x"]
+                    moegliche_ziele[1]["y"]=felder[moegliche_ziele[1]["platz"]]["y"]
+                    punkt2.place_forget()
+                    punkt3.place_forget()
+                    punkt1["command"]=lambda: punktBewegtBauerWeiß(1)#ein Punkt wird platziert
+                    plazieren("ziele")
+                if figurPlatz >= 9 and figurPlatz <=16: #wenn der Bauer auf der zweiten Reihe steht, wird noch ein zweiter Punkt hinzugefügt
+                    moegliche_ziele[2]["platz"] = figurPlatz+16
                     if felder[moegliche_ziele[1]["platz"]]["figure"]=="none": #es wird geprüft, ob auf dem Feld eine Figur steht
-                        figurgefunden=True
-                        moegliche_ziele[1]["x"]=felder[moegliche_ziele[1]["platz"]]["x"]
-                        moegliche_ziele[1]["y"]=felder[moegliche_ziele[1]["platz"]]["y"]
-                        punkt2.place_forget()
-                        punkt3.place_forget()
-                        punkt1["command"]=lambda: punktBewegtBauerWeiß(1)#ein Punkt wird platziert
+                        moegliche_ziele[2]["x"]=felder[moegliche_ziele[2]["platz"]]["x"]
+                        moegliche_ziele[2]["y"]=felder[moegliche_ziele[2]["platz"]]["y"]
+                        punkt2["command"]=lambda: punktBewegtBauerWeiß(2)
                         plazieren("ziele")
-                    if figurPlatz >= 9 and figurPlatz <=16: #wenn der Bauer auf der zweiten Reihe steht, wird noch ein zweiter Punkt hinzugefügt
-                        moegliche_ziele[2]["platz"] = figurPlatz+16
-                        if felder[moegliche_ziele[1]["platz"]]["figure"]=="none": #es wird geprüft, ob auf dem Feld eine Figur steht
-                            moegliche_ziele[2]["x"]=felder[moegliche_ziele[2]["platz"]]["x"]
-                            moegliche_ziele[2]["y"]=felder[moegliche_ziele[2]["platz"]]["y"]
-                            punkt2["command"]=lambda: punktBewegtBauerWeiß(2)
+                figurX=felder[figurPlatz]["x"]
+                figurY=felder[figurPlatz]["y"]
+                for j in felder:
+                    if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX-47:
+                        moegliche_ziele[3]["platz"]=j
+                        if felder[j]["figure"]!="none":
+                            if felder[j]["figure"].farbe=="schwarz":
+                                figurgefunden=True
+                                moegliche_ziele[3]["x"]=felder[j]["x"]
+                                moegliche_ziele[3]["y"]=felder[j]["y"]
+                                punkt3["command"]=lambda: punktBewegtBauerWeiß(3)
+                                plazieren("ziele")
+                for k in felder:
+                    if felder[k]["y"]==figurY-47 and felder[k]["x"]==figurX+47:
+                        moegliche_ziele[4]["platz"]=k
+                        if felder[k]["figure"]!="none":
+                            if felder[k]["figure"].farbe=="schwarz":
+                                figurgefunden=True
+                                moegliche_ziele[4]["x"]=felder[k]["x"]
+                                moegliche_ziele[4]["y"]=felder[k]["y"]
+                                punkt4["command"]=lambda: punktBewegtBauerWeiß(4)
+                                plazieren("ziele")
+                                break
+        if figurgefunden:
+            print("Die Figur kann fahren")
+        else:
+            print("Nein")
+
+def zuege_bauer_schwarz(figur_name):
+    def punktBewegtBauerSchwarz(punkt_name):
+        felder[figurPlatz]["figure"]="none"
+        print(moegliche_ziele[punkt_name], punkt_name)
+        if felder[moegliche_ziele[punkt_name]["platz"]]["figure"]!="none":
+            geschlageneFiguren.append(felder[moegliche_ziele[punkt_name]["platz"]]["figure"])
+        felder[moegliche_ziele[punkt_name]["platz"]]["figure"]=figur_name
+        plazieren("figuren")
+        setzeZieleAufNull()
+        global weristdran
+        weristdran="weiß"
+    global weristdran
+    if weristdran=="schwarz": #nur wenn schwarz dran ist, passiert was
+        setzeZieleAufNull()
+        plazieren("ziele")
+        figurgefunden=False
+        figurPlatz="?"
+        for i in felder: #das Dictionary mit den Feldern wird durchsucht
+            if felder[i]["figure"] == figur_name: #wenn die Figur gefunden wurde
+                figurPlatz=i
+                print(figurPlatz)
+                moegliche_ziele[1]["platz"] = figurPlatz-8
+                if felder[moegliche_ziele[1]["platz"]]["figure"]=="none": #es wird geprüft, ob auf dem Feld eine Figur steht
+                    figurgefunden=True
+                    moegliche_ziele[1]["x"]=felder[moegliche_ziele[1]["platz"]]["x"]
+                    moegliche_ziele[1]["y"]=felder[moegliche_ziele[1]["platz"]]["y"]
+                    punkt2.place_forget()
+                    punkt3.place_forget()
+                    punkt1["command"]=lambda: punktBewegtBauerSchwarz(1)#ein Punkt wird platziert
+                    plazieren("ziele")
+                if figurPlatz >= 49 and figurPlatz <=56: #wenn der Bauer auf der zweiten Reihe steht, wird noch ein zweiter Punkt hinzugefügt
+                    moegliche_ziele[2]["platz"] = figurPlatz-16
+                    if felder[moegliche_ziele[1]["platz"]]["figure"]=="none": #es wird geprüft, ob auf dem Feld eine Figur steht
+                        moegliche_ziele[2]["x"]=felder[moegliche_ziele[2]["platz"]]["x"]
+                        moegliche_ziele[2]["y"]=felder[moegliche_ziele[2]["platz"]]["y"]
+                        punkt2["command"]=lambda: punktBewegtBauerSchwarz(2)
+                        plazieren("ziele")
+                figurX=felder[figurPlatz]["x"]
+                figurY=felder[figurPlatz]["y"]
+                for j in felder:
+                    if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX-47:
+                        moegliche_ziele[3]["platz"]=j
+                        if felder[j]["figure"]!="none":
+                            if felder[j]["figure"].farbe=="weiß":
+                                figurgefunden=True
+                                moegliche_ziele[3]["x"]=felder[j]["x"]
+                                moegliche_ziele[3]["y"]=felder[j]["y"]
+                                punkt3["command"]=lambda: punktBewegtBauerSchwarz(3)
+                                plazieren("ziele")
+                for k in felder:
+                    if felder[k]["y"]==figurY+47 and felder[k]["x"]==figurX+47:
+                        moegliche_ziele[4]["platz"]=k
+                        if felder[k]["figure"]!="none":
+                            if felder[k]["figure"].farbe=="weiß":
+                                figurgefunden=True
+                                moegliche_ziele[4]["x"]=felder[k]["x"]
+                                moegliche_ziele[4]["y"]=felder[k]["y"]
+                                punkt4["command"]=lambda: punktBewegtBauerSchwarz(4)
+                                plazieren("ziele")
+                                break
+        if figurgefunden:
+            print("Die Figur kann fahren")
+        else:
+            print("Nein")
+
+def zuege_springer_weiß(figur_name):
+    def punktBewegtSpringerWeiß(punkt_name):
+        felder[figurPlatz]["figure"]="none"
+        print(moegliche_ziele[punkt_name], punkt_name)
+        if felder[moegliche_ziele[punkt_name]["platz"]]["figure"]!="none":
+            geschlageneFiguren.append(felder[moegliche_ziele[punkt_name]["platz"]]["figure"])
+        felder[moegliche_ziele[punkt_name]["platz"]]["figure"]=figur_name
+        plazieren("figuren")
+        setzeZieleAufNull()
+        global weristdran
+        weristdran="schwarz"
+    global weristdran
+    if weristdran=="weiß": #nur wenn weiß dran ist, passiert was
+        setzeZieleAufNull()
+        plazieren("ziele")
+        figurgefunden=False
+        figurPlatz="?"
+        for i in felder: #das Dictionary mit den Feldern wird durchsucht
+            if felder[i]["figure"] == figur_name: #wenn die Figur gefunden wurde
+                figurPlatz=i
+                print(figurPlatz)
+                figurX=felder[figurPlatz]["x"]
+                figurY=felder[figurPlatz]["y"]
+                for j in felder:
+                    if felder[j]["y"]==figurY-2*47 and felder[j]["x"]==figurX+47:
+                        moegliche_ziele[1]["platz"]=j
+                        if felder[j]["figure"]!="none":
+                            if felder[j]["figure"].farbe=="schwarz":
+                                figurgefunden=True
+                                moegliche_ziele[1]["x"]=felder[j]["x"]
+                                moegliche_ziele[1]["y"]=felder[j]["y"]
+                                punkt1["command"]=lambda: punktBewegtSpringerWeiß(1)
+                                plazieren("ziele")
+                        else:
+                            figurgefunden=True
+                            moegliche_ziele[1]["x"]=felder[j]["x"]
+                            moegliche_ziele[1]["y"]=felder[j]["y"]
+                            punkt1["command"]=lambda: punktBewegtSpringerWeiß(1)
                             plazieren("ziele")
-                    figurX=felder[figurPlatz]["x"]
-                    figurY=felder[figurPlatz]["y"]
-                    for j in felder:
-                        if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX-47:
-                            moegliche_ziele[3]["platz"]=j
-                            if felder[j]["figure"]!="none":
-                                if felder[j]["figure"].farbe=="schwarz":
-                                    figurgefunden=True
-                                    moegliche_ziele[3]["x"]=felder[j]["x"]
-                                    moegliche_ziele[3]["y"]=felder[j]["y"]
-                                    punkt3["command"]=lambda: punktBewegtBauerWeiß(3)
-                                    plazieren("ziele")
-                    for k in felder:
-                        if felder[k]["y"]==figurY-47 and felder[k]["x"]==figurX+47:
-                            moegliche_ziele[4]["platz"]=k
-                            if felder[k]["figure"]!="none":
-                                if felder[k]["figure"].farbe=="schwarz":
-                                    figurgefunden=True
-                                    moegliche_ziele[4]["x"]=felder[k]["x"]
-                                    moegliche_ziele[4]["y"]=felder[k]["y"]
-                                    punkt4["command"]=lambda: punktBewegtBauerWeiß(4)
-                                    plazieren("ziele")
-                                    break
-            if figurgefunden:
-                print("Die Figur kann fahren")
-            else:
-                print("Nein")
+        if figurgefunden:
+            print("Die Figur kann fahren")
+        else:
+            print("Nein")
+
+def zuege_springer_schwarz(figur_name):
+    def punktBewegtSpringerSchwarz(punkt_name):
+        felder[figurPlatz]["figure"]="none"
+        print(moegliche_ziele[punkt_name], punkt_name)
+        if felder[moegliche_ziele[punkt_name]["platz"]]["figure"]!="none":
+            geschlageneFiguren.append(felder[moegliche_ziele[punkt_name]["platz"]]["figure"])
+        felder[moegliche_ziele[punkt_name]["platz"]]["figure"]=figur_name
+        plazieren("figuren")
+        setzeZieleAufNull()
+        global weristdran
+        weristdran="weiß"
+    global weristdran
+    if weristdran=="schwarz": #nur wenn weiß dran ist, passiert was
+        setzeZieleAufNull()
+        plazieren("ziele")
+        figurgefunden=False
+        figurPlatz="?"
+        for i in felder: #das Dictionary mit den Feldern wird durchsucht
+            if felder[i]["figure"] == figur_name: #wenn die Figur gefunden wurde
+                figurPlatz=i
+                print(figurPlatz)
+                figurX=felder[figurPlatz]["x"]
+                figurY=felder[figurPlatz]["y"]
+                for j in felder:
+                    if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX+47:
+                        moegliche_ziele[1]["platz"]=j
+                        if felder[j]["figure"]!="none":
+                            if felder[j]["figure"].farbe=="weiß":
+                                figurgefunden=True
+                                moegliche_ziele[1]["x"]=felder[j]["x"]
+                                moegliche_ziele[1]["y"]=felder[j]["y"]
+                                punkt1["command"]=lambda: punktBewegtSpringerSchwarz(1)
+                                plazieren("ziele")
+                        else:
+                            figurgefunden=True
+                            moegliche_ziele[1]["x"]=felder[j]["x"]
+                            moegliche_ziele[1]["y"]=felder[j]["y"]
+                            punkt1["command"]=lambda: punktBewegtSpringerSchwarz(1)
+                            plazieren("ziele")
+        if figurgefunden:
+            print("Die Figur kann fahren")
+        else:
+            print("Nein")
 
 #acht Bauern weiß
 bauer_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Bauer_weiß.png"))
@@ -115,9 +267,9 @@ turm2_w.farbe="weiß"
 
 #zwei Springen weiß
 springer_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Springer_weiß.png"))
-springer1_w = Schachfigur(rahmen, image=springer_w_bild)
+springer1_w = Schachfigur(rahmen, image=springer_w_bild, command=lambda:zuege_springer_weiß(springer1_w))
 springer1_w.farbe="weiß"
-springer2_w = Schachfigur(rahmen, image=springer_w_bild)
+springer2_w = Schachfigur(rahmen, image=springer_w_bild, command=lambda:zuege_springer_weiß(springer2_w))
 springer2_w.farbe="weiß"
 
 #zwei Laeufer weiß
@@ -138,21 +290,21 @@ dame_w.farbe="weiß"
 
 #acht Bauern schwarz
 bauer_s_bild = ImageTk.PhotoImage(Image.open("Bilder\Bauer_schwarz.png"))
-bauer1_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: bauer1_s.zeige_bauer_schwarz("bauer1_s"))
+bauer1_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer1_s))
 bauer1_s.farbe="schwarz"
-bauer2_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: bauer2_s.zeige_bauer_schwarz("bauer2_s"))
+bauer2_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer2_s))
 bauer2_s.farbe="schwarz"
-bauer3_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: bauer3_s.zeige_bauer_schwarz("bauer3_s"))
+bauer3_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer3_s))
 bauer3_s.farbe="schwarz"
-bauer4_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: bauer4_s.zeige_bauer_schwarz("bauer4_s"))
+bauer4_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer4_s))
 bauer4_s.farbe="schwarz"
-bauer5_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: bauer5_s.zeige_bauer_schwarz("bauer5_s"))
+bauer5_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer5_s))
 bauer5_s.farbe="schwarz"
-bauer6_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: bauer6_s.zeige_bauer_schwarz("bauer6_s"))
+bauer6_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer6_s))
 bauer6_s.farbe="schwarz"
-bauer7_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: bauer7_s.zeige_bauer_schwarz("bauer7_s"))
+bauer7_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer7_s))
 bauer7_s.farbe="schwarz"
-bauer8_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: bauer8_s.zeige_bauer_schwarz("bauer8_s"))
+bauer8_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer8_s))
 bauer8_s.farbe="schwarz"
 
 #zwei Türme schwarz
@@ -164,9 +316,9 @@ turm2_s.farbe="schwarz"
 
 #zwei Springen schwarz
 springer_s_bild = ImageTk.PhotoImage(Image.open("Bilder\Springer_schwarz.png"))
-springer1_s = Schachfigur(rahmen, image=springer_s_bild)
+springer1_s = Schachfigur(rahmen, image=springer_s_bild, command=lambda:zuege_springer_schwarz(springer1_s))
 springer1_s.farbe="schwarz"
-springer2_s = Schachfigur(rahmen, image=springer_s_bild)
+springer2_s = Schachfigur(rahmen, image=springer_s_bild, command=lambda:zuege_springer_schwarz(springer2_s))
 springer2_s.farbe="schwarz"
 
 #zwei Laeufer schwarz
