@@ -8,6 +8,9 @@ schachbrett_bild = ImageTk.PhotoImage(Image.open("Bilder\Schachbrett.png"))
 schachbrett = Label(rahmen, image=schachbrett_bild)
 schachbrett.pack(expand=True, padx=30, pady=30)
 
+class Schachfigur(Button):
+    farbe="?"
+
 moegliche_ziele={1:{"platz": "none", "x":"none", "y":"none"}, 2:{"platz": "none", "x":"none", "y":"none"}, 3:{"platz": "none", "x":"none", "y":"none"}, 4:{"platz": "none", "x":"none", "y":"none"}, 5:{"platz": "none", "x":"none", "y":"none"}, 6:{"platz": "none", "x":"none", "y":"none"}, 7:{"platz": "none", "x":"none", "y":"none"}, 8:{"platz": "none", "x":"none", "y":"none"}, 9:{"platz": "none", "x":"none", "y":"none"}, 10:{"platz": "none", "x":"none", "y":"none"}, 11:{"platz": "none", "x":"none", "y":"none"}, 12:{"platz": "none", "x":"none", "y":"none"}, 13:{"platz": "none", "x":"none", "y":"none"}, 14:{"platz": "none", "x":"none", "y":"none"}, 15:{"platz": "none", "x":"none", "y":"none"}, 16:{"platz": "none", "x":"none", "y":"none"}, 17:{"platz": "none", "x":"none", "y":"none"}, 18:{"platz": "none", "x":"none", "y":"none"}, 19:{"platz": "none", "x":"none", "y":"none"}, 20:{"platz": "none", "x":"none", "y":"none"}, 21:{"platz": "none", "x":"none", "y":"none"}, 22:{"platz": "none", "x":"none", "y":"none"}, 23:{"platz": "none", "x":"none", "y":"none"}, 24:{"platz": "none", "x":"none", "y":"none"}, 25:{"platz": "none", "x":"none", "y":"none"}, 26:{"platz": "none", "x":"none", "y":"none"}, 27:{"platz": "none", "x":"none", "y":"none"}}
 
 def setzeZieleAufNull():
@@ -61,15 +64,24 @@ def zuege_bauer_weiß(figur_name):
                     for j in felder:
                         if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX-47:
                             moegliche_ziele[3]["platz"]=j
-                            print(int(str(felder[j]["figure"])[-2:]))
-                            #if felder[j]["figure"]!="none" braucht man das????????
-                            if int(str(felder[j]["figure"])[-2:])>=17:
-                                figurgefunden=True
-                                moegliche_ziele[3]["x"]=felder[j]["x"]
-                                moegliche_ziele[3]["y"]=felder[j]["y"]
-                                punkt3["command"]=lambda: punktBewegtBauerWeiß(3)
-                                plazieren("ziele")
-                                break
+                            if felder[j]["figure"]!="none":
+                                if felder[j]["figure"].farbe=="schwarz":
+                                    figurgefunden=True
+                                    moegliche_ziele[3]["x"]=felder[j]["x"]
+                                    moegliche_ziele[3]["y"]=felder[j]["y"]
+                                    punkt3["command"]=lambda: punktBewegtBauerWeiß(3)
+                                    plazieren("ziele")
+                    for k in felder:
+                        if felder[k]["y"]==figurY-47 and felder[k]["x"]==figurX+47:
+                            moegliche_ziele[4]["platz"]=k
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe=="schwarz":
+                                    figurgefunden=True
+                                    moegliche_ziele[4]["x"]=felder[k]["x"]
+                                    moegliche_ziele[4]["y"]=felder[k]["y"]
+                                    punkt4["command"]=lambda: punktBewegtBauerWeiß(4)
+                                    plazieren("ziele")
+                                    break
             if figurgefunden:
                 print("Die Figur kann fahren")
             else:
@@ -77,68 +89,100 @@ def zuege_bauer_weiß(figur_name):
 
 #acht Bauern weiß
 bauer_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Bauer_weiß.png"))
-bauer1_w = Button(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer1_w))
-bauer2_w = Button(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer2_w))
-bauer3_w = Button(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer3_w))
-bauer4_w = Button(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer4_w))
-bauer5_w = Button(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer5_w))
-bauer6_w = Button(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer6_w))
-bauer7_w = Button(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer7_w))
-bauer8_w = Button(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer8_w))
+bauer1_w = Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer1_w))
+bauer1_w.farbe="weiß"
+bauer2_w = Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer2_w))
+bauer2_w.farbe="weiß"
+bauer3_w = Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer3_w))
+bauer3_w.farbe="weiß"
+bauer4_w = Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer4_w))
+bauer4_w.farbe="weiß"
+bauer5_w = Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer5_w))
+bauer5_w.farbe="weiß"
+bauer6_w = Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer6_w))
+bauer6_w.farbe="weiß"
+bauer7_w = Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer7_w))
+bauer7_w.farbe="weiß"
+bauer8_w = Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer8_w))
+bauer8_w.farbe="weiß"
 
 #zwei Türme weiß
 turm_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Turm_weiß.png"))
-turm1_w = Button(rahmen, image=turm_w_bild)
-turm2_w = Button(rahmen, image=turm_w_bild)
+turm1_w = Schachfigur(rahmen, image=turm_w_bild)
+turm1_w.farbe="weiß"
+turm2_w = Schachfigur(rahmen, image=turm_w_bild)
+turm2_w.farbe="weiß"
 
 #zwei Springen weiß
 springer_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Springer_weiß.png"))
-springer1_w = Button(rahmen, image=springer_w_bild)
-springer2_w = Button(rahmen, image=springer_w_bild)
+springer1_w = Schachfigur(rahmen, image=springer_w_bild)
+springer1_w.farbe="weiß"
+springer2_w = Schachfigur(rahmen, image=springer_w_bild)
+springer2_w.farbe="weiß"
 
 #zwei Laeufer weiß
 laeufer_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Läufer_weiß.png"))
-laeufer1_w = Button(rahmen, image=laeufer_w_bild)
-laeufer2_w = Button(rahmen, image=laeufer_w_bild)
+laeufer1_w = Schachfigur(rahmen, image=laeufer_w_bild)
+laeufer1_w.farbe="weiß"
+laeufer2_w = Schachfigur(rahmen, image=laeufer_w_bild)
+laeufer2_w.farbe="weiß"
 
 #Koenig & Dame weiß
 koenig_w_bild = ImageTk.PhotoImage(Image.open("Bilder\König_weiß.png"))
-koenig_w = Button(rahmen, image=koenig_w_bild)
+koenig_w = Schachfigur(rahmen, image=koenig_w_bild)
+koenig_w.farbe="weiß"
 dame_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Dame_weiß.png"))
-dame_w = Button(rahmen, image=dame_w_bild)
+dame_w = Schachfigur(rahmen, image=dame_w_bild)
+dame_w.farbe="weiß"
 
 
 #acht Bauern schwarz
 bauer_s_bild = ImageTk.PhotoImage(Image.open("Bilder\Bauer_schwarz.png"))
-bauer1_s = Button(rahmen, image=bauer_s_bild, command=lambda: bauer1_s.zeige_bauer_schwarz("bauer1_s"))
-bauer2_s = Button(rahmen, image=bauer_s_bild, command=lambda: bauer2_s.zeige_bauer_schwarz("bauer2_s"))
-bauer3_s = Button(rahmen, image=bauer_s_bild, command=lambda: bauer3_s.zeige_bauer_schwarz("bauer3_s"))
-bauer4_s = Button(rahmen, image=bauer_s_bild, command=lambda: bauer4_s.zeige_bauer_schwarz("bauer4_s"))
-bauer5_s = Button(rahmen, image=bauer_s_bild, command=lambda: bauer5_s.zeige_bauer_schwarz("bauer5_s"))
-bauer6_s = Button(rahmen, image=bauer_s_bild, command=lambda: bauer6_s.zeige_bauer_schwarz("bauer6_s"))
-bauer7_s = Button(rahmen, image=bauer_s_bild, command=lambda: bauer7_s.zeige_bauer_schwarz("bauer7_s"))
-bauer8_s = Button(rahmen, image=bauer_s_bild, command=lambda: bauer8_s.zeige_bauer_schwarz("bauer8_s"))
+bauer1_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: bauer1_s.zeige_bauer_schwarz("bauer1_s"))
+bauer1_s.farbe="schwarz"
+bauer2_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: bauer2_s.zeige_bauer_schwarz("bauer2_s"))
+bauer2_s.farbe="schwarz"
+bauer3_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: bauer3_s.zeige_bauer_schwarz("bauer3_s"))
+bauer3_s.farbe="schwarz"
+bauer4_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: bauer4_s.zeige_bauer_schwarz("bauer4_s"))
+bauer4_s.farbe="schwarz"
+bauer5_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: bauer5_s.zeige_bauer_schwarz("bauer5_s"))
+bauer5_s.farbe="schwarz"
+bauer6_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: bauer6_s.zeige_bauer_schwarz("bauer6_s"))
+bauer6_s.farbe="schwarz"
+bauer7_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: bauer7_s.zeige_bauer_schwarz("bauer7_s"))
+bauer7_s.farbe="schwarz"
+bauer8_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: bauer8_s.zeige_bauer_schwarz("bauer8_s"))
+bauer8_s.farbe="schwarz"
 
 #zwei Türme schwarz
 turm_s_bild = ImageTk.PhotoImage(Image.open("Bilder\Turm_schwarz.png"))
-turm1_s = Button(rahmen, image=turm_s_bild)
-turm2_s = Button(rahmen, image=turm_s_bild)
+turm1_s = Schachfigur(rahmen, image=turm_s_bild)
+turm1_s.farbe="schwarz"
+turm2_s = Schachfigur(rahmen, image=turm_s_bild)
+turm2_s.farbe="schwarz"
 
 #zwei Springen schwarz
 springer_s_bild = ImageTk.PhotoImage(Image.open("Bilder\Springer_schwarz.png"))
-springer1_s = Button(rahmen, image=springer_s_bild)
-springer2_s = Button(rahmen, image=springer_s_bild)
+springer1_s = Schachfigur(rahmen, image=springer_s_bild)
+springer1_s.farbe="schwarz"
+springer2_s = Schachfigur(rahmen, image=springer_s_bild)
+springer2_s.farbe="schwarz"
 
 #zwei Laeufer schwarz
 laeufer_s_bild = ImageTk.PhotoImage(Image.open("Bilder\Läufer_schwarz.png"))
-laeufer1_s = Button(rahmen, image=laeufer_s_bild)
-laeufer2_s = Button(rahmen, image=laeufer_s_bild)
+laeufer1_s = Schachfigur(rahmen, image=laeufer_s_bild)
+laeufer1_s.farbe="schwarz"
+laeufer2_s = Schachfigur(rahmen, image=laeufer_s_bild)
+laeufer2_s.farbe="schwarz"
 
 #Koenig & Dame schwarz
 koenig_s_bild = ImageTk.PhotoImage(Image.open("Bilder\König_schwarz.png"))
-koenig_s = Button(rahmen, image=koenig_s_bild)
+koenig_s = Schachfigur(rahmen, image=koenig_s_bild)
+koenig_s.farbe="schwarz"
 dame_s_bild = ImageTk.PhotoImage(Image.open("Bilder\Dame_schwarz.png"))
-dame_s = Button(rahmen, image=dame_s_bild)
+dame_s = Schachfigur(rahmen, image=dame_s_bild)
+dame_s.farbe="schwarz"
 
 gruener_punkt_bild = ImageTk.PhotoImage(Image.open("Bilder\Gruener_Punkt.png"))
 punkt1=Button(rahmen, image=gruener_punkt_bild)
