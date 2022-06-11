@@ -51,13 +51,13 @@ def zuege_bauer_weiß(figur_name):
                     punkt3.place_forget()
                     punkt1["command"]=lambda: punktBewegtBauerWeiß(1)#ein Punkt wird platziert
                     plazieren("ziele")
-                if figurPlatz >= 9 and figurPlatz <=16: #wenn der Bauer auf der zweiten Reihe steht, wird noch ein zweiter Punkt hinzugefügt
-                    moegliche_ziele[2]["platz"] = figurPlatz+16
-                    if felder[moegliche_ziele[2]["platz"]]["figure"]=="none": #es wird geprüft, ob auf dem Feld eine Figur steht
-                        moegliche_ziele[2]["x"]=felder[moegliche_ziele[2]["platz"]]["x"]
-                        moegliche_ziele[2]["y"]=felder[moegliche_ziele[2]["platz"]]["y"]
-                        punkt2["command"]=lambda: punktBewegtBauerWeiß(2)
-                        plazieren("ziele")
+                    if figurPlatz >= 9 and figurPlatz <=16: #wenn der Bauer auf der zweiten Reihe steht, wird noch ein zweiter Punkt hinzugefügt
+                        moegliche_ziele[2]["platz"] = figurPlatz+16
+                        if felder[moegliche_ziele[2]["platz"]]["figure"]=="none": #es wird geprüft, ob auf dem Feld eine Figur steht
+                            moegliche_ziele[2]["x"]=felder[moegliche_ziele[2]["platz"]]["x"]
+                            moegliche_ziele[2]["y"]=felder[moegliche_ziele[2]["platz"]]["y"]
+                            punkt2["command"]=lambda: punktBewegtBauerWeiß(2)
+                            plazieren("ziele")
                 figurX=felder[figurPlatz]["x"]
                 figurY=felder[figurPlatz]["y"]
                 for j in felder:
@@ -116,13 +116,13 @@ def zuege_bauer_schwarz(figur_name):
                     punkt3.place_forget()
                     punkt1["command"]=lambda: punktBewegtBauerSchwarz(1)#ein Punkt wird platziert
                     plazieren("ziele")
-                if figurPlatz >= 49 and figurPlatz <=56: #wenn der Bauer auf der zweiten Reihe steht, wird noch ein zweiter Punkt hinzugefügt
-                    moegliche_ziele[2]["platz"] = figurPlatz-16
-                    if felder[moegliche_ziele[2]["platz"]]["figure"]=="none": #es wird geprüft, ob auf dem Feld eine Figur steht
-                        moegliche_ziele[2]["x"]=felder[moegliche_ziele[2]["platz"]]["x"]
-                        moegliche_ziele[2]["y"]=felder[moegliche_ziele[2]["platz"]]["y"]
-                        punkt2["command"]=lambda: punktBewegtBauerSchwarz(2)
-                        plazieren("ziele")
+                    if figurPlatz >= 49 and figurPlatz <=56: #wenn der Bauer auf der zweiten Reihe steht, wird noch ein zweiter Punkt hinzugefügt
+                        moegliche_ziele[2]["platz"] = figurPlatz-16
+                        if felder[moegliche_ziele[2]["platz"]]["figure"]=="none": #es wird geprüft, ob auf dem Feld eine Figur steht
+                            moegliche_ziele[2]["x"]=felder[moegliche_ziele[2]["platz"]]["x"]
+                            moegliche_ziele[2]["y"]=felder[moegliche_ziele[2]["platz"]]["y"]
+                            punkt2["command"]=lambda: punktBewegtBauerSchwarz(2)
+                            plazieren("ziele")
                 figurX=felder[figurPlatz]["x"]
                 figurY=felder[figurPlatz]["y"]
                 for j in felder:
