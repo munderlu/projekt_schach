@@ -448,7 +448,38 @@ def zuege_springer_schwarz(figur_name):
             print("Die Figur kann fahren")
         else:
             print("Nein")
-                 
+
+def zuege_turm_weiß(figur_name):
+    def punktBewegtTurmWeiß(punkt_name):
+        felder[figurPlatz]["figure"]="none"
+        print(moegliche_ziele[punkt_name], punkt_name)
+        if felder[moegliche_ziele[punkt_name]["platz"]]["figure"]!="none":
+            felder[moegliche_ziele[punkt_name]["platz"]]["figure"].place_forget()
+        felder[moegliche_ziele[punkt_name]["platz"]]["figure"]=figur_name
+        plazieren("figuren")
+        setzeZieleAufNull()
+        global weristdran
+        weristdran="schwarz"
+    global weristdran
+    if weristdran=="weiß": #nur wenn weiß dran ist, passiert was
+        setzeZieleAufNull()
+        plazieren("ziele")
+        figurgefunden=False
+        figurPlatz="?"
+        for i in felder: #das Dictionary mit den Feldern wird durchsucht
+            if felder[i]["figure"] == figur_name: #wenn die Figur gefunden wurde
+                figurPlatz=i
+                print(figurPlatz)
+                figurX=felder[figurPlatz]["x"]
+                figurY=felder[figurPlatz]["y"]
+                for j in felder:
+                    if felder[j]["y"]==figurY-zahl*47 and felder[j]["x"]==figurX:
+                        for zahl in range(1, 7, 1):
+        if figurgefunden:
+            print("Die Figur kann fahren")
+        else:
+            print("Nein")
+
 
 #acht Bauern weiß
 bauer_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Bauer_weiß.png"))
