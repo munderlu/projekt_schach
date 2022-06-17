@@ -26,7 +26,7 @@ def zuege_bauer_weiß(figur_name):
         felder[figurPlatz]["figure"]="none"
         print(moegliche_ziele[punkt_name], punkt_name)
         if felder[moegliche_ziele[punkt_name]["platz"]]["figure"]!="none":
-            geschlageneFiguren.append(felder[moegliche_ziele[punkt_name]["platz"]]["figure"])
+            felder[moegliche_ziele[punkt_name]["platz"]]["figure"].place_forget()
         felder[moegliche_ziele[punkt_name]["platz"]]["figure"]=figur_name
         plazieren("figuren")
         setzeZieleAufNull()
@@ -91,7 +91,7 @@ def zuege_bauer_schwarz(figur_name):
         felder[figurPlatz]["figure"]="none"
         print(moegliche_ziele[punkt_name], punkt_name)
         if felder[moegliche_ziele[punkt_name]["platz"]]["figure"]!="none":
-            geschlageneFiguren.append(felder[moegliche_ziele[punkt_name]["platz"]]["figure"])
+            felder[moegliche_ziele[punkt_name]["platz"]]["figure"].place_forget()
         felder[moegliche_ziele[punkt_name]["platz"]]["figure"]=figur_name
         plazieren("figuren")
         setzeZieleAufNull()
@@ -156,7 +156,7 @@ def zuege_springer_weiß(figur_name):
         felder[figurPlatz]["figure"]="none"
         print(moegliche_ziele[punkt_name], punkt_name)
         if felder[moegliche_ziele[punkt_name]["platz"]]["figure"]!="none":
-            geschlageneFiguren.append(felder[moegliche_ziele[punkt_name]["platz"]]["figure"])
+            felder[moegliche_ziele[punkt_name]["platz"]]["figure"].place_forget()
         felder[moegliche_ziele[punkt_name]["platz"]]["figure"]=figur_name
         plazieren("figuren")
         setzeZieleAufNull()
@@ -190,6 +190,111 @@ def zuege_springer_weiß(figur_name):
                             moegliche_ziele[1]["y"]=felder[j]["y"]
                             punkt1["command"]=lambda: punktBewegtSpringerWeiß(1)
                             plazieren("ziele")
+                    if felder[j]["y"]==figurY-2*47 and felder[j]["x"]==figurX-47:
+                        moegliche_ziele[2]["platz"]=j
+                        if felder[j]["figure"]!="none":
+                            if felder[j]["figure"].farbe=="schwarz":
+                                figurgefunden=True
+                                moegliche_ziele[2]["x"]=felder[j]["x"]
+                                moegliche_ziele[2]["y"]=felder[j]["y"]
+                                punkt2["command"]=lambda: punktBewegtSpringerWeiß(2)
+                                plazieren("ziele")
+                        else:
+                            figurgefunden=True
+                            moegliche_ziele[2]["x"]=felder[j]["x"]
+                            moegliche_ziele[2]["y"]=felder[j]["y"]
+                            punkt2["command"]=lambda: punktBewegtSpringerWeiß(2)
+                            plazieren("ziele")    
+                    if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX+2*47:
+                        moegliche_ziele[3]["platz"]=j
+                        if felder[j]["figure"]!="none":
+                            if felder[j]["figure"].farbe=="schwarz":
+                                figurgefunden=True
+                                moegliche_ziele[3]["x"]=felder[j]["x"]
+                                moegliche_ziele[3]["y"]=felder[j]["y"]
+                                punkt3["command"]=lambda: punktBewegtSpringerWeiß(3)
+                                plazieren("ziele")
+                        else:
+                            figurgefunden=True
+                            moegliche_ziele[3]["x"]=felder[j]["x"]
+                            moegliche_ziele[3]["y"]=felder[j]["y"]
+                            punkt3["command"]=lambda: punktBewegtSpringerWeiß(3)
+                            plazieren("ziele")    
+                    if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX+2*47:
+                        moegliche_ziele[4]["platz"]=j
+                        if felder[j]["figure"]!="none":
+                            if felder[j]["figure"].farbe=="schwarz":
+                                figurgefunden=True
+                                moegliche_ziele[4]["x"]=felder[j]["x"]
+                                moegliche_ziele[4]["y"]=felder[j]["y"]
+                                punkt4["command"]=lambda: punktBewegtSpringerWeiß(4)
+                                plazieren("ziele")
+                        else:
+                            figurgefunden=True
+                            moegliche_ziele[4]["x"]=felder[j]["x"]
+                            moegliche_ziele[4]["y"]=felder[j]["y"]
+                            punkt4["command"]=lambda: punktBewegtSpringerWeiß(4)
+                            plazieren("ziele")    
+                    if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX+47:
+                        moegliche_ziele[5]["platz"]=j
+                        if felder[j]["figure"]!="none":
+                            if felder[j]["figure"].farbe=="schwarz":
+                                figurgefunden=True
+                                moegliche_ziele[5]["x"]=felder[j]["x"]
+                                moegliche_ziele[5]["y"]=felder[j]["y"]
+                                punkt5["command"]=lambda: punktBewegtSpringerWeiß(5)
+                                plazieren("ziele")
+                        else:
+                            figurgefunden=True
+                            moegliche_ziele[5]["x"]=felder[j]["x"]
+                            moegliche_ziele[5]["y"]=felder[j]["y"]
+                            punkt5["command"]=lambda: punktBewegtSpringerWeiß(5)
+                            plazieren("ziele")    
+                    if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX-47:
+                        moegliche_ziele[6]["platz"]=j
+                        if felder[j]["figure"]!="none":
+                            if felder[j]["figure"].farbe=="schwarz":
+                                figurgefunden=True
+                                moegliche_ziele[6]["x"]=felder[j]["x"]
+                                moegliche_ziele[6]["y"]=felder[j]["y"]
+                                punkt6["command"]=lambda: punktBewegtSpringerWeiß(6)
+                                plazieren("ziele")
+                        else:
+                            figurgefunden=True
+                            moegliche_ziele[6]["x"]=felder[j]["x"]
+                            moegliche_ziele[6]["y"]=felder[j]["y"]
+                            punkt6["command"]=lambda: punktBewegtSpringerWeiß(6)
+                            plazieren("ziele")    
+                    if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX-2*47:
+                        moegliche_ziele[7]["platz"]=j
+                        if felder[j]["figure"]!="none":
+                            if felder[j]["figure"].farbe=="schwarz":
+                                figurgefunden=True
+                                moegliche_ziele[7]["x"]=felder[j]["x"]
+                                moegliche_ziele[7]["y"]=felder[j]["y"]
+                                punkt7["command"]=lambda: punktBewegtSpringerWeiß(7)
+                                plazieren("ziele")
+                        else:
+                            figurgefunden=True
+                            moegliche_ziele[7]["x"]=felder[j]["x"]
+                            moegliche_ziele[7]["y"]=felder[j]["y"]
+                            punkt7["command"]=lambda: punktBewegtSpringerWeiß(7)
+                            plazieren("ziele")    
+                    if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX-2*47:
+                        moegliche_ziele[8]["platz"]=j
+                        if felder[j]["figure"]!="none":
+                            if felder[j]["figure"].farbe=="schwarz":
+                                figurgefunden=True
+                                moegliche_ziele[8]["x"]=felder[j]["x"]
+                                moegliche_ziele[8]["y"]=felder[j]["y"]
+                                punkt8["command"]=lambda: punktBewegtSpringerWeiß(8)
+                                plazieren("ziele")
+                        else:
+                            figurgefunden=True
+                            moegliche_ziele[8]["x"]=felder[j]["x"]
+                            moegliche_ziele[8]["y"]=felder[j]["y"]
+                            punkt8["command"]=lambda: punktBewegtSpringerWeiß(8)
+                            plazieren("ziele")    
         if figurgefunden:
             print("Die Figur kann fahren")
         else:
@@ -200,7 +305,7 @@ def zuege_springer_schwarz(figur_name):
         felder[figurPlatz]["figure"]="none"
         print(moegliche_ziele[punkt_name], punkt_name)
         if felder[moegliche_ziele[punkt_name]["platz"]]["figure"]!="none":
-            geschlageneFiguren.append(felder[moegliche_ziele[punkt_name]["platz"]]["figure"])
+            felder[moegliche_ziele[punkt_name]["platz"]]["figure"].place_forget()
         felder[moegliche_ziele[punkt_name]["platz"]]["figure"]=figur_name
         plazieren("figuren")
         setzeZieleAufNull()
@@ -219,7 +324,7 @@ def zuege_springer_schwarz(figur_name):
                 figurX=felder[figurPlatz]["x"]
                 figurY=felder[figurPlatz]["y"]
                 for j in felder:
-                    if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX+47:
+                    if felder[j]["y"]==figurY-2*47 and felder[j]["x"]==figurX+47:
                         moegliche_ziele[1]["platz"]=j
                         if felder[j]["figure"]!="none":
                             if felder[j]["figure"].farbe=="weiß":
@@ -234,10 +339,116 @@ def zuege_springer_schwarz(figur_name):
                             moegliche_ziele[1]["y"]=felder[j]["y"]
                             punkt1["command"]=lambda: punktBewegtSpringerSchwarz(1)
                             plazieren("ziele")
+                    if felder[j]["y"]==figurY-2*47 and felder[j]["x"]==figurX-47:
+                        moegliche_ziele[2]["platz"]=j
+                        if felder[j]["figure"]!="none":
+                            if felder[j]["figure"].farbe=="weiß":
+                                figurgefunden=True
+                                moegliche_ziele[2]["x"]=felder[j]["x"]
+                                moegliche_ziele[2]["y"]=felder[j]["y"]
+                                punkt2["command"]=lambda: punktBewegtSpringerSchwarz(2)
+                                plazieren("ziele")
+                        else:
+                            figurgefunden=True
+                            moegliche_ziele[2]["x"]=felder[j]["x"]
+                            moegliche_ziele[2]["y"]=felder[j]["y"]
+                            punkt2["command"]=lambda: punktBewegtSpringerSchwarz(2)
+                            plazieren("ziele")    
+                    if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX+2*47:
+                        moegliche_ziele[3]["platz"]=j
+                        if felder[j]["figure"]!="none":
+                            if felder[j]["figure"].farbe=="weiß":
+                                figurgefunden=True
+                                moegliche_ziele[3]["x"]=felder[j]["x"]
+                                moegliche_ziele[3]["y"]=felder[j]["y"]
+                                punkt3["command"]=lambda: punktBewegtSpringerSchwarz(3)
+                                plazieren("ziele")
+                        else:
+                            figurgefunden=True
+                            moegliche_ziele[3]["x"]=felder[j]["x"]
+                            moegliche_ziele[3]["y"]=felder[j]["y"]
+                            punkt3["command"]=lambda: punktBewegtSpringerSchwarz(3)
+                            plazieren("ziele")    
+                    if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX+2*47:
+                        moegliche_ziele[4]["platz"]=j
+                        if felder[j]["figure"]!="none":
+                            if felder[j]["figure"].farbe=="weiß":
+                                figurgefunden=True
+                                moegliche_ziele[4]["x"]=felder[j]["x"]
+                                moegliche_ziele[4]["y"]=felder[j]["y"]
+                                punkt4["command"]=lambda: punktBewegtSpringerSchwarz(4)
+                                plazieren("ziele")
+                        else:
+                            figurgefunden=True
+                            moegliche_ziele[4]["x"]=felder[j]["x"]
+                            moegliche_ziele[4]["y"]=felder[j]["y"]
+                            punkt4["command"]=lambda: punktBewegtSpringerSchwarz(4)
+                            plazieren("ziele")    
+                    if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX+47:
+                        moegliche_ziele[5]["platz"]=j
+                        if felder[j]["figure"]!="none":
+                            if felder[j]["figure"].farbe=="weiß":
+                                figurgefunden=True
+                                moegliche_ziele[5]["x"]=felder[j]["x"]
+                                moegliche_ziele[5]["y"]=felder[j]["y"]
+                                punkt5["command"]=lambda: punktBewegtSpringerSchwarz(5)
+                                plazieren("ziele")
+                        else:
+                            figurgefunden=True
+                            moegliche_ziele[5]["x"]=felder[j]["x"]
+                            moegliche_ziele[5]["y"]=felder[j]["y"]
+                            punkt5["command"]=lambda: punktBewegtSpringerSchwarz(5)
+                            plazieren("ziele")    
+                    if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX-47:
+                        moegliche_ziele[6]["platz"]=j
+                        if felder[j]["figure"]!="none":
+                            if felder[j]["figure"].farbe=="weiß":
+                                figurgefunden=True
+                                moegliche_ziele[6]["x"]=felder[j]["x"]
+                                moegliche_ziele[6]["y"]=felder[j]["y"]
+                                punkt6["command"]=lambda: punktBewegtSpringerSchwarz(6)
+                                plazieren("ziele")
+                        else:
+                            figurgefunden=True
+                            moegliche_ziele[6]["x"]=felder[j]["x"]
+                            moegliche_ziele[6]["y"]=felder[j]["y"]
+                            punkt6["command"]=lambda: punktBewegtSpringerSchwarz(6)
+                            plazieren("ziele")    
+                    if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX-2*47:
+                        moegliche_ziele[7]["platz"]=j
+                        if felder[j]["figure"]!="none":
+                            if felder[j]["figure"].farbe=="weiß":
+                                figurgefunden=True
+                                moegliche_ziele[7]["x"]=felder[j]["x"]
+                                moegliche_ziele[7]["y"]=felder[j]["y"]
+                                punkt7["command"]=lambda: punktBewegtSpringerSchwarz(7)
+                                plazieren("ziele")
+                        else:
+                            figurgefunden=True
+                            moegliche_ziele[7]["x"]=felder[j]["x"]
+                            moegliche_ziele[7]["y"]=felder[j]["y"]
+                            punkt7["command"]=lambda: punktBewegtSpringerSchwarz(7)
+                            plazieren("ziele")    
+                    if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX-2*47:
+                        moegliche_ziele[8]["platz"]=j
+                        if felder[j]["figure"]!="none":
+                            if felder[j]["figure"].farbe=="weiß":
+                                figurgefunden=True
+                                moegliche_ziele[8]["x"]=felder[j]["x"]
+                                moegliche_ziele[8]["y"]=felder[j]["y"]
+                                punkt8["command"]=lambda: punktBewegtSpringerSchwarz(8)
+                                plazieren("ziele")
+                        else:
+                            figurgefunden=True
+                            moegliche_ziele[8]["x"]=felder[j]["x"]
+                            moegliche_ziele[8]["y"]=felder[j]["y"]
+                            punkt8["command"]=lambda: punktBewegtSpringerSchwarz(8)
+                            plazieren("ziele")    
         if figurgefunden:
             print("Die Figur kann fahren")
         else:
             print("Nein")
+                 
 
 #acht Bauern weiß
 bauer_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Bauer_weiß.png"))
@@ -367,13 +578,9 @@ punkt27=Button(rahmen, image=gruener_punkt_bild)
 
 felder = {1:{"x":50, "y":379,"figure":turm1_w},2:{"x":97, "y":379,"figure":springer1_w},3:{"x":144, "y":379,"figure":laeufer1_w },4:{"x":191, "y":379,"figure":dame_w},5:{"x":238, "y":379,"figure":koenig_w},6:{"x":285, "y":379,"figure":laeufer2_w},7:{"x":332, "y":379,"figure":springer2_w},8:{"x":379, "y":379,"figure":turm2_w},9:{"x":50, "y":332,"figure":bauer1_w},10:{"x":97, "y":332,"figure":bauer2_w},11:{"x":144, "y":332,"figure":bauer3_w},12:{"x":191, "y":332,"figure":bauer4_w},13:{"x":238, "y":332,"figure":bauer5_w},14:{"x":285, "y":332,"figure":bauer6_w},15:{"x":332, "y":332,"figure":bauer7_w},16:{"x":379, "y":332,"figure":bauer8_w},17:{"x":50, "y":285,"figure":"none"},18:{"x":97, "y":285,"figure":"none"},19:{"x":144, "y":285,"figure":"none"},20:{"x":191, "y":285,"figure":"none"},21:{"x":238, "y":285,"figure":"none"},22:{"x":285, "y":285,"figure":"none"},23:{"x":332, "y":285,"figure":"none"},24:{"x":379, "y":285,"figure":"none"},25:{"x":50, "y":238,"figure":"none"},26:{"x":97, "y":238,"figure":"none"},27:{"x":144, "y":238,"figure":"none"},28:{"x":191, "y":238,"figure":"none"},29:{"x":238, "y":238,"figure":"none"},30:{"x":285, "y":238,"figure":"none"},31:{"x":332, "y":238,"figure":"none"},32:{"x":379, "y":238,"figure":"none"},33:{"x":50, "y":191,"figure":"none"},34:{"x":97, "y":191,"figure":"none"},35:{"x":144, "y":191,"figure":"none"},36:{"x":191, "y":191,"figure":"none"},37:{"x":238, "y":191,"figure":"none"},38:{"x":285, "y":191,"figure":"none"},39:{"x":332, "y":191,"figure":"none"},40:{"x":379, "y":191,"figure":"none"},41:{"x":50, "y":144,"figure":"none"},42:{"x":97, "y":144,"figure":"none"},43:{"x":144, "y":144,"figure":"none"},44:{"x":191, "y":144,"figure":"none"},45:{"x":238, "y":144,"figure":"none"},46:{"x":285, "y":144,"figure":"none"},47:{"x":332, "y":144,"figure":"none"},48:{"x":379, "y":144,"figure":"none"},49:{"x":50, "y":97,"figure":bauer1_s},50:{"x":97, "y":97,"figure":bauer2_s},51:{"x":144, "y":97,"figure":bauer3_s},52:{"x":191, "y":97,"figure":bauer4_s},53:{"x":238, "y":97,"figure":bauer5_s},54:{"x":285, "y":97,"figure":bauer6_s},55:{"x":332, "y":97,"figure":bauer7_s},56:{"x":379, "y":97,"figure":bauer8_s},57:{"x":50, "y":50,"figure":turm1_s},58:{"x":97, "y":50,"figure":springer1_s},59:{"x":144, "y":50,"figure":laeufer1_s},60:{"x":191, "y":50,"figure":dame_s},61:{"x":238, "y":50,"figure":koenig_s},62:{"x":285, "y":50,"figure":laeufer2_s},63:{"x":332, "y":50,"figure":springer2_s},64:{"x":379, "y":50,"figure":turm2_s}}
 ziele = [punkt1, punkt2, punkt3, punkt4, punkt5, punkt6, punkt7, punkt8, punkt9, punkt10, punkt11, punkt12, punkt13, punkt14, punkt15, punkt16, punkt17, punkt18, punkt19, punkt20, punkt21, punkt22, punkt23, punkt24, punkt25, punkt26, punkt27]
-geschlageneFiguren=[]
-
 
 def plazieren(x):
     if x == "figuren":
-        for i in geschlageneFiguren:
-            i.place_forget()
         for i in felder:
             if felder[i]["figure"]!="none":
                 felder[i]["figure"].place(x=felder[i]["x"], y=felder[i]["y"])
