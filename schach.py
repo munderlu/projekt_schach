@@ -453,9 +453,10 @@ def zuege_turm_weiß(figur_name):
     def punktBewegtTurmWeiß(punkt_name):
         felder[figurPlatz]["figure"]="none"
         print(moegliche_ziele[punkt_name], punkt_name)
-        if felder[moegliche_ziele[punkt_name]["platz"]]["figure"]!="none":
-            felder[moegliche_ziele[punkt_name]["platz"]]["figure"].place_forget()
-        felder[moegliche_ziele[punkt_name]["platz"]]["figure"]=figur_name
+        ziel=moegliche_ziele[punkt_name]["platz"]
+        if felder[ziel]["figure"]!="none":
+            felder[ziel]["figure"].place_forget()
+        felder[ziel]["figure"]=figur_name
         plazieren("figuren")
         setzeZieleAufNull()
         global weristdran
@@ -472,9 +473,23 @@ def zuege_turm_weiß(figur_name):
                 print(figurPlatz)
                 figurX=felder[figurPlatz]["x"]
                 figurY=felder[figurPlatz]["y"]
-                for j in felder:
-                    if felder[j]["y"]==figurY-zahl*47 and felder[j]["x"]==figurX:
-                        for zahl in range(1, 7, 1):
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX and felder[k]["y"] == figurY-j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="schwarz":
+                                    break
+                            moegliche_ziele[j]["x"]=felder[k]["x"]
+                            moegliche_ziele[j]["y"]=felder[k]["y"]
+                            moegliche_ziele[j]["platz"]=k
+                            print(moegliche_ziele[j]["platz"])
+                            ziele[j-1]["command"]=lambda:punktBewegtTurmWeiß() #hier ist das Problem
+                            plazieren("ziele")
+                            zielGefunden=True
+                            break
+                    if zielGefunden:
+                        if felder[k]["figure"]!="none":
+                            break
         if figurgefunden:
             print("Die Figur kann fahren")
         else:
@@ -502,9 +517,9 @@ bauer8_w.farbe="weiß"
 
 #zwei Türme weiß
 turm_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Turm_weiß.png"))
-turm1_w = Schachfigur(rahmen, image=turm_w_bild)
+turm1_w = Schachfigur(rahmen, image=turm_w_bild, command=lambda:zuege_turm_weiß(turm1_w))
 turm1_w.farbe="weiß"
-turm2_w = Schachfigur(rahmen, image=turm_w_bild)
+turm2_w = Schachfigur(rahmen, image=turm_w_bild, command=lambda:zuege_turm_weiß(turm2_w))
 turm2_w.farbe="weiß"
 
 #zwei Springen weiß
