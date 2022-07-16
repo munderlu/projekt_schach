@@ -30,7 +30,6 @@ def punkte_auswählen():
             ergebniss=(rechenvariable3+((rechenvariable4-1)*8)-1)
             moegliche_ziele[i]["button_Nr"]=int(ergebniss)
 
-
 def punkte_plazieren():
     for i in moegliche_ziele:
         if moegliche_ziele[i]["button_Nr"]!="none":
@@ -313,8 +312,6 @@ def figur_ziehen(xpos, ypos):
     else:
         weristdran="schwarz"
        
-
-
 gruener_punkt_bild = ImageTk.PhotoImage(Image.open("Bilder\Gruener_Punkt.png"))
 punkt1= Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(50, 50))
 punkt2= Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(97, 50))
@@ -389,10 +386,6 @@ def figuren_plazieren():
     for i in felder:
         if felder[i]["figure"]!="none":
             felder[i]["figure"].place(x=felder[i]["x"], y=felder[i]["y"])
-
-
-
-    
 
 figuren_plazieren()
 fenster.mainloop()
