@@ -1,4 +1,3 @@
-from msilib.schema import BBControl
 from tkinter import *
 from PIL import ImageTk, Image
 fenster = Tk()
@@ -15,6 +14,11 @@ class Schachfigur(Button):
     farbe="?"
 
 moegliche_ziele={1:{"button_Nr": "none", "x":"none", "y":"none"}, 2:{"button_Nr": "none", "x":"none", "y":"none"}, 3:{"button_Nr": "none", "x":"none", "y":"none"}, 4:{"button_Nr": "none", "x":"none", "y":"none"}, 5:{"button_Nr": "none", "x":"none", "y":"none"}, 6:{"button_Nr": "none", "x":"none", "y":"none"}, 7:{"button_Nr": "none", "x":"none", "y":"none"}, 8:{"button_Nr": "none", "x":"none", "y":"none"}, 9:{"button_Nr": "none", "x":"none", "y":"none"}, 10:{"button_Nr": "none", "x":"none", "y":"none"}, 11:{"button_Nr": "none", "x":"none", "y":"none"}, 12:{"button_Nr": "none", "x":"none", "y":"none"}, 13:{"button_Nr": "none", "x":"none", "y":"none"}, 14:{"button_Nr": "none", "x":"none", "y":"none"}, 15:{"button_Nr": "none", "x":"none", "y":"none"}, 16:{"button_Nr": "none", "x":"none", "y":"none"}, 17:{"button_Nr": "none", "x":"none", "y":"none"}, 18:{"button_Nr": "none", "x":"none", "y":"none"}, 19:{"button_Nr": "none", "x":"none", "y":"none"}, 20:{"button_Nr": "none", "x":"none", "y":"none"}, 21:{"button_Nr": "none", "x":"none", "y":"none"}, 22:{"button_Nr": "none", "x":"none", "y":"none"}, 23:{"button_Nr": "none", "x":"none", "y":"none"}, 24:{"button_Nr": "none", "x":"none", "y":"none"}, 25:{"button_Nr": "none", "x":"none", "y":"none"}, 26:{"button_Nr": "none", "x":"none", "y":"none"}, 27:{"button_Nr": "none", "x":"none", "y":"none"}}
+def setzeZieleAufNull():
+    global moegliche_ziele
+    moegliche_ziele={1:{"button_Nr": "none", "x":"none", "y":"none"}, 2:{"button_Nr": "none", "x":"none", "y":"none"}, 3:{"button_Nr": "none", "x":"none", "y":"none"}, 4:{"button_Nr": "none", "x":"none", "y":"none"}, 5:{"button_Nr": "none", "x":"none", "y":"none"}, 6:{"button_Nr": "none", "x":"none", "y":"none"}, 7:{"button_Nr": "none", "x":"none", "y":"none"}, 8:{"button_Nr": "none", "x":"none", "y":"none"}, 9:{"button_Nr": "none", "x":"none", "y":"none"}, 10:{"button_Nr": "none", "x":"none", "y":"none"}, 11:{"button_Nr": "none", "x":"none", "y":"none"}, 12:{"button_Nr": "none", "x":"none", "y":"none"}, 13:{"button_Nr": "none", "x":"none", "y":"none"}, 14:{"button_Nr": "none", "x":"none", "y":"none"}, 15:{"button_Nr": "none", "x":"none", "y":"none"}, 16:{"button_Nr": "none", "x":"none", "y":"none"}, 17:{"button_Nr": "none", "x":"none", "y":"none"}, 18:{"button_Nr": "none", "x":"none", "y":"none"}, 19:{"button_Nr": "none", "x":"none", "y":"none"}, 20:{"button_Nr": "none", "x":"none", "y":"none"}, 21:{"button_Nr": "none", "x":"none", "y":"none"}, 22:{"button_Nr": "none", "x":"none", "y":"none"}, 23:{"button_Nr": "none", "x":"none", "y":"none"}, 24:{"button_Nr": "none", "x":"none", "y":"none"}, 25:{"button_Nr": "none", "x":"none", "y":"none"}, 26:{"button_Nr": "none", "x":"none", "y":"none"}, 27:{"button_Nr": "none", "x":"none", "y":"none"}}
+    for i in punkte:
+        i.place_forget
 
 def punkte_auswählen():
     for i in moegliche_ziele:
@@ -22,7 +26,7 @@ def punkte_auswählen():
             rechenvariable1=moegliche_ziele[i]["x"]
             rechenvariable2=moegliche_ziele[i]["y"]
             rechenvariable3=(rechenvariable1-3)/47
-            rechenvariable4=(rechenvariable2-3)/47
+            rechenvariable4=(rechenvariable2-3)/47       
             ergebniss=(rechenvariable3+((rechenvariable4-1)*8)-1)
             moegliche_ziele[i]["button_Nr"]=int(ergebniss)
 
@@ -31,10 +35,6 @@ def punkte_plazieren():
     for i in moegliche_ziele:
         if moegliche_ziele[i]["button_Nr"]!="none":
             punkte[int(moegliche_ziele[i]["button_Nr"])].place(x=moegliche_ziele[i]["x"], y=moegliche_ziele[i]["y"])
-
-
-
-
 
 def zuege_bauer_weiß(figur):
     setzeZieleAufNull()
@@ -60,8 +60,8 @@ def zuege_bauer_weiß(figur):
                         moegliche_ziele[4]["y"]=felder[i]["y"]-47
         punkte_auswählen()             
         punkte_plazieren() 
+        print(moegliche_ziele)
         
-
 def zuege_bauer_schwarz(figur):
     setzeZieleAufNull()
     global weristdran
@@ -87,53 +87,115 @@ def zuege_bauer_schwarz(figur):
         punkte_auswählen()             
         punkte_plazieren() 
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def zuege_turm_weiß(aktuelle_figur):
-    Platzhalter
-def zuege_springer_weiß(aktuelle_figur):
-    Platzhalter
-def zuege_springer_schwarz(aktuelle_figur):
-    Platzhalter
-
-
+    print("coming soon")
+def zuege_turm_schwarz(aktuelle_figur):
+    print("coming soon")
+def zuege_springer_weiß(figur):
+    setzeZieleAufNull()
+    global weristdran
+    if weristdran=="weiß":
+        for i in felder:
+            if felder[i]["figure"]==figur:
+                global aktuelle_figur
+                aktuelle_figur=figur
+                figurX=felder[i]["x"]
+                figurY=felder[i]["y"]
+                for j in felder:
+                    if felder[j]["y"]==figurY-2*47 and felder[j]["x"]==figurX+47:
+                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
+                            moegliche_ziele[1]["x"]=felder[j]["x"]
+                            moegliche_ziele[1]["y"]=felder[j]["y"]
+                    if felder[j]["y"]==figurY-2*47 and felder[j]["x"]==figurX-47:
+                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
+                            moegliche_ziele[2]["x"]=felder[j]["x"]
+                            moegliche_ziele[2]["y"]=felder[j]["y"]
+                    if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX+2*47:
+                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
+                            moegliche_ziele[3]["x"]=felder[j]["x"]
+                            moegliche_ziele[3]["y"]=felder[j]["y"]
+                    if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX+2*47:
+                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
+                            moegliche_ziele[4]["x"]=felder[j]["x"]
+                            moegliche_ziele[4]["y"]=felder[j]["y"]
+                    if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX+47:
+                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
+                            moegliche_ziele[5]["x"]=felder[j]["x"]
+                            moegliche_ziele[5]["y"]=felder[j]["y"]
+                    if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX-47:
+                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
+                            moegliche_ziele[6]["x"]=felder[j]["x"]
+                            moegliche_ziele[6]["y"]=felder[j]["y"]
+                    if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX-2*47:
+                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
+                            moegliche_ziele[7]["x"]=felder[j]["x"]
+                            moegliche_ziele[7]["y"]=felder[j]["y"]
+                    if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX-2*47:
+                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
+                            moegliche_ziele[8]["x"]=felder[j]["x"]
+                            moegliche_ziele[8]["y"]=felder[j]["y"]
+            print(moegliche_ziele)
+            punkte_auswählen()
+            punkte_plazieren()
+            
+def zuege_springer_schwarz(figur):
+    setzeZieleAufNull()
+    global weristdran
+    if weristdran=="schwarz":
+        for i in felder:
+            if felder[i]["figure"]==figur:
+                global aktuelle_figur
+                aktuelle_figur=figur
+                figurX=felder[i]["x"]
+                figurY=felder[i]["y"]
+                for j in felder:
+                    if felder[j]["y"]==figurY-2*47 and felder[j]["x"]==figurX+47:
+                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
+                            moegliche_ziele[1]["x"]=felder[j]["x"]
+                            moegliche_ziele[1]["y"]=felder[j]["y"]
+                    if felder[j]["y"]==figurY-2*47 and felder[j]["x"]==figurX-47:
+                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
+                            moegliche_ziele[2]["x"]=felder[j]["x"]
+                            moegliche_ziele[2]["y"]=felder[j]["y"]
+                    if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX+2*47:
+                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
+                            moegliche_ziele[3]["x"]=felder[j]["x"]
+                            moegliche_ziele[3]["y"]=felder[j]["y"]
+                    if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX+2*47:
+                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
+                            moegliche_ziele[4]["x"]=felder[j]["x"]
+                            moegliche_ziele[4]["y"]=felder[j]["y"]
+                    if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX+47:
+                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
+                            moegliche_ziele[5]["x"]=felder[j]["x"]
+                            moegliche_ziele[5]["y"]=felder[j]["y"]
+                    if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX-47:
+                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
+                            moegliche_ziele[6]["x"]=felder[j]["x"]
+                            moegliche_ziele[6]["y"]=felder[j]["y"]
+                    if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX-2*47:
+                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
+                            moegliche_ziele[7]["x"]=felder[j]["x"]
+                            moegliche_ziele[7]["y"]=felder[j]["y"]
+                    if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX-2*47:
+                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
+                            moegliche_ziele[8]["x"]=felder[j]["x"]
+                            moegliche_ziele[8]["y"]=felder[j]["y"]
+            print(moegliche_ziele)
+            punkte_auswählen()
+            punkte_plazieren()
+def zuege_laeufer_weiß(aktuelle_figur):
+    print("coming soon")
+def zuege_laeufer_schwarz(aktuelle_figur):
+    print("coming soon")
+def zuege_koenig_weiß(aktuelle_figur):
+    print("coming soon")
+def zuege_koenig_schwarz(aktuelle_figur):
+    print("coming soon")
+def zuege_dame_weiß(aktuelle_figur):
+    print("coming soon")
+def zuege_dame_schwarz(aktuelle_figur):
+    print("coming soon")
 
 #acht Bauern weiß
 bauer_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Bauer_weiß.png"))
@@ -170,17 +232,17 @@ springer2_w.farbe="weiß"
 
 #zwei Laeufer weiß
 laeufer_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Läufer_weiß.png"))
-laeufer1_w = Schachfigur(rahmen, image=laeufer_w_bild)
+laeufer1_w = Schachfigur(rahmen, image=laeufer_w_bild, command=lambda:zuege_laeufer_weiß(laeufer1_w))
 laeufer1_w.farbe="weiß"
-laeufer2_w = Schachfigur(rahmen, image=laeufer_w_bild)
+laeufer2_w = Schachfigur(rahmen, image=laeufer_w_bild, command=lambda:zuege_laeufer_weiß(laeufer2_w))
 laeufer2_w.farbe="weiß"
 
 #Koenig & Dame weiß
 koenig_w_bild = ImageTk.PhotoImage(Image.open("Bilder\König_weiß.png"))
-koenig_w = Schachfigur(rahmen, image=koenig_w_bild)
+koenig_w = Schachfigur(rahmen, image=koenig_w_bild, command=lambda:zuege_koenig_weiß(koenig_w))
 koenig_w.farbe="weiß"
 dame_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Dame_weiß.png"))
-dame_w = Schachfigur(rahmen, image=dame_w_bild)
+dame_w = Schachfigur(rahmen, image=dame_w_bild, command=lambda:zuege_dame_weiß(dame_w))
 dame_w.farbe="weiß"
 
 
@@ -205,9 +267,9 @@ bauer8_s.farbe="schwarz"
 
 #zwei Türme schwarz
 turm_s_bild = ImageTk.PhotoImage(Image.open("Bilder\Turm_schwarz.png"))
-turm1_s = Schachfigur(rahmen, image=turm_s_bild)
+turm1_s = Schachfigur(rahmen, image=turm_s_bild, command=lambda:zuege_turm_schwarz(turm1_s))
 turm1_s.farbe="schwarz"
-turm2_s = Schachfigur(rahmen, image=turm_s_bild)
+turm2_s = Schachfigur(rahmen, image=turm_s_bild, command=lambda:zuege_turm_schwarz(turm2_s))
 turm2_s.farbe="schwarz"
 
 #zwei Springer schwarz
@@ -219,17 +281,17 @@ springer2_s.farbe="schwarz"
 
 #zwei Laeufer schwarz
 laeufer_s_bild = ImageTk.PhotoImage(Image.open("Bilder\Läufer_schwarz.png"))
-laeufer1_s = Schachfigur(rahmen, image=laeufer_s_bild)
+laeufer1_s = Schachfigur(rahmen, image=laeufer_s_bild, command=lambda:zuege_laeufer_schwarz(laeufer1_s))
 laeufer1_s.farbe="schwarz"
-laeufer2_s = Schachfigur(rahmen, image=laeufer_s_bild)
+laeufer2_s = Schachfigur(rahmen, image=laeufer_s_bild, command=lambda:zuege_laeufer_schwarz(laeufer2_s))
 laeufer2_s.farbe="schwarz"
 
 #Koenig & Dame schwarz
 koenig_s_bild = ImageTk.PhotoImage(Image.open("Bilder\König_schwarz.png"))
-koenig_s = Schachfigur(rahmen, image=koenig_s_bild)
+koenig_s = Schachfigur(rahmen, image=koenig_s_bild, command=lambda:zuege_koenig_schwarz(koenig_s))
 koenig_s.farbe="schwarz"
 dame_s_bild = ImageTk.PhotoImage(Image.open("Bilder\Dame_schwarz.png"))
-dame_s = Schachfigur(rahmen, image=dame_s_bild)
+dame_s = Schachfigur(rahmen, image=dame_s_bild, command=lambda:zuege_dame_schwarz(dame_s))
 dame_s.farbe="schwarz"
 
 def figur_ziehen(xpos, ypos):
@@ -329,81 +391,8 @@ def figuren_plazieren():
             felder[i]["figure"].place(x=felder[i]["x"], y=felder[i]["y"])
 
 
-def setzeZieleAufNull():
-    global moegliche_ziele
-    moegliche_ziele={1:{"button_Nr": "none", "x":"none", "y":"none"}, 2:{"button_Nr": "none", "x":"none", "y":"none"}, 3:{"button_Nr": "none", "x":"none", "y":"none"}, 4:{"button_Nr": "none", "x":"none", "y":"none"}, 5:{"button_Nr": "none", "x":"none", "y":"none"}, 6:{"button_Nr": "none", "x":"none", "y":"none"}, 7:{"button_Nr": "none", "x":"none", "y":"none"}, 8:{"button_Nr": "none", "x":"none", "y":"none"}, 9:{"button_Nr": "none", "x":"none", "y":"none"}, 10:{"button_Nr": "none", "x":"none", "y":"none"}, 11:{"button_Nr": "none", "x":"none", "y":"none"}, 12:{"button_Nr": "none", "x":"none", "y":"none"}, 13:{"button_Nr": "none", "x":"none", "y":"none"}, 14:{"button_Nr": "none", "x":"none", "y":"none"}, 15:{"button_Nr": "none", "x":"none", "y":"none"}, 16:{"button_Nr": "none", "x":"none", "y":"none"}, 17:{"button_Nr": "none", "x":"none", "y":"none"}, 18:{"button_Nr": "none", "x":"none", "y":"none"}, 19:{"button_Nr": "none", "x":"none", "y":"none"}, 20:{"button_Nr": "none", "x":"none", "y":"none"}, 21:{"button_Nr": "none", "x":"none", "y":"none"}, 22:{"button_Nr": "none", "x":"none", "y":"none"}, 23:{"button_Nr": "none", "x":"none", "y":"none"}, 24:{"button_Nr": "none", "x":"none", "y":"none"}, 25:{"button_Nr": "none", "x":"none", "y":"none"}, 26:{"button_Nr": "none", "x":"none", "y":"none"}, 27:{"button_Nr": "none", "x":"none", "y":"none"}}
-    for i in punkte:
-        i.place_forget()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def Platzhalter(aktuelle_figur):
-    print("Hubschraublel")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 
 figuren_plazieren()
-
-
-
-
 fenster.mainloop()
