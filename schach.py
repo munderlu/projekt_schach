@@ -18,7 +18,7 @@ def setzeZieleAufNull():
     global moegliche_ziele
     moegliche_ziele={1:{"button_Nr": "none", "x":"none", "y":"none"}, 2:{"button_Nr": "none", "x":"none", "y":"none"}, 3:{"button_Nr": "none", "x":"none", "y":"none"}, 4:{"button_Nr": "none", "x":"none", "y":"none"}, 5:{"button_Nr": "none", "x":"none", "y":"none"}, 6:{"button_Nr": "none", "x":"none", "y":"none"}, 7:{"button_Nr": "none", "x":"none", "y":"none"}, 8:{"button_Nr": "none", "x":"none", "y":"none"}, 9:{"button_Nr": "none", "x":"none", "y":"none"}, 10:{"button_Nr": "none", "x":"none", "y":"none"}, 11:{"button_Nr": "none", "x":"none", "y":"none"}, 12:{"button_Nr": "none", "x":"none", "y":"none"}, 13:{"button_Nr": "none", "x":"none", "y":"none"}, 14:{"button_Nr": "none", "x":"none", "y":"none"}, 15:{"button_Nr": "none", "x":"none", "y":"none"}, 16:{"button_Nr": "none", "x":"none", "y":"none"}, 17:{"button_Nr": "none", "x":"none", "y":"none"}, 18:{"button_Nr": "none", "x":"none", "y":"none"}, 19:{"button_Nr": "none", "x":"none", "y":"none"}, 20:{"button_Nr": "none", "x":"none", "y":"none"}, 21:{"button_Nr": "none", "x":"none", "y":"none"}, 22:{"button_Nr": "none", "x":"none", "y":"none"}, 23:{"button_Nr": "none", "x":"none", "y":"none"}, 24:{"button_Nr": "none", "x":"none", "y":"none"}, 25:{"button_Nr": "none", "x":"none", "y":"none"}, 26:{"button_Nr": "none", "x":"none", "y":"none"}, 27:{"button_Nr": "none", "x":"none", "y":"none"}}
     for i in punkte:
-        i.place_forget
+        i.place_forget()
 
 def punkte_auswählen():
     for i in moegliche_ziele:
@@ -58,8 +58,7 @@ def zuege_bauer_weiß(figur):
                         moegliche_ziele[4]["x"]=felder[i]["x"]-47
                         moegliche_ziele[4]["y"]=felder[i]["y"]-47
         punkte_auswählen()             
-        punkte_plazieren() 
-        print(moegliche_ziele)
+        punkte_plazieren()
         
 def zuege_bauer_schwarz(figur):
     setzeZieleAufNull()
@@ -86,10 +85,134 @@ def zuege_bauer_schwarz(figur):
         punkte_auswählen()             
         punkte_plazieren() 
         
-def zuege_turm_weiß(aktuelle_figur):
-    print("coming soon")
-def zuege_turm_schwarz(aktuelle_figur):
-    print("coming soon")
+def zuege_turm_weiß(figur):
+    global weristdran
+    if weristdran=="weiß": #nur wenn weiß dran ist, passiert was
+        setzeZieleAufNull()
+        figurPlatz="?"
+        for i in felder: #das Dictionary mit den Feldern wird durchsucht
+            if felder[i]["figure"] == figur: #wenn die Figur gefunden wurde
+                global aktuelle_figur
+                aktuelle_figur=figur
+                figurPlatz=i
+                figurX=felder[figurPlatz]["x"]
+                figurY=felder[figurPlatz]["y"]
+                zählvariable=1
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX and felder[k]["y"] == figurY-j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="schwarz":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX and felder[k]["y"] == figurY+j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="schwarz":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="schwarz":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="schwarz":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break                
+        punkte_auswählen()             
+        punkte_plazieren()
+                            
+def zuege_turm_schwarz(figur):
+    global weristdran
+    if weristdran=="schwarz": #nur wenn weiß dran ist, passiert was
+        setzeZieleAufNull()
+        figurPlatz="?"
+        for i in felder: #das Dictionary mit den Feldern wird durchsucht
+            if felder[i]["figure"] == figur: #wenn die Figur gefunden wurde
+                global aktuelle_figur
+                aktuelle_figur=figur
+                figurPlatz=i
+                figurX=felder[figurPlatz]["x"]
+                figurY=felder[figurPlatz]["y"]
+                zählvariable=1
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX and felder[k]["y"] == figurY-j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="weiß":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX and felder[k]["y"] == figurY+j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="weiß":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="weiß":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="weiß":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break                
+        punkte_auswählen()             
+        punkte_plazieren()
+    
 def zuege_springer_weiß(figur):
     setzeZieleAufNull()
     global weristdran
@@ -133,7 +256,6 @@ def zuege_springer_weiß(figur):
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
                             moegliche_ziele[8]["x"]=felder[j]["x"]
                             moegliche_ziele[8]["y"]=felder[j]["y"]
-            print(moegliche_ziele)
             punkte_auswählen()
             punkte_plazieren()
             
@@ -180,21 +302,534 @@ def zuege_springer_schwarz(figur):
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
                             moegliche_ziele[8]["x"]=felder[j]["x"]
                             moegliche_ziele[8]["y"]=felder[j]["y"]
-            print(moegliche_ziele)
+             
             punkte_auswählen()
             punkte_plazieren()
-def zuege_laeufer_weiß(aktuelle_figur):
-    print("coming soon")
-def zuege_laeufer_schwarz(aktuelle_figur):
-    print("coming soon")
-def zuege_koenig_weiß(aktuelle_figur):
-    print("coming soon")
-def zuege_koenig_schwarz(aktuelle_figur):
-    print("coming soon")
-def zuege_dame_weiß(aktuelle_figur):
-    print("coming soon")
-def zuege_dame_schwarz(aktuelle_figur):
-    print("coming soon")
+
+def zuege_laeufer_weiß(figur):
+    global weristdran
+    if weristdran=="weiß": #nur wenn weiß dran ist, passiert was
+        setzeZieleAufNull()
+        figurPlatz="?"
+        for i in felder: #das Dictionary mit den Feldern wird durchsucht
+            if felder[i]["figure"] == figur: #wenn die Figur gefunden wurde
+                global aktuelle_figur
+                aktuelle_figur=figur
+                figurPlatz=i
+                figurX=felder[figurPlatz]["x"]
+                figurY=felder[figurPlatz]["y"]
+                zählvariable=1
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY-j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="schwarz":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY+j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="schwarz":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY-j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="schwarz":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY+j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="schwarz":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break                
+        punkte_auswählen()             
+        punkte_plazieren()
+
+def zuege_laeufer_schwarz(figur):
+    global weristdran
+    if weristdran=="schwarz": #nur wenn weiß dran ist, passiert was
+        setzeZieleAufNull()
+        figurPlatz="?"
+        for i in felder: #das Dictionary mit den Feldern wird durchsucht
+            if felder[i]["figure"] == figur: #wenn die Figur gefunden wurde
+                global aktuelle_figur
+                aktuelle_figur=figur
+                figurPlatz=i
+                figurX=felder[figurPlatz]["x"]
+                figurY=felder[figurPlatz]["y"]
+                zählvariable=1
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY-j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="weiß":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY+j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="weiß":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY-j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="weiß":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY+j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="weiß":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break                
+        punkte_auswählen()             
+        punkte_plazieren()
+
+def zuege_koenig_weiß(figur):
+    global weristdran
+    if weristdran=="weiß": #nur wenn weiß dran ist, passiert was
+        setzeZieleAufNull()
+        figurPlatz="?"
+        for i in felder: #das Dictionary mit den Feldern wird durchsucht
+            if felder[i]["figure"] == figur: #wenn die Figur gefunden wurde
+                global aktuelle_figur
+                aktuelle_figur=figur
+                figurPlatz=i
+                figurX=felder[figurPlatz]["x"]
+                figurY=felder[figurPlatz]["y"]
+                zählvariable=1
+                for k in felder:
+                    if felder[k]["x"] == figurX and felder[k]["y"] == figurY-47:
+                        if felder[k]["figure"]!="none":
+                            if felder[k]["figure"].farbe!="schwarz":
+                                break
+                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        zählvariable+=1
+                        break
+                for k in felder:
+                    if felder[k]["x"] == figurX and felder[k]["y"] == figurY+47:
+                        if felder[k]["figure"]!="none":
+                            if felder[k]["figure"].farbe!="schwarz":
+                                break
+                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        zählvariable+=1
+                        break
+                for k in felder:
+                    if felder[k]["x"] == figurX+47 and felder[k]["y"] == figurY:
+                        if felder[k]["figure"]!="none":
+                            if felder[k]["figure"].farbe!="schwarz":
+                                break
+                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        zählvariable+=1
+                        break
+                for k in felder:
+                    if felder[k]["x"] == figurX-47 and felder[k]["y"] == figurY:
+                        if felder[k]["figure"]!="none":
+                            if felder[k]["figure"].farbe!="schwarz":
+                                break
+                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        zählvariable+=1
+                        break
+                for k in felder:
+                    if felder[k]["x"] == figurX-47 and felder[k]["y"] == figurY-47:
+                        if felder[k]["figure"]!="none":
+                            if felder[k]["figure"].farbe!="schwarz":
+                                break
+                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        zählvariable+=1
+                        break
+                for k in felder:
+                    if felder[k]["x"] == figurX-47 and felder[k]["y"] == figurY+47:
+                        if felder[k]["figure"]!="none":
+                            if felder[k]["figure"].farbe!="schwarz":
+                                break
+                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        zählvariable+=1
+                        break
+                for k in felder:
+                    if felder[k]["x"] == figurX+47 and felder[k]["y"] == figurY-47:
+                        if felder[k]["figure"]!="none":
+                            if felder[k]["figure"].farbe!="schwarz":
+                                break
+                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        zählvariable+=1
+                        break
+                for k in felder:
+                    if felder[k]["x"] == figurX+47 and felder[k]["y"] == figurY+47:
+                        if felder[k]["figure"]!="none":
+                            if felder[k]["figure"].farbe!="schwarz":
+                                break
+                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        zählvariable+=1
+                        break   
+        punkte_auswählen()             
+        punkte_plazieren()
+def zuege_koenig_schwarz(figur):
+    global weristdran
+    if weristdran=="schwarz": #nur wenn weiß dran ist, passiert was
+        setzeZieleAufNull()
+        figurPlatz="?"
+        for i in felder: #das Dictionary mit den Feldern wird durchsucht
+            if felder[i]["figure"] == figur: #wenn die Figur gefunden wurde
+                global aktuelle_figur
+                aktuelle_figur=figur
+                figurPlatz=i
+                figurX=felder[figurPlatz]["x"]
+                figurY=felder[figurPlatz]["y"]
+                zählvariable=1
+                for k in felder:
+                    if felder[k]["x"] == figurX and felder[k]["y"] == figurY-47:
+                        if felder[k]["figure"]!="none":
+                            if felder[k]["figure"].farbe!="weiß":
+                                break
+                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        zählvariable+=1
+                        break
+                for k in felder:
+                    if felder[k]["x"] == figurX and felder[k]["y"] == figurY+47:
+                        if felder[k]["figure"]!="none":
+                            if felder[k]["figure"].farbe!="weiß":
+                                break
+                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        zählvariable+=1
+                        break
+                for k in felder:
+                    if felder[k]["x"] == figurX+47 and felder[k]["y"] == figurY:
+                        if felder[k]["figure"]!="none":
+                            if felder[k]["figure"].farbe!="weiß":
+                                break
+                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        zählvariable+=1
+                        break
+                for k in felder:
+                    if felder[k]["x"] == figurX-47 and felder[k]["y"] == figurY:
+                        if felder[k]["figure"]!="none":
+                            if felder[k]["figure"].farbe!="weiß":
+                                break
+                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        zählvariable+=1
+                        break
+                for k in felder:
+                    if felder[k]["x"] == figurX-47 and felder[k]["y"] == figurY-47:
+                        if felder[k]["figure"]!="none":
+                            if felder[k]["figure"].farbe!="weiß":
+                                break
+                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        zählvariable+=1
+                        break
+                for k in felder:
+                    if felder[k]["x"] == figurX-47 and felder[k]["y"] == figurY+47:
+                        if felder[k]["figure"]!="none":
+                            if felder[k]["figure"].farbe!="weiß":
+                                break
+                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        zählvariable+=1
+                        break
+                for k in felder:
+                    if felder[k]["x"] == figurX+47 and felder[k]["y"] == figurY-47:
+                        if felder[k]["figure"]!="none":
+                            if felder[k]["figure"].farbe!="weiß":
+                                break
+                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        zählvariable+=1
+                        break
+                for k in felder:
+                    if felder[k]["x"] == figurX+47 and felder[k]["y"] == figurY+47:
+                        if felder[k]["figure"]!="none":
+                            if felder[k]["figure"].farbe!="weiß":
+                                break
+                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        zählvariable+=1
+                        break   
+        punkte_auswählen()             
+        punkte_plazieren()
+def zuege_dame_weiß(figur):
+    global weristdran
+    if weristdran=="weiß": #nur wenn weiß dran ist, passiert was
+        setzeZieleAufNull()
+        figurPlatz="?"
+        for i in felder: #das Dictionary mit den Feldern wird durchsucht
+            if felder[i]["figure"] == figur: #wenn die Figur gefunden wurde
+                global aktuelle_figur
+                aktuelle_figur=figur
+                figurPlatz=i
+                figurX=felder[figurPlatz]["x"]
+                figurY=felder[figurPlatz]["y"]
+                zählvariable=1
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX and felder[k]["y"] == figurY-j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="schwarz":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX and felder[k]["y"] == figurY+j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="schwarz":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="schwarz":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="schwarz":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break    
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY-j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="schwarz":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY+j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="schwarz":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY-j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="schwarz":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY+j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="schwarz":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break                            
+        punkte_auswählen()             
+        punkte_plazieren()
+def zuege_dame_schwarz(figur):
+    global weristdran
+    if weristdran=="schwarz": #nur wenn weiß dran ist, passiert was
+        setzeZieleAufNull()
+        figurPlatz="?"
+        for i in felder: #das Dictionary mit den Feldern wird durchsucht
+            if felder[i]["figure"] == figur: #wenn die Figur gefunden wurde
+                global aktuelle_figur
+                aktuelle_figur=figur
+                figurPlatz=i
+                figurX=felder[figurPlatz]["x"]
+                figurY=felder[figurPlatz]["y"]
+                zählvariable=1
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX and felder[k]["y"] == figurY-j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="weiß":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX and felder[k]["y"] == figurY+j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="weiß":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="weiß":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="weiß":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break    
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY-j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="weiß":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY+j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="weiß":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY-j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="weiß":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY+j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="weiß":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break                            
+        punkte_auswählen()             
+        punkte_plazieren()
 
 #acht Bauern weiß
 bauer_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Bauer_weiß.png"))
