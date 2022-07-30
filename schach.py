@@ -1,11 +1,11 @@
 from tkinter import *
 from PIL import ImageTk, Image
-fenster = Tk()
+fenster=Tk()
 fenster.title("Schach Projekt")
 rahmen=Frame(fenster, relief="ridge", borderwidth=5)
 rahmen.pack()
-schachbrett_bild = ImageTk.PhotoImage(Image.open("Bilder\Schachbrett.png"))
-schachbrett = Label(rahmen, image=schachbrett_bild)
+schachbrett_bild=ImageTk.PhotoImage(Image.open("Bilder\Schachbrett.png"))
+schachbrett=Label(rahmen, image=schachbrett_bild)
 schachbrett.pack(expand=True, padx=30, pady=30)
 weristdran="weiß"
 aktuelle_figur="none"
@@ -14,6 +14,7 @@ class Schachfigur(Button):
     farbe="?"
 
 moegliche_ziele={1:{"button_Nr": "none", "x":"none", "y":"none"}, 2:{"button_Nr": "none", "x":"none", "y":"none"}, 3:{"button_Nr": "none", "x":"none", "y":"none"}, 4:{"button_Nr": "none", "x":"none", "y":"none"}, 5:{"button_Nr": "none", "x":"none", "y":"none"}, 6:{"button_Nr": "none", "x":"none", "y":"none"}, 7:{"button_Nr": "none", "x":"none", "y":"none"}, 8:{"button_Nr": "none", "x":"none", "y":"none"}, 9:{"button_Nr": "none", "x":"none", "y":"none"}, 10:{"button_Nr": "none", "x":"none", "y":"none"}, 11:{"button_Nr": "none", "x":"none", "y":"none"}, 12:{"button_Nr": "none", "x":"none", "y":"none"}, 13:{"button_Nr": "none", "x":"none", "y":"none"}, 14:{"button_Nr": "none", "x":"none", "y":"none"}, 15:{"button_Nr": "none", "x":"none", "y":"none"}, 16:{"button_Nr": "none", "x":"none", "y":"none"}, 17:{"button_Nr": "none", "x":"none", "y":"none"}, 18:{"button_Nr": "none", "x":"none", "y":"none"}, 19:{"button_Nr": "none", "x":"none", "y":"none"}, 20:{"button_Nr": "none", "x":"none", "y":"none"}, 21:{"button_Nr": "none", "x":"none", "y":"none"}, 22:{"button_Nr": "none", "x":"none", "y":"none"}, 23:{"button_Nr": "none", "x":"none", "y":"none"}, 24:{"button_Nr": "none", "x":"none", "y":"none"}, 25:{"button_Nr": "none", "x":"none", "y":"none"}, 26:{"button_Nr": "none", "x":"none", "y":"none"}, 27:{"button_Nr": "none", "x":"none", "y":"none"}}
+
 def setzeZieleAufNull():
     global moegliche_ziele
     moegliche_ziele={1:{"button_Nr": "none", "x":"none", "y":"none"}, 2:{"button_Nr": "none", "x":"none", "y":"none"}, 3:{"button_Nr": "none", "x":"none", "y":"none"}, 4:{"button_Nr": "none", "x":"none", "y":"none"}, 5:{"button_Nr": "none", "x":"none", "y":"none"}, 6:{"button_Nr": "none", "x":"none", "y":"none"}, 7:{"button_Nr": "none", "x":"none", "y":"none"}, 8:{"button_Nr": "none", "x":"none", "y":"none"}, 9:{"button_Nr": "none", "x":"none", "y":"none"}, 10:{"button_Nr": "none", "x":"none", "y":"none"}, 11:{"button_Nr": "none", "x":"none", "y":"none"}, 12:{"button_Nr": "none", "x":"none", "y":"none"}, 13:{"button_Nr": "none", "x":"none", "y":"none"}, 14:{"button_Nr": "none", "x":"none", "y":"none"}, 15:{"button_Nr": "none", "x":"none", "y":"none"}, 16:{"button_Nr": "none", "x":"none", "y":"none"}, 17:{"button_Nr": "none", "x":"none", "y":"none"}, 18:{"button_Nr": "none", "x":"none", "y":"none"}, 19:{"button_Nr": "none", "x":"none", "y":"none"}, 20:{"button_Nr": "none", "x":"none", "y":"none"}, 21:{"button_Nr": "none", "x":"none", "y":"none"}, 22:{"button_Nr": "none", "x":"none", "y":"none"}, 23:{"button_Nr": "none", "x":"none", "y":"none"}, 24:{"button_Nr": "none", "x":"none", "y":"none"}, 25:{"button_Nr": "none", "x":"none", "y":"none"}, 26:{"button_Nr": "none", "x":"none", "y":"none"}, 27:{"button_Nr": "none", "x":"none", "y":"none"}}
@@ -26,7 +27,7 @@ def punkte_auswählen():
             rechenvariable1=moegliche_ziele[i]["x"]
             rechenvariable2=moegliche_ziele[i]["y"]
             rechenvariable3=(rechenvariable1-3)/47
-            rechenvariable4=(rechenvariable2-3)/47       
+            rechenvariable4=(rechenvariable2-3)/47
             ergebniss=(rechenvariable3+((rechenvariable4-1)*8)-1)
             moegliche_ziele[i]["button_Nr"]=int(ergebniss)
 
@@ -57,9 +58,9 @@ def zuege_bauer_weiß(figur):
                     if felder[i+7]["figure"]!="none"and felder[i+7]["figure"].farbe=="schwarz":
                         moegliche_ziele[4]["x"]=felder[i]["x"]-47
                         moegliche_ziele[4]["y"]=felder[i]["y"]-47
-        punkte_auswählen()             
+        punkte_auswählen()
         punkte_plazieren()
-        
+
 def zuege_bauer_schwarz(figur):
     setzeZieleAufNull()
     global weristdran
@@ -82,16 +83,16 @@ def zuege_bauer_schwarz(figur):
                     if felder[i-7]["figure"]!="none"and felder[i-7]["figure"].farbe=="weiß":
                         moegliche_ziele[4]["x"]=felder[i]["x"]+47
                         moegliche_ziele[4]["y"]=felder[i]["y"]+47
-        punkte_auswählen()             
+        punkte_auswählen()
         punkte_plazieren() 
-        
+
 def zuege_turm_weiß(figur):
     global weristdran
-    if weristdran=="weiß": #nur wenn weiß dran ist, passiert was
+    if weristdran=="weiß":
         setzeZieleAufNull()
         figurPlatz="?"
-        for i in felder: #das Dictionary mit den Feldern wird durchsucht
-            if felder[i]["figure"] == figur: #wenn die Figur gefunden wurde
+        for i in felder:
+            if felder[i]["figure"]==figur:
                 global aktuelle_figur
                 aktuelle_figur=figur
                 figurPlatz=i
@@ -100,7 +101,7 @@ def zuege_turm_weiß(figur):
                 zählvariable=1
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX and felder[k]["y"] == figurY-j*47:
+                        if felder[k]["x"]==figurX and felder[k]["y"]==figurY-j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
@@ -112,7 +113,7 @@ def zuege_turm_weiß(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX and felder[k]["y"] == figurY+j*47:
+                        if felder[k]["x"]==figurX and felder[k]["y"]==figurY+j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
@@ -124,7 +125,7 @@ def zuege_turm_weiß(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY:
+                        if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
@@ -136,7 +137,7 @@ def zuege_turm_weiß(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY:
+                        if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
@@ -145,17 +146,17 @@ def zuege_turm_weiß(figur):
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
-                        break                
-        punkte_auswählen()             
+                        break
+        punkte_auswählen()
         punkte_plazieren()
-                            
+
 def zuege_turm_schwarz(figur):
     global weristdran
-    if weristdran=="schwarz": #nur wenn weiß dran ist, passiert was
+    if weristdran=="schwarz":
         setzeZieleAufNull()
         figurPlatz="?"
-        for i in felder: #das Dictionary mit den Feldern wird durchsucht
-            if felder[i]["figure"] == figur: #wenn die Figur gefunden wurde
+        for i in felder:
+            if felder[i]["figure"]==figur:
                 global aktuelle_figur
                 aktuelle_figur=figur
                 figurPlatz=i
@@ -164,7 +165,7 @@ def zuege_turm_schwarz(figur):
                 zählvariable=1
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX and felder[k]["y"] == figurY-j*47:
+                        if felder[k]["x"]==figurX and felder[k]["y"]==figurY-j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
@@ -176,7 +177,7 @@ def zuege_turm_schwarz(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX and felder[k]["y"] == figurY+j*47:
+                        if felder[k]["x"]==figurX and felder[k]["y"]==figurY+j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
@@ -188,7 +189,7 @@ def zuege_turm_schwarz(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY:
+                        if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
@@ -200,7 +201,7 @@ def zuege_turm_schwarz(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY:
+                        if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
@@ -209,10 +210,10 @@ def zuege_turm_schwarz(figur):
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
-                        break                
-        punkte_auswählen()             
+                        break
+        punkte_auswählen()
         punkte_plazieren()
-    
+
 def zuege_springer_weiß(figur):
     setzeZieleAufNull()
     global weristdran
@@ -258,7 +259,7 @@ def zuege_springer_weiß(figur):
                             moegliche_ziele[8]["y"]=felder[j]["y"]
             punkte_auswählen()
             punkte_plazieren()
-            
+
 def zuege_springer_schwarz(figur):
     setzeZieleAufNull()
     global weristdran
@@ -302,17 +303,16 @@ def zuege_springer_schwarz(figur):
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
                             moegliche_ziele[8]["x"]=felder[j]["x"]
                             moegliche_ziele[8]["y"]=felder[j]["y"]
-             
             punkte_auswählen()
             punkte_plazieren()
 
 def zuege_laeufer_weiß(figur):
     global weristdran
-    if weristdran=="weiß": #nur wenn weiß dran ist, passiert was
+    if weristdran=="weiß":
         setzeZieleAufNull()
         figurPlatz="?"
-        for i in felder: #das Dictionary mit den Feldern wird durchsucht
-            if felder[i]["figure"] == figur: #wenn die Figur gefunden wurde
+        for i in felder:
+            if felder[i]["figure"]==figur:
                 global aktuelle_figur
                 aktuelle_figur=figur
                 figurPlatz=i
@@ -321,7 +321,7 @@ def zuege_laeufer_weiß(figur):
                 zählvariable=1
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY-j*47:
+                        if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY-j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
@@ -333,7 +333,7 @@ def zuege_laeufer_weiß(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY+j*47:
+                        if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY+j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
@@ -345,7 +345,7 @@ def zuege_laeufer_weiß(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY-j*47:
+                        if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY-j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
@@ -357,7 +357,7 @@ def zuege_laeufer_weiß(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY+j*47:
+                        if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY+j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
@@ -366,17 +366,17 @@ def zuege_laeufer_weiß(figur):
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
-                        break                
-        punkte_auswählen()             
+                        break
+        punkte_auswählen()
         punkte_plazieren()
 
 def zuege_laeufer_schwarz(figur):
     global weristdran
-    if weristdran=="schwarz": #nur wenn weiß dran ist, passiert was
+    if weristdran=="schwarz":
         setzeZieleAufNull()
         figurPlatz="?"
-        for i in felder: #das Dictionary mit den Feldern wird durchsucht
-            if felder[i]["figure"] == figur: #wenn die Figur gefunden wurde
+        for i in felder:
+            if felder[i]["figure"]==figur:
                 global aktuelle_figur
                 aktuelle_figur=figur
                 figurPlatz=i
@@ -385,7 +385,7 @@ def zuege_laeufer_schwarz(figur):
                 zählvariable=1
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY-j*47:
+                        if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY-j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
@@ -397,7 +397,7 @@ def zuege_laeufer_schwarz(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY+j*47:
+                        if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY+j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
@@ -409,7 +409,7 @@ def zuege_laeufer_schwarz(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY-j*47:
+                        if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY-j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
@@ -421,7 +421,7 @@ def zuege_laeufer_schwarz(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY+j*47:
+                        if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY+j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
@@ -430,17 +430,17 @@ def zuege_laeufer_schwarz(figur):
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
-                        break                
-        punkte_auswählen()             
+                        break
+        punkte_auswählen()
         punkte_plazieren()
 
 def zuege_koenig_weiß(figur):
     global weristdran
-    if weristdran=="weiß": #nur wenn weiß dran ist, passiert was
+    if weristdran=="weiß":
         setzeZieleAufNull()
         figurPlatz="?"
-        for i in felder: #das Dictionary mit den Feldern wird durchsucht
-            if felder[i]["figure"] == figur: #wenn die Figur gefunden wurde
+        for i in felder:
+            if felder[i]["figure"]==figur:
                 global aktuelle_figur
                 aktuelle_figur=figur
                 figurPlatz=i
@@ -448,7 +448,7 @@ def zuege_koenig_weiß(figur):
                 figurY=felder[figurPlatz]["y"]
                 zählvariable=1
                 for k in felder:
-                    if felder[k]["x"] == figurX and felder[k]["y"] == figurY-47:
+                    if felder[k]["x"]==figurX and felder[k]["y"]==figurY-47:
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="schwarz":
                                 break
@@ -457,7 +457,7 @@ def zuege_koenig_weiß(figur):
                         zählvariable+=1
                         break
                 for k in felder:
-                    if felder[k]["x"] == figurX and felder[k]["y"] == figurY+47:
+                    if felder[k]["x"]==figurX and felder[k]["y"]==figurY+47:
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="schwarz":
                                 break
@@ -466,7 +466,7 @@ def zuege_koenig_weiß(figur):
                         zählvariable+=1
                         break
                 for k in felder:
-                    if felder[k]["x"] == figurX+47 and felder[k]["y"] == figurY:
+                    if felder[k]["x"]==figurX+47 and felder[k]["y"]==figurY:
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="schwarz":
                                 break
@@ -475,7 +475,7 @@ def zuege_koenig_weiß(figur):
                         zählvariable+=1
                         break
                 for k in felder:
-                    if felder[k]["x"] == figurX-47 and felder[k]["y"] == figurY:
+                    if felder[k]["x"]==figurX-47 and felder[k]["y"]==figurY:
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="schwarz":
                                 break
@@ -484,7 +484,7 @@ def zuege_koenig_weiß(figur):
                         zählvariable+=1
                         break
                 for k in felder:
-                    if felder[k]["x"] == figurX-47 and felder[k]["y"] == figurY-47:
+                    if felder[k]["x"]==figurX-47 and felder[k]["y"]==figurY-47:
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="schwarz":
                                 break
@@ -493,7 +493,7 @@ def zuege_koenig_weiß(figur):
                         zählvariable+=1
                         break
                 for k in felder:
-                    if felder[k]["x"] == figurX-47 and felder[k]["y"] == figurY+47:
+                    if felder[k]["x"]==figurX-47 and felder[k]["y"]==figurY+47:
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="schwarz":
                                 break
@@ -502,7 +502,7 @@ def zuege_koenig_weiß(figur):
                         zählvariable+=1
                         break
                 for k in felder:
-                    if felder[k]["x"] == figurX+47 and felder[k]["y"] == figurY-47:
+                    if felder[k]["x"]==figurX+47 and felder[k]["y"]==figurY-47:
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="schwarz":
                                 break
@@ -511,23 +511,24 @@ def zuege_koenig_weiß(figur):
                         zählvariable+=1
                         break
                 for k in felder:
-                    if felder[k]["x"] == figurX+47 and felder[k]["y"] == figurY+47:
+                    if felder[k]["x"]==figurX+47 and felder[k]["y"]==figurY+47:
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="schwarz":
                                 break
                         moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
                         moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                         zählvariable+=1
-                        break   
-        punkte_auswählen()             
+                        break
+        punkte_auswählen()
         punkte_plazieren()
+
 def zuege_koenig_schwarz(figur):
     global weristdran
-    if weristdran=="schwarz": #nur wenn weiß dran ist, passiert was
+    if weristdran=="schwarz":
         setzeZieleAufNull()
         figurPlatz="?"
-        for i in felder: #das Dictionary mit den Feldern wird durchsucht
-            if felder[i]["figure"] == figur: #wenn die Figur gefunden wurde
+        for i in felder:
+            if felder[i]["figure"]==figur:
                 global aktuelle_figur
                 aktuelle_figur=figur
                 figurPlatz=i
@@ -535,7 +536,7 @@ def zuege_koenig_schwarz(figur):
                 figurY=felder[figurPlatz]["y"]
                 zählvariable=1
                 for k in felder:
-                    if felder[k]["x"] == figurX and felder[k]["y"] == figurY-47:
+                    if felder[k]["x"]==figurX and felder[k]["y"]==figurY-47:
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiß":
                                 break
@@ -544,7 +545,7 @@ def zuege_koenig_schwarz(figur):
                         zählvariable+=1
                         break
                 for k in felder:
-                    if felder[k]["x"] == figurX and felder[k]["y"] == figurY+47:
+                    if felder[k]["x"]==figurX and felder[k]["y"]==figurY+47:
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiß":
                                 break
@@ -553,7 +554,7 @@ def zuege_koenig_schwarz(figur):
                         zählvariable+=1
                         break
                 for k in felder:
-                    if felder[k]["x"] == figurX+47 and felder[k]["y"] == figurY:
+                    if felder[k]["x"]==figurX+47 and felder[k]["y"]==figurY:
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiß":
                                 break
@@ -562,7 +563,7 @@ def zuege_koenig_schwarz(figur):
                         zählvariable+=1
                         break
                 for k in felder:
-                    if felder[k]["x"] == figurX-47 and felder[k]["y"] == figurY:
+                    if felder[k]["x"]==figurX-47 and felder[k]["y"]==figurY:
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiß":
                                 break
@@ -571,7 +572,7 @@ def zuege_koenig_schwarz(figur):
                         zählvariable+=1
                         break
                 for k in felder:
-                    if felder[k]["x"] == figurX-47 and felder[k]["y"] == figurY-47:
+                    if felder[k]["x"]==figurX-47 and felder[k]["y"]==figurY-47:
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiß":
                                 break
@@ -580,7 +581,7 @@ def zuege_koenig_schwarz(figur):
                         zählvariable+=1
                         break
                 for k in felder:
-                    if felder[k]["x"] == figurX-47 and felder[k]["y"] == figurY+47:
+                    if felder[k]["x"]==figurX-47 and felder[k]["y"]==figurY+47:
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiß":
                                 break
@@ -589,7 +590,7 @@ def zuege_koenig_schwarz(figur):
                         zählvariable+=1
                         break
                 for k in felder:
-                    if felder[k]["x"] == figurX+47 and felder[k]["y"] == figurY-47:
+                    if felder[k]["x"]==figurX+47 and felder[k]["y"]==figurY-47:
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiß":
                                 break
@@ -598,23 +599,24 @@ def zuege_koenig_schwarz(figur):
                         zählvariable+=1
                         break
                 for k in felder:
-                    if felder[k]["x"] == figurX+47 and felder[k]["y"] == figurY+47:
+                    if felder[k]["x"]==figurX+47 and felder[k]["y"]==figurY+47:
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiß":
                                 break
                         moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
                         moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                         zählvariable+=1
-                        break   
-        punkte_auswählen()             
+                        break
+        punkte_auswählen()
         punkte_plazieren()
+
 def zuege_dame_weiß(figur):
     global weristdran
-    if weristdran=="weiß": #nur wenn weiß dran ist, passiert was
+    if weristdran=="weiß":
         setzeZieleAufNull()
         figurPlatz="?"
-        for i in felder: #das Dictionary mit den Feldern wird durchsucht
-            if felder[i]["figure"] == figur: #wenn die Figur gefunden wurde
+        for i in felder:
+            if felder[i]["figure"]==figur:
                 global aktuelle_figur
                 aktuelle_figur=figur
                 figurPlatz=i
@@ -623,7 +625,7 @@ def zuege_dame_weiß(figur):
                 zählvariable=1
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX and felder[k]["y"] == figurY-j*47:
+                        if felder[k]["x"]==figurX and felder[k]["y"]==figurY-j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
@@ -635,7 +637,7 @@ def zuege_dame_weiß(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX and felder[k]["y"] == figurY+j*47:
+                        if felder[k]["x"]==figurX and felder[k]["y"]==figurY+j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
@@ -647,7 +649,7 @@ def zuege_dame_weiß(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY:
+                        if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
@@ -659,19 +661,7 @@ def zuege_dame_weiß(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY:
-                            if felder[k]["figure"]!="none":
-                                if felder[k]["figure"].farbe!="schwarz":
-                                    break
-                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
-                            zählvariable+=1
-                            break
-                    if felder[k]["figure"]!="none":
-                        break    
-                for j in range (1, 8):
-                    for k in felder:
-                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY-j*47:
+                        if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
@@ -683,7 +673,7 @@ def zuege_dame_weiß(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY+j*47:
+                        if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY-j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
@@ -695,7 +685,7 @@ def zuege_dame_weiß(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY-j*47:
+                        if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY+j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
@@ -707,7 +697,7 @@ def zuege_dame_weiß(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY+j*47:
+                        if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY-j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
@@ -716,16 +706,29 @@ def zuege_dame_weiß(figur):
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
-                        break                            
-        punkte_auswählen()             
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY+j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="schwarz":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+        punkte_auswählen()
         punkte_plazieren()
+
 def zuege_dame_schwarz(figur):
     global weristdran
-    if weristdran=="schwarz": #nur wenn weiß dran ist, passiert was
+    if weristdran=="schwarz":
         setzeZieleAufNull()
         figurPlatz="?"
-        for i in felder: #das Dictionary mit den Feldern wird durchsucht
-            if felder[i]["figure"] == figur: #wenn die Figur gefunden wurde
+        for i in felder:
+            if felder[i]["figure"]==figur:
                 global aktuelle_figur
                 aktuelle_figur=figur
                 figurPlatz=i
@@ -734,7 +737,7 @@ def zuege_dame_schwarz(figur):
                 zählvariable=1
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX and felder[k]["y"] == figurY-j*47:
+                        if felder[k]["x"]==figurX and felder[k]["y"]==figurY-j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
@@ -746,7 +749,7 @@ def zuege_dame_schwarz(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX and felder[k]["y"] == figurY+j*47:
+                        if felder[k]["x"]==figurX and felder[k]["y"]==figurY+j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
@@ -758,7 +761,7 @@ def zuege_dame_schwarz(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY:
+                        if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
@@ -770,19 +773,7 @@ def zuege_dame_schwarz(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY:
-                            if felder[k]["figure"]!="none":
-                                if felder[k]["figure"].farbe!="weiß":
-                                    break
-                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
-                            zählvariable+=1
-                            break
-                    if felder[k]["figure"]!="none":
-                        break    
-                for j in range (1, 8):
-                    for k in felder:
-                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY-j*47:
+                        if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
@@ -794,7 +785,7 @@ def zuege_dame_schwarz(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX-j*47 and felder[k]["y"] == figurY+j*47:
+                        if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY-j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
@@ -806,7 +797,7 @@ def zuege_dame_schwarz(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY-j*47:
+                        if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY+j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
@@ -818,7 +809,7 @@ def zuege_dame_schwarz(figur):
                         break
                 for j in range (1, 8):
                     for k in felder:
-                        if felder[k]["x"] == figurX+j*47 and felder[k]["y"] == figurY+j*47:
+                        if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY-j*47:
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
@@ -827,105 +818,117 @@ def zuege_dame_schwarz(figur):
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
-                        break                            
-        punkte_auswählen()             
+                        break
+                for j in range (1, 8):
+                    for k in felder:
+                        if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY+j*47:
+                            if felder[k]["figure"]!="none":
+                                if felder[k]["figure"].farbe!="weiß":
+                                    break
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            zählvariable+=1
+                            break
+                    if felder[k]["figure"]!="none":
+                        break
+        punkte_auswählen()
         punkte_plazieren()
 
 #acht Bauern weiß
-bauer_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Bauer_weiß.png"))
-bauer1_w = Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer1_w))
+bauer_w_bild=ImageTk.PhotoImage(Image.open("Bilder\Bauer_weiß.png"))
+bauer1_w=Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer1_w))
 bauer1_w.farbe="weiß"
-bauer2_w = Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer2_w))
+bauer2_w=Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer2_w))
 bauer2_w.farbe="weiß"
-bauer3_w = Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer3_w))
+bauer3_w=Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer3_w))
 bauer3_w.farbe="weiß"
-bauer4_w = Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer4_w))
+bauer4_w=Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer4_w))
 bauer4_w.farbe="weiß"
-bauer5_w = Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer5_w))
+bauer5_w=Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer5_w))
 bauer5_w.farbe="weiß"
-bauer6_w = Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer6_w))
+bauer6_w=Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer6_w))
 bauer6_w.farbe="weiß"
-bauer7_w = Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer7_w))
+bauer7_w=Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer7_w))
 bauer7_w.farbe="weiß"
-bauer8_w = Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer8_w))
+bauer8_w=Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer8_w))
 bauer8_w.farbe="weiß"
 
 #zwei Türme weiß
-turm_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Turm_weiß.png"))
-turm1_w = Schachfigur(rahmen, image=turm_w_bild, command=lambda:zuege_turm_weiß(turm1_w))
+turm_w_bild=ImageTk.PhotoImage(Image.open("Bilder\Turm_weiß.png"))
+turm1_w=Schachfigur(rahmen, image=turm_w_bild, command=lambda:zuege_turm_weiß(turm1_w))
 turm1_w.farbe="weiß"
-turm2_w = Schachfigur(rahmen, image=turm_w_bild, command=lambda:zuege_turm_weiß(turm2_w))
+turm2_w=Schachfigur(rahmen, image=turm_w_bild, command=lambda:zuege_turm_weiß(turm2_w))
 turm2_w.farbe="weiß"
 
 #zwei Springen weiß
-springer_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Springer_weiß.png"))
-springer1_w = Schachfigur(rahmen, image=springer_w_bild, command=lambda:zuege_springer_weiß(springer1_w))
+springer_w_bild=ImageTk.PhotoImage(Image.open("Bilder\Springer_weiß.png"))
+springer1_w=Schachfigur(rahmen, image=springer_w_bild, command=lambda:zuege_springer_weiß(springer1_w))
 springer1_w.farbe="weiß"
-springer2_w = Schachfigur(rahmen, image=springer_w_bild, command=lambda:zuege_springer_weiß(springer2_w))
+springer2_w=Schachfigur(rahmen, image=springer_w_bild, command=lambda:zuege_springer_weiß(springer2_w))
 springer2_w.farbe="weiß"
 
 #zwei Laeufer weiß
-laeufer_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Läufer_weiß.png"))
-laeufer1_w = Schachfigur(rahmen, image=laeufer_w_bild, command=lambda:zuege_laeufer_weiß(laeufer1_w))
+laeufer_w_bild=ImageTk.PhotoImage(Image.open("Bilder\Läufer_weiß.png"))
+laeufer1_w=Schachfigur(rahmen, image=laeufer_w_bild, command=lambda:zuege_laeufer_weiß(laeufer1_w))
 laeufer1_w.farbe="weiß"
-laeufer2_w = Schachfigur(rahmen, image=laeufer_w_bild, command=lambda:zuege_laeufer_weiß(laeufer2_w))
+laeufer2_w=Schachfigur(rahmen, image=laeufer_w_bild, command=lambda:zuege_laeufer_weiß(laeufer2_w))
 laeufer2_w.farbe="weiß"
 
 #Koenig & Dame weiß
-koenig_w_bild = ImageTk.PhotoImage(Image.open("Bilder\König_weiß.png"))
-koenig_w = Schachfigur(rahmen, image=koenig_w_bild, command=lambda:zuege_koenig_weiß(koenig_w))
+koenig_w_bild=ImageTk.PhotoImage(Image.open("Bilder\König_weiß.png"))
+koenig_w=Schachfigur(rahmen, image=koenig_w_bild, command=lambda:zuege_koenig_weiß(koenig_w))
 koenig_w.farbe="weiß"
-dame_w_bild = ImageTk.PhotoImage(Image.open("Bilder\Dame_weiß.png"))
-dame_w = Schachfigur(rahmen, image=dame_w_bild, command=lambda:zuege_dame_weiß(dame_w))
+dame_w_bild=ImageTk.PhotoImage(Image.open("Bilder\Dame_weiß.png"))
+dame_w=Schachfigur(rahmen, image=dame_w_bild, command=lambda:zuege_dame_weiß(dame_w))
 dame_w.farbe="weiß"
 
 
 #acht Bauern schwarz
-bauer_s_bild = ImageTk.PhotoImage(Image.open("Bilder\Bauer_schwarz.png"))
-bauer1_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer1_s))
+bauer_s_bild=ImageTk.PhotoImage(Image.open("Bilder\Bauer_schwarz.png"))
+bauer1_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer1_s))
 bauer1_s.farbe="schwarz"
-bauer2_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer2_s))
+bauer2_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer2_s))
 bauer2_s.farbe="schwarz"
-bauer3_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer3_s))
+bauer3_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer3_s))
 bauer3_s.farbe="schwarz"
-bauer4_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer4_s))
+bauer4_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer4_s))
 bauer4_s.farbe="schwarz"
-bauer5_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer5_s))
+bauer5_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer5_s))
 bauer5_s.farbe="schwarz"
-bauer6_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer6_s))
+bauer6_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer6_s))
 bauer6_s.farbe="schwarz"
-bauer7_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer7_s))
+bauer7_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer7_s))
 bauer7_s.farbe="schwarz"
-bauer8_s = Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer8_s))
+bauer8_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer8_s))
 bauer8_s.farbe="schwarz"
 
 #zwei Türme schwarz
-turm_s_bild = ImageTk.PhotoImage(Image.open("Bilder\Turm_schwarz.png"))
-turm1_s = Schachfigur(rahmen, image=turm_s_bild, command=lambda:zuege_turm_schwarz(turm1_s))
+turm_s_bild=ImageTk.PhotoImage(Image.open("Bilder\Turm_schwarz.png"))
+turm1_s=Schachfigur(rahmen, image=turm_s_bild, command=lambda:zuege_turm_schwarz(turm1_s))
 turm1_s.farbe="schwarz"
-turm2_s = Schachfigur(rahmen, image=turm_s_bild, command=lambda:zuege_turm_schwarz(turm2_s))
+turm2_s=Schachfigur(rahmen, image=turm_s_bild, command=lambda:zuege_turm_schwarz(turm2_s))
 turm2_s.farbe="schwarz"
 
 #zwei Springer schwarz
-springer_s_bild = ImageTk.PhotoImage(Image.open("Bilder\Springer_schwarz.png"))
-springer1_s = Schachfigur(rahmen, image=springer_s_bild, command=lambda:zuege_springer_schwarz(springer1_s))
+springer_s_bild=ImageTk.PhotoImage(Image.open("Bilder\Springer_schwarz.png"))
+springer1_s=Schachfigur(rahmen, image=springer_s_bild, command=lambda:zuege_springer_schwarz(springer1_s))
 springer1_s.farbe="schwarz"
-springer2_s = Schachfigur(rahmen, image=springer_s_bild, command=lambda:zuege_springer_schwarz(springer2_s))
+springer2_s=Schachfigur(rahmen, image=springer_s_bild, command=lambda:zuege_springer_schwarz(springer2_s))
 springer2_s.farbe="schwarz"
 
 #zwei Laeufer schwarz
-laeufer_s_bild = ImageTk.PhotoImage(Image.open("Bilder\Läufer_schwarz.png"))
-laeufer1_s = Schachfigur(rahmen, image=laeufer_s_bild, command=lambda:zuege_laeufer_schwarz(laeufer1_s))
+laeufer_s_bild=ImageTk.PhotoImage(Image.open("Bilder\Läufer_schwarz.png"))
+laeufer1_s=Schachfigur(rahmen, image=laeufer_s_bild, command=lambda:zuege_laeufer_schwarz(laeufer1_s))
 laeufer1_s.farbe="schwarz"
-laeufer2_s = Schachfigur(rahmen, image=laeufer_s_bild, command=lambda:zuege_laeufer_schwarz(laeufer2_s))
+laeufer2_s=Schachfigur(rahmen, image=laeufer_s_bild, command=lambda:zuege_laeufer_schwarz(laeufer2_s))
 laeufer2_s.farbe="schwarz"
 
 #Koenig & Dame schwarz
-koenig_s_bild = ImageTk.PhotoImage(Image.open("Bilder\König_schwarz.png"))
-koenig_s = Schachfigur(rahmen, image=koenig_s_bild, command=lambda:zuege_koenig_schwarz(koenig_s))
+koenig_s_bild=ImageTk.PhotoImage(Image.open("Bilder\König_schwarz.png"))
+koenig_s=Schachfigur(rahmen, image=koenig_s_bild, command=lambda:zuege_koenig_schwarz(koenig_s))
 koenig_s.farbe="schwarz"
-dame_s_bild = ImageTk.PhotoImage(Image.open("Bilder\Dame_schwarz.png"))
-dame_s = Schachfigur(rahmen, image=dame_s_bild, command=lambda:zuege_dame_schwarz(dame_s))
+dame_s_bild=ImageTk.PhotoImage(Image.open("Bilder\Dame_schwarz.png"))
+dame_s=Schachfigur(rahmen, image=dame_s_bild, command=lambda:zuege_dame_schwarz(dame_s))
 dame_s.farbe="schwarz"
 
 def figur_ziehen(xpos, ypos):
@@ -946,17 +949,17 @@ def figur_ziehen(xpos, ypos):
         weristdran="weiß"
     else:
         weristdran="schwarz"
-       
-gruener_punkt_bild = ImageTk.PhotoImage(Image.open("Bilder\Gruener_Punkt.png"))
-punkt1= Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(50, 50))
-punkt2= Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(97, 50))
-punkt3= Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(144, 50))
-punkt4= Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(191, 50))
-punkt5= Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(238, 50))
-punkt6= Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(285, 50))
-punkt7= Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(332, 50))
-punkt8= Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(379, 50))
-punkt9= Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(50, 97))
+
+gruener_punkt_bild=ImageTk.PhotoImage(Image.open("Bilder\Gruener_Punkt.png"))
+punkt1=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(50, 50))
+punkt2=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(97, 50))
+punkt3=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(144, 50))
+punkt4=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(191, 50))
+punkt5=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(238, 50))
+punkt6=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(285, 50))
+punkt7=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(332, 50))
+punkt8=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(379, 50))
+punkt9=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(50, 97))
 punkt10=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(97, 97))
 punkt11=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(144, 97))
 punkt12=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(191, 97))
@@ -1013,8 +1016,8 @@ punkt62=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(285
 punkt63=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(332, 379))
 punkt64=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(379, 379))
 
-felder = {1:{"x":50, "y":379,"figure":turm1_w},2:{"x":97, "y":379,"figure":springer1_w},3:{"x":144, "y":379,"figure":laeufer1_w },4:{"x":191, "y":379,"figure":dame_w},5:{"x":238, "y":379,"figure":koenig_w},6:{"x":285, "y":379,"figure":laeufer2_w},7:{"x":332, "y":379,"figure":springer2_w},8:{"x":379, "y":379,"figure":turm2_w},9:{"x":50, "y":332,"figure":bauer1_w},10:{"x":97, "y":332,"figure":bauer2_w},11:{"x":144, "y":332,"figure":bauer3_w},12:{"x":191, "y":332,"figure":bauer4_w},13:{"x":238, "y":332,"figure":bauer5_w},14:{"x":285, "y":332,"figure":bauer6_w},15:{"x":332, "y":332,"figure":bauer7_w},16:{"x":379, "y":332,"figure":bauer8_w},17:{"x":50, "y":285,"figure":"none"},18:{"x":97, "y":285,"figure":"none"},19:{"x":144, "y":285,"figure":"none"},20:{"x":191, "y":285,"figure":"none"},21:{"x":238, "y":285,"figure":"none"},22:{"x":285, "y":285,"figure":"none"},23:{"x":332, "y":285,"figure":"none"},24:{"x":379, "y":285,"figure":"none"},25:{"x":50, "y":238,"figure":"none"},26:{"x":97, "y":238,"figure":"none"},27:{"x":144, "y":238,"figure":"none"},28:{"x":191, "y":238,"figure":"none"},29:{"x":238, "y":238,"figure":"none"},30:{"x":285, "y":238,"figure":"none"},31:{"x":332, "y":238,"figure":"none"},32:{"x":379, "y":238,"figure":"none"},33:{"x":50, "y":191,"figure":"none"},34:{"x":97, "y":191,"figure":"none"},35:{"x":144, "y":191,"figure":"none"},36:{"x":191, "y":191,"figure":"none"},37:{"x":238, "y":191,"figure":"none"},38:{"x":285, "y":191,"figure":"none"},39:{"x":332, "y":191,"figure":"none"},40:{"x":379, "y":191,"figure":"none"},41:{"x":50, "y":144,"figure":"none"},42:{"x":97, "y":144,"figure":"none"},43:{"x":144, "y":144,"figure":"none"},44:{"x":191, "y":144,"figure":"none"},45:{"x":238, "y":144,"figure":"none"},46:{"x":285, "y":144,"figure":"none"},47:{"x":332, "y":144,"figure":"none"},48:{"x":379, "y":144,"figure":"none"},49:{"x":50, "y":97,"figure":bauer1_s},50:{"x":97, "y":97,"figure":bauer2_s},51:{"x":144, "y":97,"figure":bauer3_s},52:{"x":191, "y":97,"figure":bauer4_s},53:{"x":238, "y":97,"figure":bauer5_s},54:{"x":285, "y":97,"figure":bauer6_s},55:{"x":332, "y":97,"figure":bauer7_s},56:{"x":379, "y":97,"figure":bauer8_s},57:{"x":50, "y":50,"figure":turm1_s},58:{"x":97, "y":50,"figure":springer1_s},59:{"x":144, "y":50,"figure":laeufer1_s},60:{"x":191, "y":50,"figure":dame_s},61:{"x":238, "y":50,"figure":koenig_s},62:{"x":285, "y":50,"figure":laeufer2_s},63:{"x":332, "y":50,"figure":springer2_s},64:{"x":379, "y":50,"figure":turm2_s}}
-punkte = [punkt1, punkt2, punkt3, punkt4, punkt5, punkt6, punkt7, punkt8, punkt9, punkt10, punkt11, punkt12, punkt13, punkt14, punkt15, punkt16, punkt17, punkt18, punkt19, punkt20, punkt21, punkt22, punkt23, punkt24, punkt25, punkt26, punkt27, punkt28, punkt29, punkt30, punkt31, punkt32, punkt33, punkt34, punkt35, punkt36, punkt37, punkt38, punkt39, punkt40, punkt41, punkt42, punkt43, punkt44, punkt45, punkt46, punkt47, punkt48, punkt49, punkt50, punkt51, punkt52, punkt53, punkt54, punkt55, punkt56, punkt57, punkt58, punkt59, punkt60, punkt61, punkt62, punkt63, punkt64]
+felder={1:{"x":50, "y":379,"figure":turm1_w},2:{"x":97, "y":379,"figure":springer1_w},3:{"x":144, "y":379,"figure":laeufer1_w },4:{"x":191, "y":379,"figure":dame_w},5:{"x":238, "y":379,"figure":koenig_w},6:{"x":285, "y":379,"figure":laeufer2_w},7:{"x":332, "y":379,"figure":springer2_w},8:{"x":379, "y":379,"figure":turm2_w},9:{"x":50, "y":332,"figure":bauer1_w},10:{"x":97, "y":332,"figure":bauer2_w},11:{"x":144, "y":332,"figure":bauer3_w},12:{"x":191, "y":332,"figure":bauer4_w},13:{"x":238, "y":332,"figure":bauer5_w},14:{"x":285, "y":332,"figure":bauer6_w},15:{"x":332, "y":332,"figure":bauer7_w},16:{"x":379, "y":332,"figure":bauer8_w},17:{"x":50, "y":285,"figure":"none"},18:{"x":97, "y":285,"figure":"none"},19:{"x":144, "y":285,"figure":"none"},20:{"x":191, "y":285,"figure":"none"},21:{"x":238, "y":285,"figure":"none"},22:{"x":285, "y":285,"figure":"none"},23:{"x":332, "y":285,"figure":"none"},24:{"x":379, "y":285,"figure":"none"},25:{"x":50, "y":238,"figure":"none"},26:{"x":97, "y":238,"figure":"none"},27:{"x":144, "y":238,"figure":"none"},28:{"x":191, "y":238,"figure":"none"},29:{"x":238, "y":238,"figure":"none"},30:{"x":285, "y":238,"figure":"none"},31:{"x":332, "y":238,"figure":"none"},32:{"x":379, "y":238,"figure":"none"},33:{"x":50, "y":191,"figure":"none"},34:{"x":97, "y":191,"figure":"none"},35:{"x":144, "y":191,"figure":"none"},36:{"x":191, "y":191,"figure":"none"},37:{"x":238, "y":191,"figure":"none"},38:{"x":285, "y":191,"figure":"none"},39:{"x":332, "y":191,"figure":"none"},40:{"x":379, "y":191,"figure":"none"},41:{"x":50, "y":144,"figure":"none"},42:{"x":97, "y":144,"figure":"none"},43:{"x":144, "y":144,"figure":"none"},44:{"x":191, "y":144,"figure":"none"},45:{"x":238, "y":144,"figure":"none"},46:{"x":285, "y":144,"figure":"none"},47:{"x":332, "y":144,"figure":"none"},48:{"x":379, "y":144,"figure":"none"},49:{"x":50, "y":97,"figure":bauer1_s},50:{"x":97, "y":97,"figure":bauer2_s},51:{"x":144, "y":97,"figure":bauer3_s},52:{"x":191, "y":97,"figure":bauer4_s},53:{"x":238, "y":97,"figure":bauer5_s},54:{"x":285, "y":97,"figure":bauer6_s},55:{"x":332, "y":97,"figure":bauer7_s},56:{"x":379, "y":97,"figure":bauer8_s},57:{"x":50, "y":50,"figure":turm1_s},58:{"x":97, "y":50,"figure":springer1_s},59:{"x":144, "y":50,"figure":laeufer1_s},60:{"x":191, "y":50,"figure":dame_s},61:{"x":238, "y":50,"figure":koenig_s},62:{"x":285, "y":50,"figure":laeufer2_s},63:{"x":332, "y":50,"figure":springer2_s},64:{"x":379, "y":50,"figure":turm2_s}}
+punkte=[punkt1, punkt2, punkt3, punkt4, punkt5, punkt6, punkt7, punkt8, punkt9, punkt10, punkt11, punkt12, punkt13, punkt14, punkt15, punkt16, punkt17, punkt18, punkt19, punkt20, punkt21, punkt22, punkt23, punkt24, punkt25, punkt26, punkt27, punkt28, punkt29, punkt30, punkt31, punkt32, punkt33, punkt34, punkt35, punkt36, punkt37, punkt38, punkt39, punkt40, punkt41, punkt42, punkt43, punkt44, punkt45, punkt46, punkt47, punkt48, punkt49, punkt50, punkt51, punkt52, punkt53, punkt54, punkt55, punkt56, punkt57, punkt58, punkt59, punkt60, punkt61, punkt62, punkt63, punkt64]
 alle_figuren=[bauer1_w, bauer2_w, bauer3_w, bauer4_w, bauer5_w, bauer6_w, bauer7_w, bauer8_w, turm1_w, turm2_w, springer1_w, springer2_w, laeufer1_w, laeufer2_w, koenig_w, dame_w, bauer1_s, bauer2_s, bauer3_s, bauer4_s, bauer5_s, bauer6_s, bauer7_s, bauer8_s, turm1_s, turm2_s, springer1_s, springer2_s, laeufer1_s, laeufer2_s, koenig_s, dame_s]
 
 def figuren_plazieren():
