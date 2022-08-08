@@ -9,11 +9,30 @@ schachbrett=Label(rahmen, image=schachbrett_bild)
 schachbrett.pack(expand=True, padx=30, pady=30)
 weristdran="weiß"
 aktuelle_figur="none"
+moegliche_züge=[]
 
 class Schachfigur(Button):
     farbe="?"
 
 moegliche_ziele={1:{"button_Nr": "none", "x":"none", "y":"none"}, 2:{"button_Nr": "none", "x":"none", "y":"none"}, 3:{"button_Nr": "none", "x":"none", "y":"none"}, 4:{"button_Nr": "none", "x":"none", "y":"none"}, 5:{"button_Nr": "none", "x":"none", "y":"none"}, 6:{"button_Nr": "none", "x":"none", "y":"none"}, 7:{"button_Nr": "none", "x":"none", "y":"none"}, 8:{"button_Nr": "none", "x":"none", "y":"none"}, 9:{"button_Nr": "none", "x":"none", "y":"none"}, 10:{"button_Nr": "none", "x":"none", "y":"none"}, 11:{"button_Nr": "none", "x":"none", "y":"none"}, 12:{"button_Nr": "none", "x":"none", "y":"none"}, 13:{"button_Nr": "none", "x":"none", "y":"none"}, 14:{"button_Nr": "none", "x":"none", "y":"none"}, 15:{"button_Nr": "none", "x":"none", "y":"none"}, 16:{"button_Nr": "none", "x":"none", "y":"none"}, 17:{"button_Nr": "none", "x":"none", "y":"none"}, 18:{"button_Nr": "none", "x":"none", "y":"none"}, 19:{"button_Nr": "none", "x":"none", "y":"none"}, 20:{"button_Nr": "none", "x":"none", "y":"none"}, 21:{"button_Nr": "none", "x":"none", "y":"none"}, 22:{"button_Nr": "none", "x":"none", "y":"none"}, 23:{"button_Nr": "none", "x":"none", "y":"none"}, 24:{"button_Nr": "none", "x":"none", "y":"none"}, 25:{"button_Nr": "none", "x":"none", "y":"none"}, 26:{"button_Nr": "none", "x":"none", "y":"none"}, 27:{"button_Nr": "none", "x":"none", "y":"none"}}
+
+def alleZügeBerechnen(farbe):
+    global moegliche_züge
+    for figur in alle_figuren:
+        if(figur.farbe==farbe):
+            for i in felder:
+                    if felder[i]["figure"]==figur:
+                        if felder[i+8]["figure"]=="none":
+                            moegliche_züge.append({"x": felder[i]["x"], "y": felder[i]["y"]-47})
+                        if felder[i]["y"]==332 and felder[i+8]["figure"]=="none" and felder[i+16]["figure"]=="none":
+                            moegliche_züge.append({"x": felder[i]["x"], "y": 238})
+                        if felder[i]["x"]!=379:
+                            if felder[i+9]["figure"]!="none"and felder[i+9]["figure"].farbe=="schwarz":
+                                moegliche_züge.append({"x": felder[i]["x"]+47, "y": felder[i]["y"]-47})
+                        if felder[i]["x"]!=50:
+                            if felder[i+7]["figure"]!="none"and felder[i+7]["figure"].farbe=="schwarz":
+                                moegliche_züge.append({"x": felder[i]["x"]-47, "y": felder[i]["y"]-47})
+    print(moegliche_züge)
 
 def setzeZieleAufNull():
     global moegliche_ziele
@@ -1026,4 +1045,6 @@ def figuren_plazieren():
             felder[i]["figure"].place(x=felder[i]["x"], y=felder[i]["y"])
 
 figuren_plazieren()
+alleZügeBerechnen()
+print(moegliche_züge[0]["x"])
 fenster.mainloop()
