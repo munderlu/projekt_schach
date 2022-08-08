@@ -93,28 +93,28 @@ def alleZügeBerechnenWeiß():
                         for j in felder:
                             if felder[j]["y"]==figurY-2*47 and felder[j]["x"]==figurX+47:
                                 if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
-                                    moegliche_züge.append({"x": felder[i]["x"], "y": felder[i]["y"]})
+                                    moegliche_züge.append({"x": felder[j]["x"], "y": felder[j]["y"]})
                             if felder[j]["y"]==figurY-2*47 and felder[j]["x"]==figurX-47:
                                 if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
-                                    moegliche_züge.append({"x": felder[i]["x"], "y": felder[i]["y"]})
+                                    moegliche_züge.append({"x": felder[j]["x"], "y": felder[j]["y"]})
                             if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX+2*47:
                                 if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
-                                    moegliche_züge.append({"x": felder[i]["x"], "y": felder[i]["y"]})
+                                    moegliche_züge.append({"x": felder[j]["x"], "y": felder[j]["y"]})
                             if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX+2*47:
                                 if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
-                                    moegliche_züge.append({"x": felder[i]["x"], "y": felder[i]["y"]})
+                                    moegliche_züge.append({"x": felder[j]["x"], "y": felder[j]["y"]})
                             if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX+47:
                                 if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
-                                    moegliche_züge.append({"x": felder[i]["x"], "y": felder[i]["y"]})
+                                    moegliche_züge.append({"x": felder[j]["x"], "y": felder[j]["y"]})
                             if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX-47:
                                 if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
-                                    moegliche_züge.append({"x": felder[i]["x"], "y": felder[i]["y"]})
+                                    moegliche_züge.append({"x": felder[j]["x"], "y": felder[j]["y"]})
                             if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX-2*47:
                                 if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
-                                    moegliche_züge.append({"x": felder[i]["x"], "y": felder[i]["y"]})
+                                    moegliche_züge.append({"x": felder[j]["x"], "y": felder[j]["y"]})
                             if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX-2*47:
                                 if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
-                                    moegliche_züge.append({"x": felder[i]["x"], "y": felder[i]["y"]})
+                                    moegliche_züge.append({"x": felder[j]["x"], "y": felder[j]["y"]})
             if(figur.art=="laeufer"):
                 for i in felder:
                     if felder[i]["figure"]==figur:
@@ -334,330 +334,320 @@ def alleZügeBerechnenWeiß():
                                 break
     print(moegliche_züge)
 
-
-
-for i in felder:
-            if felder[i]["figure"]==figur:
-                global aktuelle_figur
-                aktuelle_figur=figur
-                if felder[i-8]["figure"]=="none":
-                    moegliche_züge.append({"x": felder[i]["x"], "y": felder[i]["y"]+47})
-                if felder[i]["y"]==97 and felder[i-8]["figure"]=="none" and felder[i-16]["figure"]=="none":
-                    moegliche_züge.append({"x": felder[i]["x"], "y": 191})
-                if felder[i]["x"]!=50:
-                    if felder[i-9]["figure"]!="none"and felder[i-9]["figure"].farbe=="weiß":
-                        moegliche_züge.append({"x": felder[i]["x"]-47, "y": felder[i]["y"]+47})
-                if felder[i]["x"]!=379:
-                    if felder[i-7]["figure"]!="none"and felder[i-7]["figure"].farbe=="weiß":
-                        moegliche_züge.append({"x": felder[i]["x"]+47, "y": felder[i]["x"]+47})
-for i in felder:
-            if felder[i]["figure"]==figur:
-                global aktuelle_figur
-                aktuelle_figur=figur
-                figurPlatz=i
-                figurX=felder[figurPlatz]["x"]
-                figurY=felder[figurPlatz]["y"]
-                zählvariable=1
-                for j in range (1, 8):
-                    for k in felder:
-                        if felder[k]["x"]==figurX and felder[k]["y"]==figurY-j*47:
-                            if felder[k]["figure"]!="none":
-                                if felder[k]["figure"].farbe!="weiß":
-                                    break
-                            moegliche_züge.append({"x": felder[k]["x"], "y": felder[k]["y"]})
-                            zählvariable+=1
-                            break
-                    if felder[k]["figure"]!="none":
-                        break
-                for j in range (1, 8):
-                    for k in felder:
-                        if felder[k]["x"]==figurX and felder[k]["y"]==figurY+j*47:
-                            if felder[k]["figure"]!="none":
-                                if felder[k]["figure"].farbe!="weiß":
-                                    break
-                            moegliche_züge.append({"x": felder[k]["x"], "y": felder[k]["y"]})
-                            zählvariable+=1
-                            break
-                    if felder[k]["figure"]!="none":
-                        break
-                for j in range (1, 8):
-                    for k in felder:
-                        if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY:
-                            if felder[k]["figure"]!="none":
-                                if felder[k]["figure"].farbe!="weiß":
-                                    break
-                            moegliche_züge.append({"x": felder[k]["x"], "y": felder[k]["y"]})
-                            zählvariable+=1
-                            break
-                    if felder[k]["figure"]!="none":
-                        break
-                for j in range (1, 8):
-                    for k in felder:
-                        if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY:
-                            if felder[k]["figure"]!="none":
-                                if felder[k]["figure"].farbe!="weiß":
-                                    break
-                            moegliche_züge.append({"x": felder[k]["x"], "y": felder[k]["y"]})
-                            zählvariable+=1
-                            break
-                    if felder[k]["figure"]!="none":
-                        break
-for i in felder:
-            if felder[i]["figure"]==figur:
-                global aktuelle_figur
-                aktuelle_figur=figur
-                figurX=felder[i]["x"]
-                figurY=felder[i]["y"]
-                for j in felder:
-                    if felder[j]["y"]==figurY-2*47 and felder[j]["x"]==figurX+47:
-                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
-                            moegliche_züge.append({"x": felder[j]["x"],"y": felder[j]["y"]})    
-                    if felder[j]["y"]==figurY-2*47 and felder[j]["x"]==figurX-47:
-                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
-                            moegliche_züge.append({"x": felder[j]["x"],"y": felder[j]["y"]})   
-                    if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX+2*47:
-                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
-                            moegliche_züge.append({"x": felder[j]["x"],"y": felder[j]["y"]})    
-                    if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX+2*47:
-                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
-                            moegliche_züge.append({"x": felder[j]["x"],"y": felder[j]["y"]})    
-                    if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX+47:
-                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
-                            moegliche_züge.append({"x": felder[j]["x"],"y": felder[j]["y"]})       
-                    if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX-47:
-                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
-                            moegliche_züge.append({"x": felder[j]["x"],"y": felder[j]["y"]})       
-                    if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX-2*47:
-                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
-                            moegliche_züge.append({"x": felder[j]["x"],"y": felder[j]["y"]})
-                    if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX-2*47:
-                        if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
-                            moegliche_züge.append({"x": felder[j]["x"],"y": felder[j]["y"]})
-for i in felder:
-            if felder[i]["figure"]==figur:
-                global aktuelle_figur
-                aktuelle_figur=figur
-                figurPlatz=i
-                figurX=felder[figurPlatz]["x"]
-                figurY=felder[figurPlatz]["y"]
-                zählvariable=1
-                for j in range (1, 8):
-                    for k in felder:
-                        if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY-j*47:
-                            if felder[k]["figure"]!="none":
-                                if felder[k]["figure"].farbe!="weiß":
-                                    break
-                            moegliche_züge.append({"x": felder[k]["x"], "y": felder[k]["x"]})
-                            break
-                    if felder[k]["figure"]!="none":
-                        break
-                for j in range (1, 8):
-                    for k in felder:
-                        if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY+j*47:
-                            if felder[k]["figure"]!="none":
-                                if felder[k]["figure"].farbe!="weiß":
-                                    break
-                            moegliche_züge.append({"x": felder[k]["x"], "y": felder[k]["x"]})
-                            zählvariable+=1
-                            break
-                    if felder[k]["figure"]!="none":
-                        break
-                for j in range (1, 8):
-                    for k in felder:
-                        if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY-j*47:
-                            if felder[k]["figure"]!="none":
-                                if felder[k]["figure"].farbe!="weiß":
-                                    break
-                            moegliche_züge.append({"x": felder[k]["x"], "y": felder[k]["x"]})
-                            zählvariable+=1
-                            break
-                    if felder[k]["figure"]!="none":
-                        break
-                for j in range (1, 8):
-                    for k in felder:
-                        if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY+j*47:
-                            if felder[k]["figure"]!="none":
-                                if felder[k]["figure"].farbe!="weiß":
-                                    break
-                            moegliche_züge.append({"x": felder[k]["x"], "y": felder[k]["x"]})
-                            zählvariable+=1
-                            break
-                    if felder[k]["figure"]!="none":
-                        break                           
-for i in felder:
-            if felder[i]["figure"]==figur:
-                global aktuelle_figur
-                aktuelle_figur=figur
-                figurPlatz=i
-                figurX=felder[figurPlatz]["x"]
-                figurY=felder[figurPlatz]["y"]
-                zählvariable=1
-                for k in felder:
-                    if felder[k]["x"]==figurX and felder[k]["y"]==figurY-47:
-                        if felder[k]["figure"]!="none":
-                            if felder[k]["figure"].farbe!="weiß":
+def alleZügeBerechnenSchwarz():
+    for figur in alle_figuren:
+        if(figur.art=="bauer"):
+            for i in felder:
+                if felder[i]["figure"]==figur:
+                    if felder[i-8]["figure"]=="none":
+                        moegliche_züge.append({"x": felder[i]["x"], "y": felder[i]["y"]+47})
+                    if felder[i]["y"]==97 and felder[i-8]["figure"]=="none" and felder[i-16]["figure"]=="none":
+                        moegliche_züge.append({"x": felder[i]["x"], "y": 191})
+                    if felder[i]["x"]!=50:
+                        if felder[i-9]["figure"]!="none"and felder[i-9]["figure"].farbe=="weiß":
+                            moegliche_züge.append({"x": felder[i]["x"]-47, "y": felder[i]["y"]+47})
+                    if felder[i]["x"]!=379:
+                        if felder[i-7]["figure"]!="none"and felder[i-7]["figure"].farbe=="weiß":
+                            moegliche_züge.append({"x": felder[i]["x"]+47, "y": felder[i]["x"]+47})
+        if(figur.art=="turm"):
+            for i in felder:
+                if felder[i]["figure"]==figur:
+                    figurPlatz=i
+                    figurX=felder[figurPlatz]["x"]
+                    figurY=felder[figurPlatz]["y"]
+                    zählvariable=1
+                    for j in range (1, 8):
+                        for k in felder:
+                            if felder[k]["x"]==figurX and felder[k]["y"]==figurY-j*47:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"], "y": felder[k]["y"]})
+                                zählvariable+=1
                                 break
-                        moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
-                        zählvariable+=1
-                        break
-                for k in felder:
-                    if felder[k]["x"]==figurX and felder[k]["y"]==figurY+47:
                         if felder[k]["figure"]!="none":
-                            if felder[k]["figure"].farbe!="weiß":
+                            break
+                    for j in range (1, 8):
+                        for k in felder:
+                            if felder[k]["x"]==figurX and felder[k]["y"]==figurY+j*47:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"], "y": felder[k]["y"]})
+                                zählvariable+=1
                                 break
-                        moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
-                        zählvariable+=1
-                        break
-                for k in felder:
-                    if felder[k]["x"]==figurX+47 and felder[k]["y"]==figurY:
                         if felder[k]["figure"]!="none":
-                            if felder[k]["figure"].farbe!="weiß":
+                            break
+                    for j in range (1, 8):
+                        for k in felder:
+                            if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"], "y": felder[k]["y"]})
+                                zählvariable+=1
                                 break
-                        moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
-                        zählvariable+=1
-                        break
-                for k in felder:
-                    if felder[k]["x"]==figurX-47 and felder[k]["y"]==figurY:
                         if felder[k]["figure"]!="none":
-                            if felder[k]["figure"].farbe!="weiß":
+                            break
+                    for j in range (1, 8):
+                        for k in felder:
+                            if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"], "y": felder[k]["y"]})
+                                zählvariable+=1
                                 break
-                        moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
-                        zählvariable+=1
-                        break
-                for k in felder:
-                    if felder[k]["x"]==figurX-47 and felder[k]["y"]==figurY-47:
                         if felder[k]["figure"]!="none":
-                            if felder[k]["figure"].farbe!="weiß":
+                            break
+        if(figur.art=="springer"):
+            for i in felder:
+                if felder[i]["figure"]==figur:
+                    figurX=felder[i]["x"]
+                    figurY=felder[i]["y"]
+                    for j in felder:
+                        if felder[j]["y"]==figurY-2*47 and felder[j]["x"]==figurX+47:
+                            if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
+                                moegliche_züge.append({"x": felder[j]["x"],"y": felder[j]["y"]})    
+                        if felder[j]["y"]==figurY-2*47 and felder[j]["x"]==figurX-47:
+                            if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
+                                moegliche_züge.append({"x": felder[j]["x"],"y": felder[j]["y"]})   
+                        if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX+2*47:
+                            if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
+                                moegliche_züge.append({"x": felder[j]["x"],"y": felder[j]["y"]})    
+                        if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX+2*47:
+                            if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
+                                moegliche_züge.append({"x": felder[j]["x"],"y": felder[j]["y"]})    
+                        if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX+47:
+                            if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
+                                moegliche_züge.append({"x": felder[j]["x"],"y": felder[j]["y"]})       
+                        if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX-47:
+                            if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
+                                moegliche_züge.append({"x": felder[j]["x"],"y": felder[j]["y"]})       
+                        if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX-2*47:
+                            if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
+                                moegliche_züge.append({"x": felder[j]["x"],"y": felder[j]["y"]})
+                        if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX-2*47:
+                            if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
+                                moegliche_züge.append({"x": felder[j]["x"],"y": felder[j]["y"]})
+        if(figur.art=="laeufer"):
+            for i in felder:
+                if felder[i]["figure"]==figur:
+                    figurPlatz=i
+                    figurX=felder[figurPlatz]["x"]
+                    figurY=felder[figurPlatz]["y"]
+                    zählvariable=1
+                    for j in range (1, 8):
+                        for k in felder:
+                            if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY-j*47:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"], "y": felder[k]["x"]})
                                 break
-                        moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
-                        zählvariable+=1
-                        break
-                for k in felder:
-                    if felder[k]["x"]==figurX-47 and felder[k]["y"]==figurY+47:
                         if felder[k]["figure"]!="none":
-                            if felder[k]["figure"].farbe!="weiß":
+                            break
+                    for j in range (1, 8):
+                        for k in felder:
+                            if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY+j*47:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"], "y": felder[k]["x"]})
+                                zählvariable+=1
                                 break
-                        moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
-                        zählvariable+=1
-                        break
-                for k in felder:
-                    if felder[k]["x"]==figurX+47 and felder[k]["y"]==figurY-47:
                         if felder[k]["figure"]!="none":
-                            if felder[k]["figure"].farbe!="weiß":
+                            break
+                    for j in range (1, 8):
+                        for k in felder:
+                            if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY-j*47:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"], "y": felder[k]["x"]})
+                                zählvariable+=1
                                 break
-                        moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
-                        zählvariable+=1
-                        break
-                for k in felder:
-                    if felder[k]["x"]==figurX+47 and felder[k]["y"]==figurY+47:
                         if felder[k]["figure"]!="none":
-                            if felder[k]["figure"].farbe!="weiß":
+                            break
+                    for j in range (1, 8):
+                        for k in felder:
+                            if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY+j*47:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"], "y": felder[k]["x"]})
+                                zählvariable+=1
                                 break
-                        moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
-                        zählvariable+=1
-                        break                                  
-for i in felder:
-            if felder[i]["figure"]==figur:
-                global aktuelle_figur
-                aktuelle_figur=figur
-                figurPlatz=i
-                figurX=felder[figurPlatz]["x"]
-                figurY=felder[figurPlatz]["y"]
-                zählvariable=1
-                for j in range (1, 8):
-                    for k in felder:
-                        if felder[k]["x"]==figurX and felder[k]["y"]==figurY-j*47:
-                            if felder[k]["figure"]!="none":
-                                if felder[k]["figure"].farbe!="weiß":
-                                    break
-                            moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
-                            zählvariable+=1
+                        if felder[k]["figure"]!="none":
                             break
-                    if felder[k]["figure"]!="none":
-                        break
-                for j in range (1, 8):
-                    for k in felder:
-                        if felder[k]["x"]==figurX and felder[k]["y"]==figurY+j*47:
-                            if felder[k]["figure"]!="none":
-                                if felder[k]["figure"].farbe!="weiß":
-                                    break
-                            moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
-                            zählvariable+=1
+        if(figur.art=="koenig"):
+            for i in felder:
+                    if felder[i]["figure"]==figur:
+                        figurPlatz=i
+                        figurX=felder[figurPlatz]["x"]
+                        figurY=felder[figurPlatz]["y"]
+                        zählvariable=1
+                        for k in felder:
+                            if felder[k]["x"]==figurX and felder[k]["y"]==figurY-47:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
+                                zählvariable+=1
+                                break
+                        for k in felder:
+                            if felder[k]["x"]==figurX and felder[k]["y"]==figurY+47:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
+                                zählvariable+=1
+                                break
+                        for k in felder:
+                            if felder[k]["x"]==figurX+47 and felder[k]["y"]==figurY:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
+                                zählvariable+=1
+                                break
+                        for k in felder:
+                            if felder[k]["x"]==figurX-47 and felder[k]["y"]==figurY:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
+                                zählvariable+=1
+                                break
+                        for k in felder:
+                            if felder[k]["x"]==figurX-47 and felder[k]["y"]==figurY-47:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
+                                zählvariable+=1
+                                break
+                        for k in felder:
+                            if felder[k]["x"]==figurX-47 and felder[k]["y"]==figurY+47:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
+                                zählvariable+=1
+                                break
+                        for k in felder:
+                            if felder[k]["x"]==figurX+47 and felder[k]["y"]==figurY-47:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
+                                zählvariable+=1
+                                break
+                        for k in felder:
+                            if felder[k]["x"]==figurX+47 and felder[k]["y"]==figurY+47:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
+                                zählvariable+=1
+                                break
+        if(figur.art=="dame"):
+            for i in felder:
+                if felder[i]["figure"]==figur:
+                    global aktuelle_figur
+                    aktuelle_figur=figur
+                    figurPlatz=i
+                    figurX=felder[figurPlatz]["x"]
+                    figurY=felder[figurPlatz]["y"]
+                    zählvariable=1
+                    for j in range (1, 8):
+                        for k in felder:
+                            if felder[k]["x"]==figurX and felder[k]["y"]==figurY-j*47:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
+                                zählvariable+=1
+                                break
+                        if felder[k]["figure"]!="none":
                             break
-                    if felder[k]["figure"]!="none":
-                        break
-                for j in range (1, 8):
-                    for k in felder:
-                        if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY:
-                            if felder[k]["figure"]!="none":
-                                if felder[k]["figure"].farbe!="weiß":
-                                    break
-                            moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
-                            zählvariable+=1
+                    for j in range (1, 8):
+                        for k in felder:
+                            if felder[k]["x"]==figurX and felder[k]["y"]==figurY+j*47:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
+                                zählvariable+=1
+                                break
+                        if felder[k]["figure"]!="none":
                             break
-                    if felder[k]["figure"]!="none":
-                        break
-                for j in range (1, 8):
-                    for k in felder:
-                        if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY:
-                            if felder[k]["figure"]!="none":
-                                if felder[k]["figure"].farbe!="weiß":
-                                    break
-                            moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
-                            zählvariable+=1
+                    for j in range (1, 8):
+                        for k in felder:
+                            if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
+                                zählvariable+=1
+                                break
+                        if felder[k]["figure"]!="none":
                             break
-                    if felder[k]["figure"]!="none":
-                        break
-                for j in range (1, 8):
-                    for k in felder:
-                        if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY-j*47:
-                            if felder[k]["figure"]!="none":
-                                if felder[k]["figure"].farbe!="weiß":
-                                    break
-                            moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
-                            zählvariable+=1
+                    for j in range (1, 8):
+                        for k in felder:
+                            if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
+                                zählvariable+=1
+                                break
+                        if felder[k]["figure"]!="none":
                             break
-                    if felder[k]["figure"]!="none":
-                        break
-                for j in range (1, 8):
-                    for k in felder:
-                        if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY+j*47:
-                            if felder[k]["figure"]!="none":
-                                if felder[k]["figure"].farbe!="weiß":
-                                    break
-                            moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
-                            zählvariable+=1
+                    for j in range (1, 8):
+                        for k in felder:
+                            if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY-j*47:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
+                                zählvariable+=1
+                                break
+                        if felder[k]["figure"]!="none":
                             break
-                    if felder[k]["figure"]!="none":
-                        break
-                for j in range (1, 8):
-                    for k in felder:
-                        if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY-j*47:
-                            if felder[k]["figure"]!="none":
-                                if felder[k]["figure"].farbe!="weiß":
-                                    break
-                            moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
-                            zählvariable+=1
+                    for j in range (1, 8):
+                        for k in felder:
+                            if felder[k]["x"]==figurX-j*47 and felder[k]["y"]==figurY+j*47:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
+                                zählvariable+=1
+                                break
+                        if felder[k]["figure"]!="none":
                             break
-                    if felder[k]["figure"]!="none":
-                        break
-                for j in range (1, 8):
-                    for k in felder:
-                        if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY+j*47:
-                            if felder[k]["figure"]!="none":
-                                if felder[k]["figure"].farbe!="weiß":
-                                    break
-                            moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
-                            zählvariable+=1
+                    for j in range (1, 8):
+                        for k in felder:
+                            if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY-j*47:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
+                                zählvariable+=1
+                                break
+                        if felder[k]["figure"]!="none":
                             break
-                    if felder[k]["figure"]!="none":
-                        break
-
-
-
-
-
-
+                    for j in range (1, 8):
+                        for k in felder:
+                            if felder[k]["x"]==figurX+j*47 and felder[k]["y"]==figurY+j*47:
+                                if felder[k]["figure"]!="none":
+                                    if felder[k]["figure"].farbe!="weiß":
+                                        break
+                                moegliche_züge.append({"x": felder[k]["x"],"y": felder[k]["y"]})
+                                zählvariable+=1
+                                break
+                        if felder[k]["figure"]!="none":
+                            break
 
 def setzeZieleAufNull():
     global moegliche_ziele
