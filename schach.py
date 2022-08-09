@@ -1,3 +1,4 @@
+from glob import glob
 from tkinter import *
 from PIL import ImageTk, Image
 import copy
@@ -447,7 +448,7 @@ def alleZügeBerechnenSchwarz(felder_kopie):
                                     if felder_kopie[k]["figure"]!="none":
                                         if felder_kopie[k]["figure"].farbe!="weiß":
                                             break
-                                    moegliche_züge.append({"x": felder_kopie[k]["x"], "y": felder_kopie[k]["x"]})
+                                    moegliche_züge.append({"x": felder_kopie[k]["x"], "y": felder_kopie[k]["y"]})
                                     break
                             if felder_kopie[k]["figure"]!="none":
                                 break
@@ -457,7 +458,7 @@ def alleZügeBerechnenSchwarz(felder_kopie):
                                     if felder_kopie[k]["figure"]!="none":
                                         if felder_kopie[k]["figure"].farbe!="weiß":
                                             break
-                                    moegliche_züge.append({"x": felder_kopie[k]["x"], "y": felder_kopie[k]["x"]})
+                                    moegliche_züge.append({"x": felder_kopie[k]["x"], "y": felder_kopie[k]["y"]})
                                     zählvariable+=1
                                     break
                             if felder_kopie[k]["figure"]!="none":
@@ -468,7 +469,7 @@ def alleZügeBerechnenSchwarz(felder_kopie):
                                     if felder_kopie[k]["figure"]!="none":
                                         if felder_kopie[k]["figure"].farbe!="weiß":
                                             break
-                                    moegliche_züge.append({"x": felder_kopie[k]["x"], "y": felder_kopie[k]["x"]})
+                                    moegliche_züge.append({"x": felder_kopie[k]["x"], "y": felder_kopie[k]["y"]})
                                     zählvariable+=1
                                     break
                             if felder_kopie[k]["figure"]!="none":
@@ -479,7 +480,7 @@ def alleZügeBerechnenSchwarz(felder_kopie):
                                     if felder_kopie[k]["figure"]!="none":
                                         if felder_kopie[k]["figure"].farbe!="weiß":
                                             break
-                                    moegliche_züge.append({"x": felder_kopie[k]["x"], "y": felder_kopie[k]["x"]})
+                                    moegliche_züge.append({"x": felder_kopie[k]["x"], "y": felder_kopie[k]["y"]})
                                     zählvariable+=1
                                     break
                             if felder_kopie[k]["figure"]!="none":
@@ -653,8 +654,10 @@ def alleZügeBerechnenSchwarz(felder_kopie):
 
 def schachWeißBerechnen(felder_kopie):
     global schachWeiß
+    global moegliche_züge
+    schachWeiß=False
+    moegliche_züge=[]
     alleZügeBerechnenSchwarz(felder_kopie)
-    print("züge berechnene")
     for figur in alle_figuren:
         if figur.farbe=="weiß" and figur.art=="koenig":
             for i in felder_kopie:
@@ -662,13 +665,47 @@ def schachWeißBerechnen(felder_kopie):
                     XKönig=felder_kopie[i]["x"]
                     YKönig=felder_kopie[i]["y"]
     for i in moegliche_züge:
-        print(moegliche_züge)
-        print("moeg")
         if i["x"]==XKönig and i["y"]==YKönig:
             schachWeiß=True
+    for figur in alle_figuren:
+        if figur.farbe=="weiß":
+            if figur.art=="bauer":
+                zuege_bauer_weiß(figur)
+                if moegliche_ziele[1]["x"]!="none":
+                    break
+                setzeZieleAufNull()
+            if figur.art=="springer":
+                zuege_springer_weiß(figur)
+                if moegliche_ziele[1]["x"]!="none":
+                    break
+                setzeZieleAufNull()
+            if figur.art=="laeufer":
+                zuege_laeufer_weiß(figur)
+                if moegliche_ziele[1]["x"]!="none":
+                    break
+                setzeZieleAufNull()
+            if figur.art=="turm":
+                zuege_turm_weiß(figur)
+                if moegliche_ziele[1]["x"]!="none":
+                    break
+                setzeZieleAufNull()
+            if figur.art=="koenig":
+                zuege_koenig_weiß(figur)
+                if moegliche_ziele[1]["x"]!="none":
+                    break
+                setzeZieleAufNull()
+            if figur.art=="dame":
+                zuege_dame_weiß(figur)
+                if moegliche_ziele[1]["x"]!="none":
+                    break
+                setzeZieleAufNull()
+        print("ScHaChMaTt")
 
 def schachSchwarzBerechnen(felder_kopie):
     global schachSchwarz
+    global moegliche_züge
+    schachSchwarz=False
+    moegliche_züge=[]
     alleZügeBerechnenWeiß(felder_kopie)
     for figur in alle_figuren:
         if figur.farbe=="schwarz" and figur.art=="koenig":
@@ -721,7 +758,6 @@ def zuege_bauer_weiß(figur):
     if weristdran=="weiß":
         for i in felder:
             if felder[i]["figure"]==figur:
-                print(i)
                 global aktuelle_figur
                 aktuelle_figur=figur
                 if felder[i+8]["figure"]=="none":
@@ -2098,4 +2134,5 @@ def figuren_plazieren():
             felder[i]["figure"].place(x=felder[i]["x"], y=felder[i]["y"])
 
 figuren_plazieren()
+
 fenster.mainloop()
