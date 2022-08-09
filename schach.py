@@ -667,39 +667,6 @@ def schachWeißBerechnen(felder_kopie):
     for i in moegliche_züge:
         if i["x"]==XKönig and i["y"]==YKönig:
             schachWeiß=True
-    for figur in alle_figuren:
-        if figur.farbe=="weiß":
-            if figur.art=="bauer":
-                zuege_bauer_weiß(figur)
-                if moegliche_ziele[1]["x"]!="none":
-                    break
-                setzeZieleAufNull()
-            if figur.art=="springer":
-                zuege_springer_weiß(figur)
-                if moegliche_ziele[1]["x"]!="none":
-                    break
-                setzeZieleAufNull()
-            if figur.art=="laeufer":
-                zuege_laeufer_weiß(figur)
-                if moegliche_ziele[1]["x"]!="none":
-                    break
-                setzeZieleAufNull()
-            if figur.art=="turm":
-                zuege_turm_weiß(figur)
-                if moegliche_ziele[1]["x"]!="none":
-                    break
-                setzeZieleAufNull()
-            if figur.art=="koenig":
-                zuege_koenig_weiß(figur)
-                if moegliche_ziele[1]["x"]!="none":
-                    break
-                setzeZieleAufNull()
-            if figur.art=="dame":
-                zuege_dame_weiß(figur)
-                if moegliche_ziele[1]["x"]!="none":
-                    break
-                setzeZieleAufNull()
-        print("ScHaChMaTt")
 
 def schachSchwarzBerechnen(felder_kopie):
     global schachSchwarz
@@ -2134,5 +2101,4 @@ def figuren_plazieren():
             felder[i]["figure"].place(x=felder[i]["x"], y=felder[i]["y"])
 
 figuren_plazieren()
-
 fenster.mainloop()
