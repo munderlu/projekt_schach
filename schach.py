@@ -679,7 +679,7 @@ def schachSchwarzBerechnen(felder_kopie):
                     XKönig=felder_kopie[i]["x"]
                     YKönig=felder_kopie[i]["y"]
     for i in moegliche_züge:
-        if moegliche_züge[i]["x"]==XKönig and moegliche_züge[i]["y"]==YKönig:
+        if i["x"]==XKönig and i["y"]==YKönig:
             schachSchwarz=True
 
 def setzeZieleAufNull():
@@ -771,19 +771,39 @@ def zuege_bauer_schwarz(figur):
                 global aktuelle_figur
                 aktuelle_figur=figur
                 if felder[i-8]["figure"]=="none":
-                    moegliche_ziele[1]["x"]=felder[i]["x"]
-                    moegliche_ziele[1]["y"]=felder[i]["y"]+47
+                    felder_kopie=felder_kopie_ausgeben()
+                    felder_kopie[i]["figure"]="none"
+                    felder_kopie[i-8]["figure"]=figur
+                    schachSchwarzBerechnen(felder_kopie)
+                    if schachSchwarz==False:
+                        moegliche_ziele[1]["x"]=felder[i]["x"]
+                        moegliche_ziele[1]["y"]=felder[i]["y"]+47
                 if felder[i]["y"]==97 and felder[i-8]["figure"]=="none" and felder[i-16]["figure"]=="none":
-                    moegliche_ziele[2]["x"]=felder[i]["x"]
-                    moegliche_ziele[2]["y"]=191
+                    felder_kopie=felder_kopie_ausgeben()
+                    felder_kopie[i]["figure"]="none"
+                    felder_kopie[i-16]["figure"]=figur
+                    schachSchwarzBerechnen(felder_kopie)
+                    if schachSchwarz==False:
+                        moegliche_ziele[2]["x"]=felder[i]["x"]
+                        moegliche_ziele[2]["y"]=191
                 if felder[i]["x"]!=50:
                     if felder[i-9]["figure"]!="none"and felder[i-9]["figure"].farbe=="weiß":
-                        moegliche_ziele[3]["x"]=felder[i]["x"]-47
-                        moegliche_ziele[3]["y"]=felder[i]["y"]+47
+                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie[i]["figure"]="none"
+                        felder_kopie[i-9]["figure"]=figur
+                        schachSchwarzBerechnen(felder_kopie)
+                        if schachSchwarz==False:
+                            moegliche_ziele[3]["x"]=felder[i]["x"]-47
+                            moegliche_ziele[3]["y"]=felder[i]["y"]+47
                 if felder[i]["x"]!=379:
                     if felder[i-7]["figure"]!="none"and felder[i-7]["figure"].farbe=="weiß":
-                        moegliche_ziele[4]["x"]=felder[i]["x"]+47
-                        moegliche_ziele[4]["y"]=felder[i]["y"]+47
+                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie[i]["figure"]="none"
+                        felder_kopie[i-7]["figure"]=figur
+                        schachSchwarzBerechnen(felder_kopie)
+                        if schachSchwarz==False:
+                            moegliche_ziele[4]["x"]=felder[i]["x"]+47
+                            moegliche_ziele[4]["y"]=felder[i]["y"]+47
         punkte_auswählen()
         punkte_plazieren() 
 
@@ -870,8 +890,13 @@ def zuege_turm_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
-                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[k]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                                moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
@@ -882,8 +907,13 @@ def zuege_turm_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
-                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[k]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                                moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
@@ -894,8 +924,13 @@ def zuege_turm_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
-                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[k]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                                moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
@@ -906,8 +941,13 @@ def zuege_turm_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
-                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[k]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                                moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
@@ -974,36 +1014,76 @@ def zuege_springer_schwarz(figur):
                 for j in felder:
                     if felder[j]["y"]==figurY-2*47 and felder[j]["x"]==figurX+47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
-                            moegliche_ziele[1]["x"]=felder[j]["x"]
-                            moegliche_ziele[1]["y"]=felder[j]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[j]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[1]["x"]=felder[j]["x"]
+                                moegliche_ziele[1]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY-2*47 and felder[j]["x"]==figurX-47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
-                            moegliche_ziele[2]["x"]=felder[j]["x"]
-                            moegliche_ziele[2]["y"]=felder[j]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[j]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[2]["x"]=felder[j]["x"]
+                                moegliche_ziele[2]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX+2*47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
-                            moegliche_ziele[3]["x"]=felder[j]["x"]
-                            moegliche_ziele[3]["y"]=felder[j]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[j]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[3]["x"]=felder[j]["x"]
+                                moegliche_ziele[3]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX+2*47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
-                            moegliche_ziele[4]["x"]=felder[j]["x"]
-                            moegliche_ziele[4]["y"]=felder[j]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[j]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[4]["x"]=felder[j]["x"]
+                                moegliche_ziele[4]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX+47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
-                            moegliche_ziele[5]["x"]=felder[j]["x"]
-                            moegliche_ziele[5]["y"]=felder[j]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[j]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[5]["x"]=felder[j]["x"]
+                                moegliche_ziele[5]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX-47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
-                            moegliche_ziele[6]["x"]=felder[j]["x"]
-                            moegliche_ziele[6]["y"]=felder[j]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[j]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[6]["x"]=felder[j]["x"]
+                                moegliche_ziele[6]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX-2*47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
-                            moegliche_ziele[7]["x"]=felder[j]["x"]
-                            moegliche_ziele[7]["y"]=felder[j]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[j]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[7]["x"]=felder[j]["x"]
+                                moegliche_ziele[7]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX-2*47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiß":
-                            moegliche_ziele[8]["x"]=felder[j]["x"]
-                            moegliche_ziele[8]["y"]=felder[j]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[j]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[8]["x"]=felder[j]["x"]
+                                moegliche_ziele[8]["y"]=felder[j]["y"]
             punkte_auswählen()
             punkte_plazieren()
 
@@ -1090,8 +1170,13 @@ def zuege_laeufer_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
-                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[k]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                                moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
@@ -1102,8 +1187,13 @@ def zuege_laeufer_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
-                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[k]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                                moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
@@ -1114,8 +1204,13 @@ def zuege_laeufer_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
-                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[k]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                                moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
@@ -1126,8 +1221,13 @@ def zuege_laeufer_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
-                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[k]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                                moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
@@ -1241,8 +1341,13 @@ def zuege_koenig_schwarz(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiß":
                                 break
-                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie[i]["figure"]="none"
+                        felder_kopie[k]["figure"]=figur
+                        schachSchwarzBerechnen(felder_kopie)
+                        if schachSchwarz==False:
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                         zählvariable+=1
                         break
                 for k in felder:
@@ -1250,8 +1355,13 @@ def zuege_koenig_schwarz(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiß":
                                 break
-                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie[i]["figure"]="none"
+                        felder_kopie[k]["figure"]=figur
+                        schachSchwarzBerechnen(felder_kopie)
+                        if schachSchwarz==False:
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                         zählvariable+=1
                         break
                 for k in felder:
@@ -1259,8 +1369,13 @@ def zuege_koenig_schwarz(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiß":
                                 break
-                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie[i]["figure"]="none"
+                        felder_kopie[k]["figure"]=figur
+                        schachSchwarzBerechnen(felder_kopie)
+                        if schachSchwarz==False:
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                         zählvariable+=1
                         break
                 for k in felder:
@@ -1268,8 +1383,13 @@ def zuege_koenig_schwarz(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiß":
                                 break
-                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie[i]["figure"]="none"
+                        felder_kopie[k]["figure"]=figur
+                        schachSchwarzBerechnen(felder_kopie)
+                        if schachSchwarz==False:
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                         zählvariable+=1
                         break
                 for k in felder:
@@ -1277,8 +1397,13 @@ def zuege_koenig_schwarz(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiß":
                                 break
-                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie[i]["figure"]="none"
+                        felder_kopie[k]["figure"]=figur
+                        schachSchwarzBerechnen(felder_kopie)
+                        if schachSchwarz==False:
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                         zählvariable+=1
                         break
                 for k in felder:
@@ -1286,8 +1411,13 @@ def zuege_koenig_schwarz(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiß":
                                 break
-                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie[i]["figure"]="none"
+                        felder_kopie[k]["figure"]=figur
+                        schachSchwarzBerechnen(felder_kopie)
+                        if schachSchwarz==False:
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                         zählvariable+=1
                         break
                 for k in felder:
@@ -1295,8 +1425,13 @@ def zuege_koenig_schwarz(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiß":
                                 break
-                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie[i]["figure"]="none"
+                        felder_kopie[k]["figure"]=figur
+                        schachSchwarzBerechnen(felder_kopie)
+                        if schachSchwarz==False:
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                         zählvariable+=1
                         break
                 for k in felder:
@@ -1304,8 +1439,13 @@ def zuege_koenig_schwarz(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiß":
                                 break
-                        moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                        moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie[i]["figure"]="none"
+                        felder_kopie[k]["figure"]=figur
+                        schachSchwarzBerechnen(felder_kopie)
+                        if schachSchwarz==False:
+                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                         zählvariable+=1
                         break
         punkte_auswählen()
@@ -1442,8 +1582,13 @@ def zuege_dame_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
-                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[k]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                                moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
@@ -1454,8 +1599,13 @@ def zuege_dame_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
-                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[k]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                                moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
@@ -1466,8 +1616,13 @@ def zuege_dame_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
-                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[k]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                                moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
@@ -1478,8 +1633,13 @@ def zuege_dame_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
-                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[k]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                                moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
@@ -1490,8 +1650,13 @@ def zuege_dame_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
-                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[k]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                                moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
@@ -1502,8 +1667,13 @@ def zuege_dame_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
-                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[k]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                                moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
@@ -1514,8 +1684,13 @@ def zuege_dame_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
-                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[k]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                                moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
@@ -1526,8 +1701,13 @@ def zuege_dame_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiß":
                                     break
-                            moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
-                            moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
+                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie[i]["figure"]="none"
+                            felder_kopie[k]["figure"]=figur
+                            schachSchwarzBerechnen(felder_kopie)
+                            if schachSchwarz==False:
+                                moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
+                                moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                             zählvariable+=1
                             break
                     if felder[k]["figure"]!="none":
