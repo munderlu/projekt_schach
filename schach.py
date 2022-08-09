@@ -1,4 +1,3 @@
-from glob import glob
 from tkinter import *
 from PIL import ImageTk, Image
 import copy
@@ -914,7 +913,7 @@ def zuege_turm_weiß(figur):
                                     break
                             felder_kopie=felder_kopie_ausgeben()
                             felder_kopie[i]["figure"]="none"
-                            felder_kopie[i+8]["figure"]=figur
+                            felder_kopie[k]["figure"]=figur
                             schachWeißBerechnen(felder_kopie)
                             if schachWeiß==False:
                                 moegliche_ziele[zählvariable]["x"]=felder[k]["x"]
