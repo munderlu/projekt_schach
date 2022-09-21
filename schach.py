@@ -13,6 +13,7 @@ aktuelle_figur="none"
 schachWeiß=False
 schachSchwarz=False
 moegliche_züge=[]
+rochade={"turm1_w_gezogen": False, "turm2_w_gezogen": False, "koenig_w_gezogen":False, "turm1_s_gezogen": False, "turm2_s_gezogen": False, "koenig_s_gezogen": False}
 
 class Schachfigur(Button):
     farbe="?"
@@ -1561,6 +1562,52 @@ def zuege_koenig_weiß(figur):
                             moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                         zählvariable+=1
                         break
+                if rochade["koenig_w_gezogen"]==False and rochade["turm1_w_gezogen"]==False:
+                    rochadeGehtNicht=False
+                    if felder[2]["figure"]!="none":
+                        rochadeGehtNicht=True
+                    if felder[3]["figure"]!="none":
+                        rochadeGehtNicht=True
+                    if felder[4]["figure"]!="none":
+                        rochadeGehtNicht=True
+                    schachWeißeFigurBerechnen(felder)
+                    if schachWeiß==True:
+                        rochadeGehtNicht=True
+                    felder_kopie=felder_kopie_ausgeben()
+                    felder_kopie[5]["figure"]="none"
+                    felder_kopie[4]["figure"]=koenig_w
+                    schachWeißeFigurBerechnen(felder_kopie)
+                    if schachWeiß==True:
+                        rochadeGehtNicht=True
+                    felder_kopie[4]["figure"]="none"
+                    felder_kopie[3]["figure"]=koenig_w
+                    schachWeißeFigurBerechnen(felder_kopie)
+                    if schachWeiß==True:
+                        rochadeGehtNicht=True
+                    if rochadeGehtNicht==False:
+                        punkt_lange_rochade_weiß.place(x=144, y=379)
+                if rochade["koenig_w_gezogen"]==False and rochade["turm2_w_gezogen"]==False:
+                    rochadeGehtNicht=False
+                    if felder[7]["figure"]!="none":
+                        rochadeGehtNicht=True
+                    if felder[6]["figure"]!="none":
+                        rochadeGehtNicht=True
+                    schachWeißeFigurBerechnen(felder)
+                    if schachWeiß==True:
+                        rochadeGehtNicht=True
+                    felder_kopie=felder_kopie_ausgeben()
+                    felder_kopie[5]["figure"]="none"
+                    felder_kopie[6]["figure"]=koenig_w
+                    schachWeißeFigurBerechnen(felder_kopie)
+                    if schachWeiß==True:
+                        rochadeGehtNicht=True
+                    felder_kopie[6]["figure"]="none"
+                    felder_kopie[7]["figure"]=koenig_w
+                    schachWeißeFigurBerechnen(felder_kopie)
+                    if schachWeiß==True:
+                        rochadeGehtNicht=True
+                    if rochadeGehtNicht==False:
+                        punkt_kurze_rochade_weiß.place(x=332, y=379)
         punkte_auswählen()
         punkte_plazieren()
 
@@ -1689,6 +1736,52 @@ def zuege_koenig_schwarz(figur):
                             moegliche_ziele[zählvariable]["y"]=felder[k]["y"]
                         zählvariable+=1
                         break
+                if rochade["koenig_s_gezogen"]==False and rochade["turm1_s_gezogen"]==False:
+                    rochadeGehtNicht=False
+                    if felder[58]["figure"]!="none":
+                        rochadeGehtNicht=True
+                    if felder[59]["figure"]!="none":
+                        rochadeGehtNicht=True
+                    if felder[60]["figure"]!="none":
+                        rochadeGehtNicht=True
+                    schachSchwarzFigurBerechnen(felder)
+                    if schachSchwarz==True:
+                        rochadeGehtNicht=True
+                    felder_kopie=felder_kopie_ausgeben()
+                    felder_kopie[61]["figure"]="none"
+                    felder_kopie[60]["figure"]=koenig_s
+                    schachSchwarzFigurBerechnen(felder_kopie)
+                    if schachSchwarz==True:
+                        rochadeGehtNicht=True
+                    felder_kopie[60]["figure"]="none"
+                    felder_kopie[59]["figure"]=koenig_s
+                    schachSchwarzFigurBerechnen(felder_kopie)
+                    if schachSchwarz==True:
+                        rochadeGehtNicht=True
+                    if rochadeGehtNicht==False:
+                        punkt_lange_rochade_schwarz.place(x=144, y=50)
+                if rochade["koenig_s_gezogen"]==False and rochade["turm2_s_gezogen"]==False:
+                    rochadeGehtNicht=False
+                    if felder[63]["figure"]!="none":
+                        rochadeGehtNicht=True
+                    if felder[62]["figure"]!="none":
+                        rochadeGehtNicht=True
+                    schachSchwarzFigurBerechnen(felder)
+                    if schachSchwarz==True:
+                        rochadeGehtNicht=True
+                    felder_kopie=felder_kopie_ausgeben()
+                    felder_kopie[61]["figure"]="none"
+                    felder_kopie[62]["figure"]=koenig_s
+                    schachSchwarzFigurBerechnen(felder_kopie)
+                    if schachSchwarz==True:
+                        rochadeGehtNicht=True
+                    felder_kopie[62]["figure"]="none"
+                    felder_kopie[63]["figure"]=koenig_s
+                    schachSchwarzFigurBerechnen(felder_kopie)
+                    if schachSchwarz==True:
+                        rochadeGehtNicht=True
+                    if rochadeGehtNicht==False:
+                        punkt_kurze_rochade_schwarz.place(x=332, y=50)
         punkte_auswählen()
         punkte_plazieren()
 
@@ -1996,6 +2089,58 @@ def zuege_dame_schwarz(figur):
         punkte_auswählen()
         punkte_plazieren()
 
+def lange_rochade_machen_weiß():
+    global felder
+    global weristdran
+    weristdran="schwarz"
+    felder[5]["figure"]="none"
+    felder[4]["figure"]=turm1_w
+    felder[1]["figure"]="none"
+    felder[3]["figure"]=koenig_w
+    rochade["koenig_w_gezogen"]=True
+    figuren_plazieren()
+    for punkt in punkte:
+        punkt.place_forget()
+
+def kurze_rochade_machen_weiß():
+    global felder
+    global weristdran
+    weristdran="schwarz"
+    felder[5]["figure"]="none"
+    felder[6]["figure"]=turm2_w
+    felder[8]["figure"]="none"
+    felder[7]["figure"]=koenig_w
+    rochade["koenig_w_gezogen"]=True
+    figuren_plazieren()
+    for punkt in punkte:
+        punkt.place_forget()
+
+def lange_rochade_machen_schwarz():
+    global felder
+    global weristdran
+    weristdran="weiß"
+    felder[61]["figure"]="none"
+    felder[60]["figure"]=turm1_s
+    felder[57]["figure"]="none"
+    felder[59]["figure"]=koenig_s
+    rochade["koenig_s_gezogen"]=True
+    figuren_plazieren()
+    for punkt in punkte:
+        punkt.place_forget()
+
+def kurze_rochade_machen_schwarz():
+    global felder
+    global weristdran
+    weristdran="weiß"
+    felder[61]["figure"]="none"
+    felder[62]["figure"]=turm2_s
+    felder[64]["figure"]="none"
+    felder[63]["figure"]=koenig_s
+    rochade["koenig_s_gezogen"]=True
+    figuren_plazieren()
+    for punkt in punkte:
+        punkt.place_forget()
+
 #acht Bauern weiß
 bauer_w_bild=ImageTk.PhotoImage(Image.open("Bilder\Bauer_weiß.png"))
 bauer1_w=Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer1_w))
@@ -2130,6 +2275,7 @@ def figur_ziehen(xpos, ypos):
         punkte[i].place_forget()
     global felder
     global weristdran
+    global rochade
     for i in felder:
         if felder[i]["figure"]==aktuelle_figur:
             felder[i]["figure"]="none"
@@ -2139,6 +2285,18 @@ def figur_ziehen(xpos, ypos):
                 felder[i]["figure"].place_forget()
             felder[i]["figure"]=aktuelle_figur
             felder[i]["figure"].place(x=felder[i]["x"], y=felder[i]["y"])
+    if aktuelle_figur==turm1_w:
+        rochade["turm1_w_gezogen"]=True
+    if aktuelle_figur==turm2_w:
+        rochade["turm2_w_gezogen"]=True
+    if aktuelle_figur==turm1_s:
+        rochade["turm1_s_gezogen"]=True
+    if aktuelle_figur==turm2_s:
+        rochade["turm2_s_gezogen"]=True
+    if aktuelle_figur==koenig_w:
+        rochade["koenig_w_gezogen"]=True
+    if aktuelle_figur==koenig_s:
+        rochade["koenig_s_gezogen"]=True
     if weristdran=="schwarz":
         weristdran="weiß"
         schachWeißBerechnen()
@@ -2211,12 +2369,16 @@ punkt61=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(238
 punkt62=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(285, 379))
 punkt63=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(332, 379))
 punkt64=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(379, 379))
+punkt_lange_rochade_weiß=Button(rahmen, image=gruener_punkt_bild, command=lambda:lange_rochade_machen_weiß())
+punkt_kurze_rochade_weiß=Button(rahmen, image=gruener_punkt_bild, command=lambda:kurze_rochade_machen_weiß())
+punkt_lange_rochade_schwarz=Button(rahmen, image=gruener_punkt_bild, command=lambda:lange_rochade_machen_schwarz())
+punkt_kurze_rochade_schwarz=Button(rahmen, image=gruener_punkt_bild, command=lambda:kurze_rochade_machen_schwarz())
 
 roter_punkt_bild=ImageTk.PhotoImage(Image.open("Bilder\Roter_Punkt.png"))
 punkt_rot=Button(rahmen, image=roter_punkt_bild)
 
 felder={1:{"x":50, "y":379,"figure":turm1_w},2:{"x":97, "y":379,"figure":springer1_w},3:{"x":144, "y":379,"figure":laeufer1_w },4:{"x":191, "y":379,"figure":dame_w},5:{"x":238, "y":379,"figure":koenig_w},6:{"x":285, "y":379,"figure":laeufer2_w},7:{"x":332, "y":379,"figure":springer2_w},8:{"x":379, "y":379,"figure":turm2_w},9:{"x":50, "y":332,"figure":bauer1_w},10:{"x":97, "y":332,"figure":bauer2_w},11:{"x":144, "y":332,"figure":bauer3_w},12:{"x":191, "y":332,"figure":bauer4_w},13:{"x":238, "y":332,"figure":bauer5_w},14:{"x":285, "y":332,"figure":bauer6_w},15:{"x":332, "y":332,"figure":bauer7_w},16:{"x":379, "y":332,"figure":bauer8_w},17:{"x":50, "y":285,"figure":"none"},18:{"x":97, "y":285,"figure":"none"},19:{"x":144, "y":285,"figure":"none"},20:{"x":191, "y":285,"figure":"none"},21:{"x":238, "y":285,"figure":"none"},22:{"x":285, "y":285,"figure":"none"},23:{"x":332, "y":285,"figure":"none"},24:{"x":379, "y":285,"figure":"none"},25:{"x":50, "y":238,"figure":"none"},26:{"x":97, "y":238,"figure":"none"},27:{"x":144, "y":238,"figure":"none"},28:{"x":191, "y":238,"figure":"none"},29:{"x":238, "y":238,"figure":"none"},30:{"x":285, "y":238,"figure":"none"},31:{"x":332, "y":238,"figure":"none"},32:{"x":379, "y":238,"figure":"none"},33:{"x":50, "y":191,"figure":"none"},34:{"x":97, "y":191,"figure":"none"},35:{"x":144, "y":191,"figure":"none"},36:{"x":191, "y":191,"figure":"none"},37:{"x":238, "y":191,"figure":"none"},38:{"x":285, "y":191,"figure":"none"},39:{"x":332, "y":191,"figure":"none"},40:{"x":379, "y":191,"figure":"none"},41:{"x":50, "y":144,"figure":"none"},42:{"x":97, "y":144,"figure":"none"},43:{"x":144, "y":144,"figure":"none"},44:{"x":191, "y":144,"figure":"none"},45:{"x":238, "y":144,"figure":"none"},46:{"x":285, "y":144,"figure":"none"},47:{"x":332, "y":144,"figure":"none"},48:{"x":379, "y":144,"figure":"none"},49:{"x":50, "y":97,"figure":bauer1_s},50:{"x":97, "y":97,"figure":bauer2_s},51:{"x":144, "y":97,"figure":bauer3_s},52:{"x":191, "y":97,"figure":bauer4_s},53:{"x":238, "y":97,"figure":bauer5_s},54:{"x":285, "y":97,"figure":bauer6_s},55:{"x":332, "y":97,"figure":bauer7_s},56:{"x":379, "y":97,"figure":bauer8_s},57:{"x":50, "y":50,"figure":turm1_s},58:{"x":97, "y":50,"figure":springer1_s},59:{"x":144, "y":50,"figure":laeufer1_s},60:{"x":191, "y":50,"figure":dame_s},61:{"x":238, "y":50,"figure":koenig_s},62:{"x":285, "y":50,"figure":laeufer2_s},63:{"x":332, "y":50,"figure":springer2_s},64:{"x":379, "y":50,"figure":turm2_s}}
-punkte=[punkt1, punkt2, punkt3, punkt4, punkt5, punkt6, punkt7, punkt8, punkt9, punkt10, punkt11, punkt12, punkt13, punkt14, punkt15, punkt16, punkt17, punkt18, punkt19, punkt20, punkt21, punkt22, punkt23, punkt24, punkt25, punkt26, punkt27, punkt28, punkt29, punkt30, punkt31, punkt32, punkt33, punkt34, punkt35, punkt36, punkt37, punkt38, punkt39, punkt40, punkt41, punkt42, punkt43, punkt44, punkt45, punkt46, punkt47, punkt48, punkt49, punkt50, punkt51, punkt52, punkt53, punkt54, punkt55, punkt56, punkt57, punkt58, punkt59, punkt60, punkt61, punkt62, punkt63, punkt64]
+punkte=[punkt1, punkt2, punkt3, punkt4, punkt5, punkt6, punkt7, punkt8, punkt9, punkt10, punkt11, punkt12, punkt13, punkt14, punkt15, punkt16, punkt17, punkt18, punkt19, punkt20, punkt21, punkt22, punkt23, punkt24, punkt25, punkt26, punkt27, punkt28, punkt29, punkt30, punkt31, punkt32, punkt33, punkt34, punkt35, punkt36, punkt37, punkt38, punkt39, punkt40, punkt41, punkt42, punkt43, punkt44, punkt45, punkt46, punkt47, punkt48, punkt49, punkt50, punkt51, punkt52, punkt53, punkt54, punkt55, punkt56, punkt57, punkt58, punkt59, punkt60, punkt61, punkt62, punkt63, punkt64, punkt_lange_rochade_weiß, punkt_kurze_rochade_weiß, punkt_kurze_rochade_schwarz, punkt_lange_rochade_schwarz]
 alle_figuren=[bauer1_w, bauer2_w, bauer3_w, bauer4_w, bauer5_w, bauer6_w, bauer7_w, bauer8_w, turm1_w, turm2_w, springer1_w, springer2_w, laeufer1_w, laeufer2_w, koenig_w, dame_w, bauer1_s, bauer2_s, bauer3_s, bauer4_s, bauer5_s, bauer6_s, bauer7_s, bauer8_s, turm1_s, turm2_s, springer1_s, springer2_s, laeufer1_s, laeufer2_s, koenig_s, dame_s]
 
 def figuren_plazieren():
