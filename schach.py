@@ -703,34 +703,40 @@ def schachWeißBerechnen():
         if figur.farbe=="weiß":
             if figur.art=="bauer":
                 zuege_bauer_weiß(figur)
-                if moegliche_ziele[1]["x"]!="none":
-                    schachMatt=False
-                    break
+                for i in moegliche_ziele:
+                    if moegliche_ziele[i]["x"]!="none":
+                        schachMatt=False
+                        break
             if figur.art=="turm":
                 zuege_turm_weiß(figur)
-                if moegliche_ziele[1]["x"]!="none":
-                    schachMatt=False
-                    break
+                for i in moegliche_ziele:
+                    if moegliche_ziele[i]["x"]!="none":
+                        schachMatt=False
+                        break
             if figur.art=="laeufer":
                 zuege_laeufer_weiß(figur)
-                if moegliche_ziele[1]["x"]!="none":
-                    schachMatt=False
-                    break
+                for i in moegliche_ziele:
+                    if moegliche_ziele[i]["x"]!="none":
+                        schachMatt=False
+                        break
             if figur.art=="dame":
                 zuege_dame_weiß(figur)
-                if moegliche_ziele[1]["x"]!="none":
-                    schachMatt=False
-                    break
+                for i in moegliche_ziele:
+                    if moegliche_ziele[i]["x"]!="none":
+                        schachMatt=False
+                        break
             if figur.art=="koenig":
                 zuege_koenig_weiß(figur)
-                if moegliche_ziele[1]["x"]!="none":
-                    schachMatt=False
-                    break
+                for i in moegliche_ziele:
+                    if moegliche_ziele[i]["x"]!="none":
+                        schachMatt=False
+                        break
             if figur.art=="springer":
                 zuege_springer_weiß(figur)
-                if moegliche_ziele[1]["x"]!="none":
-                    schachMatt=False
-                    break
+                for i in moegliche_ziele:
+                    if moegliche_ziele[i]["x"]!="none":
+                        schachMatt=False
+                        break
     for punkt in punkte:
         punkt.place_forget()
     if schachMatt:
@@ -757,34 +763,40 @@ def schachSchwarzBerechnen():
         if figur.farbe=="schwarz":
             if figur.art=="bauer":
                 zuege_bauer_schwarz(figur)
-                if moegliche_ziele[1]["x"]!="none":
-                    schachMatt=False
-                    break
+                for i in moegliche_ziele:
+                    if moegliche_ziele[i]["x"]!="none":
+                        schachMatt=False
+                        break
             if figur.art=="turm":
                 zuege_turm_schwarz(figur)
-                if moegliche_ziele[1]["x"]!="none":
-                    schachMatt=False
-                    break
+                for i in moegliche_ziele:
+                    if moegliche_ziele[i]["x"]!="none":
+                        schachMatt=False
+                        break
             if figur.art=="laeufer":
                 zuege_laeufer_schwarz(figur)
-                if moegliche_ziele[1]["x"]!="none":
-                    schachMatt=False
-                    break
+                for i in moegliche_ziele:
+                    if moegliche_ziele[i]["x"]!="none":
+                        schachMatt=False
+                        break
             if figur.art=="dame":
                 zuege_dame_schwarz(figur)
-                if moegliche_ziele[1]["x"]!="none":
-                    schachMatt=False
-                    break
+                for i in moegliche_ziele:
+                    if moegliche_ziele[i]["x"]!="none":
+                        schachMatt=False
+                        break
             if figur.art=="koenig":
                 zuege_koenig_schwarz(figur)
-                if moegliche_ziele[1]["x"]!="none":
-                    schachMatt=False
-                    break
+                for i in moegliche_ziele:
+                    if moegliche_ziele[i]["x"]!="none":
+                        schachMatt=False
+                        break
             if figur.art=="springer":
                 zuege_springer_schwarz(figur)
-                if moegliche_ziele[1]["x"]!="none":
-                    schachMatt=False
-                    break
+                for i in moegliche_ziele:
+                    if moegliche_ziele[i]["x"]!="none":
+                        schachMatt=False
+                        break
     for punkt in punkte:
         punkt.place_forget()
     if schachMatt:
