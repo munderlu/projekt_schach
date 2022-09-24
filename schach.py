@@ -2249,7 +2249,7 @@ def bauer_verwandeln_schwarz(aktuelle_figur, verwandel_figur, xpos, ypos):
             if i["x"]==xpos and i["y"]==ypos:
                 i["figure"]=verwandelte_figuren["laeufer_schwarz"][0]
         verwandelte_figuren["laeufer_schwarz"].popleft()
-    auswähl_fenster.destroy()
+    auswählfenster.destroy()
     
 def bauer_verwandeln_weiß(aktuelle_figur, verwandel_figur, xpos, ypos):
     global felder
@@ -2294,7 +2294,7 @@ def bauer_verwandeln_weiß(aktuelle_figur, verwandel_figur, xpos, ypos):
             if i["x"]==xpos and i["y"]==ypos:
                 i["figure"]=verwandelte_figuren["laeufer_weiß"][0]
         verwandelte_figuren["laeufer_weiß"].popleft()
-    auswähl_fenster.destroy()
+    auswählfenster.destroy()
             
            
 #acht Bauern weiß
