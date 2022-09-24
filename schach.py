@@ -2141,6 +2141,95 @@ def kurze_rochade_machen_schwarz():
     for punkt in punkte:
         punkt.place_forget()
 
+def bauer_verwandeln_schwarz(aktuelle_figur, verwandel_figur, xpos, ypos):
+    global felder
+    global verwandelte_figuren
+    if verwandel_figur=="dame":
+        verwandelte_figuren["damen_schwarz"][0]["image"]=dame_s_bild
+        verwandelte_figuren["damen_schwarz"][0]["command"]=lambda:zuege_dame_schwarz(verwandelte_figuren["damen_schwarz"][0])
+        verwandelte_figuren["damen_schwarz"][0].place(x=xpos, y=ypos)
+        aktuelle_figur.place_forget()
+        alle_figuren.append(verwandelte_figuren["damen_schwarz"][0])
+        for i in felder:
+            if i["x"]==xpos and i["y"]==ypos:
+                i["figure"]=verwandelte_figuren["damen_schwarz"][0]
+        verwandelte_figuren["damen_schwarz"].popleft()
+    if verwandel_figur=="turm":
+        verwandelte_figuren["tuerme_schwarz"][0]["image"]=turm_s_bild
+        verwandelte_figuren["tuerme_schwarz"][0]["command"]=lambda:zuege_turm_schwarz(verwandelte_figuren["tuerme_schwarz"][0])
+        verwandelte_figuren["tuerme_schwarz"][0].place(x=xpos, y=ypos)
+        aktuelle_figur.place_forget()
+        alle_figuren.append(verwandelte_figuren["tuerme_schwarz"][0])
+        for i in felder:
+            if i["x"]==xpos and i["y"]==ypos:
+                i["figure"]=verwandelte_figuren["tuerme_schwarz"][0]
+        verwandelte_figuren["tuerme_schwarz"].popleft()
+    if verwandel_figur=="springer":
+        verwandelte_figuren["springer_schwarz"][0]["image"]=springer_s_bild
+        verwandelte_figuren["springer_schwarz"][0]["command"]=lambda:zuege_springer_schwarz(verwandelte_figuren["springer_schwarz"][0])
+        verwandelte_figuren["springer_schwarz"][0].place(x=xpos, y=ypos)
+        aktuelle_figur.place_forget()
+        alle_figuren.append(verwandelte_figuren["springer_schwarz"][0])
+        for i in felder:
+            if i["x"]==xpos and i["y"]==ypos:
+                i["figure"]=verwandelte_figuren["springer_schwarz"][0]
+        verwandelte_figuren["springer_schwarz"].popleft()
+    if verwandel_figur=="laeufer":
+        verwandelte_figuren["laeufer_schwarz"][0]["image"]=laeufer_s_bild
+        verwandelte_figuren["laeufer_schwarz"][0]["command"]=lambda:zuege_laeufer_schwarz(verwandelte_figuren["laeufer_schwarz"][0])
+        verwandelte_figuren["laeufer_schwarz"][0].place(x=xpos, y=ypos)
+        aktuelle_figur.place_forget()
+        alle_figuren.append(verwandelte_figuren["laeufer_schwarz"][0])
+        for i in felder:
+            if i["x"]==xpos and i["y"]==ypos:
+                i["figure"]=verwandelte_figuren["laeufer_schwarz"][0]
+        verwandelte_figuren["laeufer_schwarz"].popleft()
+    
+def bauer_verwandeln_weiß(aktuelle_figur, verwandel_figur):
+    global felder
+    global verwandelte_figuren
+    if verwandel_figur=="dame":
+        verwandelte_figuren["damen_weiß"][0]["image"]=dame_s_bild
+        verwandelte_figuren["damen_weiß"][0]["command"]=lambda:zuege_dame_weiß(verwandelte_figuren["damen_weiß"][0])
+        verwandelte_figuren["damen_weiß"][0].place(x=xpos, y=ypos)
+        aktuelle_figur.place_forget()
+        alle_figuren.append(verwandelte_figuren["damen_weiß"][0])
+        for i in felder:
+            if i["x"]==xpos and i["y"]==ypos:
+                i["figure"]=verwandelte_figuren["damen_weiß"][0]
+        verwandelte_figuren["damen_weiß"].popleft()
+    if verwandel_figur=="turm":
+        verwandelte_figuren["tuerme_weiß"][0]["image"]=turm_s_bild
+        verwandelte_figuren["tuerme_weiß"][0]["command"]=lambda:zuege_turm_weiß(verwandelte_figuren["tuerme_weiß"][0])
+        verwandelte_figuren["tuerme_weiß"][0].place(x=xpos, y=ypos)
+        aktuelle_figur.place_forget()
+        alle_figuren.append(verwandelte_figuren["tuerme_weiß"][0])
+        for i in felder:
+            if i["x"]==xpos and i["y"]==ypos:
+                i["figure"]=verwandelte_figuren["tuerme_weiß"][0]
+        verwandelte_figuren["tuerme_weiß"].popleft()
+    if verwandel_figur=="springer":
+        verwandelte_figuren["springer_weiß"][0]["image"]=springer_s_bild
+        verwandelte_figuren["springer_weiß"][0]["command"]=lambda:zuege_springer_weiß(verwandelte_figuren["springer_weiß"][0])
+        verwandelte_figuren["springer_weiß"][0].place(x=xpos, y=ypos)
+        aktuelle_figur.place_forget()
+        alle_figuren.append(verwandelte_figuren["springer_weiß"][0])
+        for i in felder:
+            if i["x"]==xpos and i["y"]==ypos:
+                i["figure"]=verwandelte_figuren["springer_weiß"][0]
+        verwandelte_figuren["springer_weiß"].popleft()
+    if verwandel_figur=="laeufer":
+        verwandelte_figuren["laeufer_weiß"][0]["image"]=laeufer_s_bild
+        verwandelte_figuren["laeufer_weiß"][0]["command"]=lambda:zuege_laeufer_weiß(verwandelte_figuren["laeufer_weiß"][0])
+        verwandelte_figuren["laeufer_weiß"][0].place(x=xpos, y=ypos)
+        aktuelle_figur.place_forget()
+        alle_figuren.append(verwandelte_figuren["laeufer_weiß"][0])
+        for i in felder:
+            if i["x"]==xpos and i["y"]==ypos:
+                i["figure"]=verwandelte_figuren["laeufer_weiß"][0]
+        verwandelte_figuren["laeufer_weiß"].popleft()
+            
+           
 #acht Bauern weiß
 bauer_w_bild=ImageTk.PhotoImage(Image.open("Bilder\Bauer_weiß.png"))
 bauer1_w=Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiß(bauer1_w))
@@ -2303,6 +2392,94 @@ def figur_ziehen(xpos, ypos):
     else:
         weristdran="schwarz"
         schachSchwarzBerechnen()
+    if aktuelle_figur.art=="bauer" and ypos==379:
+        auswählfenster=Tk()
+        auswahlDame=Button(auswählfenster, image=dame_s_bild, command=lambda:bauer_verwandeln_schwarz(aktuelle_figur, "dame", xpos, ypos))
+        auswahlTurm=Button(auswählfenster, image=turm_s_bild, command=lambda:bauer_verwandeln_schwarz(aktuelle_figur, "turm", xpos, ypos))
+        auswahlLaeufer=Button(auswählfenster, image=laeufer_s_bild, command=lambda:bauer_verwandeln_schwarz(aktuelle_figur, "laeufer", xpos, ypos))
+        auswahlSpringer=Button(auswählfenster, image=springer_s_bild, command=lambda:bauer_verwandeln_schwarz(aktuelle_figur, "springer", xpos, ypos))
+        auswahlDame.pack()
+        auswahlTurm.pack()
+        auswahlLaeufer.pack()
+        auswahlSpringer.pack()
+        auswählfenster.mainloop()
+    if aktuelle_figur.art=="bauer" and ypos==50:
+        auswählfenster=Tk()
+        auswahlDame=Button(auswählfenster, image=dame_w_bild, command=lambda:bauer_verwandeln_weiß(aktuelle_figur, "dame", xpos, ypos))
+        auswahlTurm=Button(auswählfenster, image=turm_w_bild, command=lambda:bauer_verwandeln_weiß(aktuelle_figur, "turm", xpos, ypos))
+        auswahlLaeufer=Button(auswählfenster, image=laeufer_w_bild, command=lambda:bauer_verwandeln_weiß(aktuelle_figur, "laeufer", xpos, ypos))
+        auswahlSpringer=Button(auswählfenster, image=springer_w_bild, command=lambda:bauer_verwandeln_weiß(aktuelle_figur, "springer", xpos, ypos))
+        auswahlDame.pack()
+        auswahlTurm.pack()
+        auswahlLaeufer.pack()
+        auswahlSpringer.pack()
+        auswählfenster.mainloop()
+
+dame2_s=Button(fenster, rahmen)
+dame3_s=Button(fenster, rahmen)
+dame4_s=Button(fenster, rahmen)
+dame5_s=Button(fenster, rahmen)
+dame6_s=Button(fenster, rahmen)
+dame7_s=Button(fenster, rahmen)
+dame8_s=Button(fenster, rahmen)
+dame9_s=Button(fenster, rahmen)
+dame2_w=Button(fenster, rahmen)
+dame3_w=Button(fenster, rahmen)
+dame4_w=Button(fenster, rahmen)
+dame5_w=Button(fenster, rahmen)
+dame6_w=Button(fenster, rahmen)
+dame7_w=Button(fenster, rahmen)
+dame8_w=Button(fenster, rahmen)
+dame9_w=Button(fenster, rahmen)
+turm3_s=Button(fenster, rahmen)
+turm4_s=Button(fenster, rahmen)
+turm5_s=Button(fenster, rahmen)
+turm6_s=Button(fenster, rahmen)
+turm7_s=Button(fenster, rahmen)
+turm8_s=Button(fenster, rahmen)
+turm9_s=Button(fenster, rahmen)
+turm10_s=Button(fenster, rahmen)
+turm3_w=Button(fenster, rahmen)
+turm4_w=Button(fenster, rahmen)
+turm5_w=Button(fenster, rahmen)
+turm6_w=Button(fenster, rahmen)
+turm7_w=Button(fenster, rahmen)
+turm8_w=Button(fenster, rahmen)
+turm9_w=Button(fenster, rahmen)
+turm10_w=Button(fenster, rahmen)
+laeufer3_s=Button(fenster, rahmen)
+laeufer4_s=Button(fenster, rahmen)
+laeufer5_s=Button(fenster, rahmen)
+laeufer6_s=Button(fenster, rahmen)
+laeufer7_s=Button(fenster, rahmen)
+laeufer8_s=Button(fenster, rahmen)
+laeufer9_s=Button(fenster, rahmen)
+laeufer10_s=Button(fenster, rahmen)
+laeufer3_w=Button(fenster, rahmen)
+laeufer4_w=Button(fenster, rahmen)
+laeufer5_w=Button(fenster, rahmen)
+laeufer6_w=Button(fenster, rahmen)
+laeufer7_w=Button(fenster, rahmen)
+laeufer8_w=Button(fenster, rahmen)
+laeufer9_w=Button(fenster, rahmen)
+laeufer10_w=Button(fenster, rahmen)
+springer3_s=Button(fenster, rahmen)
+springer4_s=Button(fenster, rahmen)
+springer5_s=Button(fenster, rahmen)
+springer6_s=Button(fenster, rahmen)
+springer7_s=Button(fenster, rahmen)
+springer8_s=Button(fenster, rahmen)
+springer9_s=Button(fenster, rahmen)
+springer10_s=Button(fenster, rahmen)
+springer3_w=Button(fenster, rahmen)
+springer4_w=Button(fenster, rahmen)
+springer5_w=Button(fenster, rahmen)
+springer6_w=Button(fenster, rahmen)
+springer7_w=Button(fenster, rahmen)
+springer8_w=Button(fenster, rahmen)
+springer9_w=Button(fenster, rahmen)
+springer10_w=Button(fenster, rahmen)
+verwandelte_figuren={"damen_schwarz":[dame2_s, dame3_s, dame4_s, dame5_s, dame6_s, dame7_s, dame8_s, dame9_s], "damen_weiß":[dame2_w, dame3_w, dame4_w, dame5_w, dame6_w, dame7_w, dame8_w, dame9_w], "tuerme_schwarz":[turm3_s, turm4_s, turm5_s, turm6_s, turm7_s, turm8_s, turm9_s, turm10_s], "tuerme_weiß":[turm3_w, turm4_w, turm5_w, turm6_w, turm7_w, turm8_w, turm9_w, turm10_w], "laeufer_schwarz":[laeufer3_s, laeufer4_s, laeufer5_s, laeufer6_s, laeufer7_s, laeufer8_s, laeufer9_s, laeufer10_s], "laeufer_schwarz":[laeufer3_w, laeufer4_w, laeufer5_w, laeufer6_w, laeufer7_w, laeufer8_w, laeufer9_w, laeufer10_w], "springer_schwarz":[springer3_s, springer4_s, springer5_s, springer6_s, springer7_s, springer8_s, springer9_s, springer10_s], "springer_weiß":[springer3_w, springer4_w, springer5_w, springer6_w, springer7_w, springer8_w, springer9_w, springer10_w]}
 
 gruener_punkt_bild=ImageTk.PhotoImage(Image.open("Bilder\Gruener_Punkt.png"))
 punkt1=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(50, 50))
