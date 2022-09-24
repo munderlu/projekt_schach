@@ -2185,7 +2185,7 @@ def bauer_verwandeln_schwarz(aktuelle_figur, verwandel_figur, xpos, ypos):
                 i["figure"]=verwandelte_figuren["laeufer_schwarz"][0]
         verwandelte_figuren["laeufer_schwarz"].popleft()
     
-def bauer_verwandeln_weiß(aktuelle_figur, verwandel_figur):
+def bauer_verwandeln_weiß(aktuelle_figur, verwandel_figur, xpos, ypos):
     global felder
     global verwandelte_figuren
     if verwandel_figur=="dame":
