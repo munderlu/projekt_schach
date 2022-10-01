@@ -778,7 +778,8 @@ def schachSchwarzFigurBerechnen(felder_kopie):
 
 def schachWeissBerechnen():
     punkt_rot.place_forget()
-    global schachWeiss
+    NeuesSchachWeiß=False
+    schachWeiss=False
     global moegliche_zuege
     schachMatt=True
     alleZuegeBerechnenSchwarz(felder)
@@ -790,7 +791,7 @@ def schachWeissBerechnen():
                     YKönig=felder[i]["y"]
     for i in moegliche_zuege:
         if i["x"]==XKönig and i["y"]==YKönig:
-            schachWeiss=True
+            NeuesSchachWeiss=True
             punkt_rot.place(x=XKönig, y=YKönig)
     for figur in alle_figuren:
         if figur.farbe=="weiss":
@@ -832,13 +833,18 @@ def schachWeissBerechnen():
                         break
     for punkt in punkte:
         punkt.place_forget()
-    if schachMatt:
+    if schachMatt==True and NeuesSchachWeiss==False:
+        print(schachWeiss, schachMatt, "patt")
+        schrift=Label(text="Patt:\nunentschieden", font="Arial, 30")
+        schrift.place(x=100, y=200)
+    elif schachMatt==True and NeuesSchachWeiss==True:
+        print(schachWeiss, schachMatt, "schachmatt")
         schrift=Label(text="Schach Matt:\nschwarz gewinnt", font="Arial, 30")
         schrift.place(x=100, y=200)
 
 def schachSchwarzBerechnen():
     punkt_rot.place_forget()
-    global schachSchwarz
+    NeuesSchachSchwarz=False
     global moegliche_zuege
     schachMatt=True
     alleZuegeBerechnenWeiss(felder)
@@ -850,7 +856,7 @@ def schachSchwarzBerechnen():
                     YKönig=felder[i]["y"]
     for i in moegliche_zuege:
         if i["x"]==XKönig and i["y"]==YKönig:
-            schachSchwarz=True
+            NeuesNchachSchwarz=True
             punkt_rot.place(x=XKönig, y=YKönig)
     for figur in alle_figuren:
         if figur.farbe=="schwarz":
@@ -892,7 +898,12 @@ def schachSchwarzBerechnen():
                         break
     for punkt in punkte:
         punkt.place_forget()
-    if schachMatt:
+    if schachMatt==True and NeuesSchachSchwarz==False:
+        print(schachSchwarz, schachMatt, "patt")
+        schrift=Label(text="Patt:\nunentschieden", font="Arial, 30")
+        schrift.place(x=100, y=200)
+    elif schachMatt==True and NeuesSchachSchwarz==True:
+        print(schachSchwarz, schachMatt, "schachmatt")
         schrift=Label(text="Schach Matt:\nweiss gewinnt", font="Arial, 30")
         schrift.place(x=100, y=200)
 
@@ -2332,6 +2343,7 @@ def bauer_verwandeln_schwarz(aktuelle_figur, verwandel_figur, xpos, ypos):
                 felder[i]["figure"]=verwandelte_figuren["laeufer_schwarz"][0]
         verwandelte_figuren["laeufer_schwarz"].pop(0)
     weristdran="weiss"
+    schachWeissBerechnen()
     auswahlDame.place_forget()
     auswahlTurm.place_forget()
     auswahlLaeufer.place_forget()
@@ -2390,6 +2402,7 @@ def bauer_verwandeln_weiss(aktuelle_figur, verwandel_figur, xpos, ypos):
                 felder[i]["figure"]=verwandelte_figuren["laeufer_weiss"][0]
         verwandelte_figuren["laeufer_weiss"].pop(0)
     weristdran="schwarz"
+    schachSchwarzBerechnen()
     auswahlDame.place_forget()
     auswahlTurm.place_forget()
     auswahlLaeufer.place_forget()
@@ -2592,15 +2605,17 @@ def figur_ziehen(xpos, ypos):
     if aktuelle_figur.art=="bauer" and aktuelle_figur.farbe=="weiss":
         if davory==191 and ypos==144 and (xpos==davorx+47 or xpos==davorx-47):
             for i in felder:
-                if felder[i]["y"]==davory and felder[i]["x"]==xpos:
-                    felder[i]["figure"].place_forget()
-                    felder[i]["figure"]="none"
+                if felder[i]["y"]==davory and felder[i]["x"]==xpos and felder[i]["figure"]!="none":
+                    if felder[i]["figure"].art=="bauer" and felder[i]["figure"].farbe=="schwarz":
+                        felder[i]["figure"].place_forget()
+                        felder[i]["figure"]="none"
     if aktuelle_figur.art=="bauer" and aktuelle_figur.farbe=="schwarz":
         if davory==238 and ypos==285 and (xpos==davorx+47 or xpos==davorx-47):
             for i in felder:
-                if felder[i]["y"]==davory and felder[i]["x"]==xpos:
-                    felder[i]["figure"].place_forget()
-                    felder[i]["figure"]="none"
+                if felder[i]["y"]==davory and felder[i]["x"]==xpos and felder[i]["figure"]!="none":
+                    if felder[i]["figure"].art=="bauer" and felder[i]["figure"].farbe=="weiss":
+                        felder[i]["figure"].place_forget()
+                        felder[i]["figure"]="none"
     if weristdran=="schwarz":
         weristdran="weiss"
         schachWeissBerechnen()
