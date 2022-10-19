@@ -913,7 +913,7 @@ def setzeZieleAufNull():
     for i in punkte:
         i.place_forget()
 
-def felder_kopie_ausgeben():
+def kopie_ausgeben(felder):
     tkinterObjekte=[]
     for i in felder:
         if str(felder[i]["figure"])[:7]==".!frame":
@@ -952,7 +952,7 @@ def zuege_bauer_weiss(figur):
                 global aktuelle_figur
                 aktuelle_figur=figur
                 if felder[i+8]["figure"]=="none":
-                    felder_kopie=felder_kopie_ausgeben()
+                    felder_kopie=kopie_ausgeben(felder)
                     felder_kopie[i]["figure"]="none"
                     felder_kopie[i+8]["figure"]=figur
                     schachWeisseFigurBerechnen(felder_kopie)
@@ -960,7 +960,7 @@ def zuege_bauer_weiss(figur):
                         moegliche_ziele[1]["x"]=felder[i]["x"]
                         moegliche_ziele[1]["y"]=felder[i]["y"]-47
                 if felder[i]["y"]==332 and felder[i+8]["figure"]=="none" and felder[i+16]["figure"]=="none":
-                    felder_kopie=felder_kopie_ausgeben()
+                    felder_kopie=kopie_ausgeben(felder)
                     felder_kopie[i]["figure"]="none"
                     felder_kopie[i+16]["figure"]=figur
                     schachWeisseFigurBerechnen(felder_kopie)
@@ -969,7 +969,7 @@ def zuege_bauer_weiss(figur):
                         moegliche_ziele[2]["y"]=238
                 if felder[i]["x"]!=379:
                     if felder[i+9]["figure"]!="none"and felder[i+9]["figure"].farbe=="schwarz":
-                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie=kopie_ausgeben(felder)
                         felder_kopie[i]["figure"]="none"
                         felder_kopie[i+9]["figure"]=figur
                         schachWeisseFigurBerechnen(felder_kopie)
@@ -978,7 +978,7 @@ def zuege_bauer_weiss(figur):
                             moegliche_ziele[3]["y"]=felder[i]["y"]-47
                 if felder[i]["x"]!=50:
                     if felder[i+7]["figure"]!="none"and felder[i+7]["figure"].farbe=="schwarz":
-                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie=kopie_ausgeben(felder)
                         felder_kopie[i]["figure"]="none"
                         felder_kopie[i+7]["figure"]=figur
                         schachWeisseFigurBerechnen(felder_kopie)
@@ -988,7 +988,7 @@ def zuege_bauer_weiss(figur):
                 if felder[i]["x"]!=379 and felder[i+1]["figure"]!="none":
                     if felder[i+1]["figure"].art=="bauer" and felder[i+1]["figure"].farbe=="schwarz":
                         if en_passant[felder[i+1]["figure"]]==True:
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[i+9]["figure"]=figur
                             felder_kopie[i+1]["figure"]="none"
@@ -999,7 +999,7 @@ def zuege_bauer_weiss(figur):
                 if felder[i]["x"]!=50 and felder[i-1]["figure"]!="none":
                     if felder[i-1]["figure"].art=="bauer" and felder[i-1]["figure"].farbe=="schwarz":
                         if en_passant[felder[i-1]["figure"]]==True:
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[i+7]["figure"]=figur
                             felder_kopie[i-1]["figure"]="none"
@@ -1020,7 +1020,7 @@ def zuege_bauer_schwarz(figur):
                 global aktuelle_figur
                 aktuelle_figur=figur
                 if felder[i-8]["figure"]=="none":
-                    felder_kopie=felder_kopie_ausgeben()
+                    felder_kopie=kopie_ausgeben(felder)
                     felder_kopie[i]["figure"]="none"
                     felder_kopie[i-8]["figure"]=figur
                     schachSchwarzFigurBerechnen(felder_kopie)
@@ -1028,7 +1028,7 @@ def zuege_bauer_schwarz(figur):
                         moegliche_ziele[1]["x"]=felder[i]["x"]
                         moegliche_ziele[1]["y"]=felder[i]["y"]+47
                 if felder[i]["y"]==97 and felder[i-8]["figure"]=="none" and felder[i-16]["figure"]=="none":
-                    felder_kopie=felder_kopie_ausgeben()
+                    felder_kopie=kopie_ausgeben(felder)
                     felder_kopie[i]["figure"]="none"
                     felder_kopie[i-16]["figure"]=figur
                     schachSchwarzFigurBerechnen(felder_kopie)
@@ -1037,7 +1037,7 @@ def zuege_bauer_schwarz(figur):
                         moegliche_ziele[2]["y"]=191
                 if felder[i]["x"]!=50:
                     if felder[i-9]["figure"]!="none"and felder[i-9]["figure"].farbe=="weiss":
-                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie=kopie_ausgeben(felder)
                         felder_kopie[i]["figure"]="none"
                         felder_kopie[i-9]["figure"]=figur
                         schachSchwarzFigurBerechnen(felder_kopie)
@@ -1046,7 +1046,7 @@ def zuege_bauer_schwarz(figur):
                             moegliche_ziele[3]["y"]=felder[i]["y"]+47
                 if felder[i]["x"]!=379:
                     if felder[i-7]["figure"]!="none"and felder[i-7]["figure"].farbe=="weiss":
-                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie=kopie_ausgeben(felder)
                         felder_kopie[i]["figure"]="none"
                         felder_kopie[i-7]["figure"]=figur
                         schachSchwarzFigurBerechnen(felder_kopie)
@@ -1056,7 +1056,7 @@ def zuege_bauer_schwarz(figur):
                 if felder[i]["x"]!=50 and felder[i-1]["figure"]!="none":
                     if felder[i-1]["figure"].art=="bauer" and felder[i-1]["figure"].farbe=="weiss":
                         if en_passant[felder[i-1]["figure"]]==True:
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[i-9]["figure"]=figur
                             felder_kopie[i-1]["figure"]="none"
@@ -1067,7 +1067,7 @@ def zuege_bauer_schwarz(figur):
                 if felder[i]["x"]!=50 and felder[i+1]["figure"]!="none":
                     if felder[i+1]["figure"].art=="bauer" and felder[i+1]["figure"].farbe=="weiss":
                         if en_passant[felder[i+1]["figure"]]==True:
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[i-7]["figure"]=figur
                             felder_kopie[i+1]["figure"]="none"
@@ -1097,7 +1097,7 @@ def zuege_turm_weiss(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -1114,7 +1114,7 @@ def zuege_turm_weiss(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -1131,7 +1131,7 @@ def zuege_turm_weiss(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -1148,7 +1148,7 @@ def zuege_turm_weiss(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -1181,7 +1181,7 @@ def zuege_turm_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiss":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -1198,7 +1198,7 @@ def zuege_turm_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiss":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -1215,7 +1215,7 @@ def zuege_turm_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiss":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -1232,7 +1232,7 @@ def zuege_turm_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiss":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -1259,7 +1259,7 @@ def zuege_springer_weiss(figur):
                 for j in felder:
                     if felder[j]["y"]==figurY-2*47 and felder[j]["x"]==figurX+47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[j]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -1268,7 +1268,7 @@ def zuege_springer_weiss(figur):
                                 moegliche_ziele[1]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY-2*47 and felder[j]["x"]==figurX-47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[j]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -1277,7 +1277,7 @@ def zuege_springer_weiss(figur):
                                 moegliche_ziele[2]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX+2*47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[j]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -1286,7 +1286,7 @@ def zuege_springer_weiss(figur):
                                 moegliche_ziele[3]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX+2*47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[j]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -1295,7 +1295,7 @@ def zuege_springer_weiss(figur):
                                 moegliche_ziele[4]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX+47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[j]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -1304,7 +1304,7 @@ def zuege_springer_weiss(figur):
                                 moegliche_ziele[5]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX-47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[j]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -1313,7 +1313,7 @@ def zuege_springer_weiss(figur):
                                 moegliche_ziele[6]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX-2*47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[j]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -1322,7 +1322,7 @@ def zuege_springer_weiss(figur):
                                 moegliche_ziele[7]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX-2*47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="schwarz":
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[j]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -1345,7 +1345,7 @@ def zuege_springer_schwarz(figur):
                 for j in felder:
                     if felder[j]["y"]==figurY-2*47 and felder[j]["x"]==figurX+47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiss":
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[j]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -1354,7 +1354,7 @@ def zuege_springer_schwarz(figur):
                                 moegliche_ziele[1]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY-2*47 and felder[j]["x"]==figurX-47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiss":
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[j]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -1363,7 +1363,7 @@ def zuege_springer_schwarz(figur):
                                 moegliche_ziele[2]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX+2*47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiss":
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[j]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -1372,7 +1372,7 @@ def zuege_springer_schwarz(figur):
                                 moegliche_ziele[3]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX+2*47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiss":
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[j]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -1381,7 +1381,7 @@ def zuege_springer_schwarz(figur):
                                 moegliche_ziele[4]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX+47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiss":
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[j]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -1390,7 +1390,7 @@ def zuege_springer_schwarz(figur):
                                 moegliche_ziele[5]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY+2*47 and felder[j]["x"]==figurX-47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiss":
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[j]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -1399,7 +1399,7 @@ def zuege_springer_schwarz(figur):
                                 moegliche_ziele[6]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY+47 and felder[j]["x"]==figurX-2*47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiss":
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[j]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -1408,7 +1408,7 @@ def zuege_springer_schwarz(figur):
                                 moegliche_ziele[7]["y"]=felder[j]["y"]
                     if felder[j]["y"]==figurY-47 and felder[j]["x"]==figurX-2*47:
                         if felder[j]["figure"]=="none"or felder[j]["figure"].farbe=="weiss":
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[j]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -1437,7 +1437,7 @@ def zuege_laeufer_weiss(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -1454,7 +1454,7 @@ def zuege_laeufer_weiss(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -1471,7 +1471,7 @@ def zuege_laeufer_weiss(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -1488,7 +1488,7 @@ def zuege_laeufer_weiss(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -1521,7 +1521,7 @@ def zuege_laeufer_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiss":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -1538,7 +1538,7 @@ def zuege_laeufer_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiss":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -1555,7 +1555,7 @@ def zuege_laeufer_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiss":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -1572,7 +1572,7 @@ def zuege_laeufer_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiss":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -1604,7 +1604,7 @@ def zuege_koenig_weiss(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="schwarz":
                                 break
-                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie=kopie_ausgeben(felder)
                         felder_kopie[i]["figure"]="none"
                         felder_kopie[k]["figure"]=figur
                         schachWeisseFigurBerechnen(felder_kopie)
@@ -1618,7 +1618,7 @@ def zuege_koenig_weiss(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="schwarz":
                                 break
-                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie=kopie_ausgeben(felder)
                         felder_kopie[i]["figure"]="none"
                         felder_kopie[k]["figure"]=figur
                         schachWeisseFigurBerechnen(felder_kopie)
@@ -1632,7 +1632,7 @@ def zuege_koenig_weiss(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="schwarz":
                                 break
-                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie=kopie_ausgeben(felder)
                         felder_kopie[i]["figure"]="none"
                         felder_kopie[k]["figure"]=figur
                         schachWeisseFigurBerechnen(felder_kopie)
@@ -1646,7 +1646,7 @@ def zuege_koenig_weiss(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="schwarz":
                                 break
-                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie=kopie_ausgeben(felder)
                         felder_kopie[i]["figure"]="none"
                         felder_kopie[k]["figure"]=figur
                         schachWeisseFigurBerechnen(felder_kopie)
@@ -1660,7 +1660,7 @@ def zuege_koenig_weiss(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="schwarz":
                                 break
-                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie=kopie_ausgeben(felder)
                         felder_kopie[i]["figure"]="none"
                         felder_kopie[k]["figure"]=figur
                         schachWeisseFigurBerechnen(felder_kopie)
@@ -1674,7 +1674,7 @@ def zuege_koenig_weiss(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="schwarz":
                                 break
-                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie=kopie_ausgeben(felder)
                         felder_kopie[i]["figure"]="none"
                         felder_kopie[k]["figure"]=figur
                         schachWeisseFigurBerechnen(felder_kopie)
@@ -1688,7 +1688,7 @@ def zuege_koenig_weiss(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="schwarz":
                                 break
-                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie=kopie_ausgeben(felder)
                         felder_kopie[i]["figure"]="none"
                         felder_kopie[k]["figure"]=figur
                         schachWeisseFigurBerechnen(felder_kopie)
@@ -1702,7 +1702,7 @@ def zuege_koenig_weiss(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="schwarz":
                                 break
-                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie=kopie_ausgeben(felder)
                         felder_kopie[i]["figure"]="none"
                         felder_kopie[k]["figure"]=figur
                         schachWeisseFigurBerechnen(felder_kopie)
@@ -1722,7 +1722,7 @@ def zuege_koenig_weiss(figur):
                     schachWeisseFigurBerechnen(felder)
                     if schachWeiss==True:
                         rochadeGehtNicht=True
-                    felder_kopie=felder_kopie_ausgeben()
+                    felder_kopie=kopie_ausgeben(felder)
                     felder_kopie[5]["figure"]="none"
                     felder_kopie[4]["figure"]=koenig_w
                     schachWeisseFigurBerechnen(felder_kopie)
@@ -1744,7 +1744,7 @@ def zuege_koenig_weiss(figur):
                     schachWeisseFigurBerechnen(felder)
                     if schachWeiss==True:
                         rochadeGehtNicht=True
-                    felder_kopie=felder_kopie_ausgeben()
+                    felder_kopie=kopie_ausgeben(felder)
                     felder_kopie[5]["figure"]="none"
                     felder_kopie[6]["figure"]=koenig_w
                     schachWeisseFigurBerechnen(felder_kopie)
@@ -1778,7 +1778,7 @@ def zuege_koenig_schwarz(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiss":
                                 break
-                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie=kopie_ausgeben(felder)
                         felder_kopie[i]["figure"]="none"
                         felder_kopie[k]["figure"]=figur
                         schachSchwarzFigurBerechnen(felder_kopie)
@@ -1792,7 +1792,7 @@ def zuege_koenig_schwarz(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiss":
                                 break
-                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie=kopie_ausgeben(felder)
                         felder_kopie[i]["figure"]="none"
                         felder_kopie[k]["figure"]=figur
                         schachSchwarzFigurBerechnen(felder_kopie)
@@ -1806,7 +1806,7 @@ def zuege_koenig_schwarz(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiss":
                                 break
-                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie=kopie_ausgeben(felder)
                         felder_kopie[i]["figure"]="none"
                         felder_kopie[k]["figure"]=figur
                         schachSchwarzFigurBerechnen(felder_kopie)
@@ -1820,7 +1820,7 @@ def zuege_koenig_schwarz(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiss":
                                 break
-                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie=kopie_ausgeben(felder)
                         felder_kopie[i]["figure"]="none"
                         felder_kopie[k]["figure"]=figur
                         schachSchwarzFigurBerechnen(felder_kopie)
@@ -1834,7 +1834,7 @@ def zuege_koenig_schwarz(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiss":
                                 break
-                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie=kopie_ausgeben(felder)
                         felder_kopie[i]["figure"]="none"
                         felder_kopie[k]["figure"]=figur
                         schachSchwarzFigurBerechnen(felder_kopie)
@@ -1848,7 +1848,7 @@ def zuege_koenig_schwarz(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiss":
                                 break
-                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie=kopie_ausgeben(felder)
                         felder_kopie[i]["figure"]="none"
                         felder_kopie[k]["figure"]=figur
                         schachSchwarzFigurBerechnen(felder_kopie)
@@ -1862,7 +1862,7 @@ def zuege_koenig_schwarz(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiss":
                                 break
-                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie=kopie_ausgeben(felder)
                         felder_kopie[i]["figure"]="none"
                         felder_kopie[k]["figure"]=figur
                         schachSchwarzFigurBerechnen(felder_kopie)
@@ -1876,7 +1876,7 @@ def zuege_koenig_schwarz(figur):
                         if felder[k]["figure"]!="none":
                             if felder[k]["figure"].farbe!="weiss":
                                 break
-                        felder_kopie=felder_kopie_ausgeben()
+                        felder_kopie=kopie_ausgeben(felder)
                         felder_kopie[i]["figure"]="none"
                         felder_kopie[k]["figure"]=figur
                         schachSchwarzFigurBerechnen(felder_kopie)
@@ -1896,7 +1896,7 @@ def zuege_koenig_schwarz(figur):
                     schachSchwarzFigurBerechnen(felder)
                     if schachSchwarz==True:
                         rochadeGehtNicht=True
-                    felder_kopie=felder_kopie_ausgeben()
+                    felder_kopie=kopie_ausgeben(felder)
                     felder_kopie[61]["figure"]="none"
                     felder_kopie[60]["figure"]=koenig_s
                     schachSchwarzFigurBerechnen(felder_kopie)
@@ -1918,7 +1918,7 @@ def zuege_koenig_schwarz(figur):
                     schachSchwarzFigurBerechnen(felder)
                     if schachSchwarz==True:
                         rochadeGehtNicht=True
-                    felder_kopie=felder_kopie_ausgeben()
+                    felder_kopie=kopie_ausgeben(felder)
                     felder_kopie[61]["figure"]="none"
                     felder_kopie[62]["figure"]=koenig_s
                     schachSchwarzFigurBerechnen(felder_kopie)
@@ -1953,7 +1953,7 @@ def zuege_dame_weiss(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -1970,7 +1970,7 @@ def zuege_dame_weiss(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -1987,7 +1987,7 @@ def zuege_dame_weiss(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -2004,7 +2004,7 @@ def zuege_dame_weiss(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -2021,7 +2021,7 @@ def zuege_dame_weiss(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -2038,7 +2038,7 @@ def zuege_dame_weiss(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -2055,7 +2055,7 @@ def zuege_dame_weiss(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -2072,7 +2072,7 @@ def zuege_dame_weiss(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="schwarz":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachWeisseFigurBerechnen(felder_kopie)
@@ -2105,7 +2105,7 @@ def zuege_dame_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiss":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -2122,7 +2122,7 @@ def zuege_dame_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiss":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -2139,7 +2139,7 @@ def zuege_dame_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiss":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -2156,7 +2156,7 @@ def zuege_dame_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiss":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -2173,7 +2173,7 @@ def zuege_dame_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiss":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -2190,7 +2190,7 @@ def zuege_dame_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiss":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -2207,7 +2207,7 @@ def zuege_dame_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiss":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -2224,7 +2224,7 @@ def zuege_dame_schwarz(figur):
                             if felder[k]["figure"]!="none":
                                 if felder[k]["figure"].farbe!="weiss":
                                     break
-                            felder_kopie=felder_kopie_ausgeben()
+                            felder_kopie=kopie_ausgeben(felder)
                             felder_kopie[i]["figure"]="none"
                             felder_kopie[k]["figure"]=figur
                             schachSchwarzFigurBerechnen(felder_kopie)
@@ -2553,6 +2553,7 @@ def figur_ziehen(xpos, ypos):
     global auswahlSpringer
     global auswahlTurm
     global en_passant
+    global verlauf
     for i in felder:
         if felder[i]["figure"]==aktuelle_figur:
             davorx=felder[i]["x"]
@@ -2562,6 +2563,7 @@ def figur_ziehen(xpos, ypos):
         if felder[i]["x"]==xpos and felder[i]["y"]==ypos:
             if felder[i]["figure"]!="none":
                 felder[i]["figure"].place_forget()
+                verlauf=[]
             felder[i]["figure"]=aktuelle_figur
             felder[i]["figure"].place(x=felder[i]["x"], y=felder[i]["y"])
     if aktuelle_figur==turm1_w:
@@ -2622,6 +2624,21 @@ def figur_ziehen(xpos, ypos):
     elif weristdran=="weiss":
         weristdran="schwarz"
         schachSchwarzBerechnen()
+    if aktuelle_figur.art=="bauer":
+        verlauf=[]
+    gefunden=0
+    felder_kopie=kopie_ausgeben(felder)
+    rochade_kopie=copy.deepcopy(rochade)
+    verlauf.append([felder_kopie, rochade])
+    for i in verlauf:
+        if i[0]==felder and i[1]==rochade:
+            gefunden+=1
+            print(1)
+        if gefunden==3:
+            print(2)
+            schrift=Label(text="Remis:\nunentschieden", font="Arial, 30")
+            weristdran="?"
+            schrift.place(x=100, y=200)
 
 gruener_punkt_bild=ImageTk.PhotoImage(Image.open("Bilder\Gruener_Punkt.png"))
 punkt1=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(50, 50))
@@ -2697,6 +2714,9 @@ roter_punkt_bild=ImageTk.PhotoImage(Image.open("Bilder\Roter_Punkt.png"))
 punkt_rot=Button(rahmen, image=roter_punkt_bild)
 
 felder={1:{"x":50, "y":379,"figure":turm1_w},2:{"x":97, "y":379,"figure":springer1_w},3:{"x":144, "y":379,"figure":laeufer1_w },4:{"x":191, "y":379,"figure":dame_w},5:{"x":238, "y":379,"figure":koenig_w},6:{"x":285, "y":379,"figure":laeufer2_w},7:{"x":332, "y":379,"figure":springer2_w},8:{"x":379, "y":379,"figure":turm2_w},9:{"x":50, "y":332,"figure":bauer1_w},10:{"x":97, "y":332,"figure":bauer2_w},11:{"x":144, "y":332,"figure":bauer3_w},12:{"x":191, "y":332,"figure":bauer4_w},13:{"x":238, "y":332,"figure":bauer5_w},14:{"x":285, "y":332,"figure":bauer6_w},15:{"x":332, "y":332,"figure":bauer7_w},16:{"x":379, "y":332,"figure":bauer8_w},17:{"x":50, "y":285,"figure":"none"},18:{"x":97, "y":285,"figure":"none"},19:{"x":144, "y":285,"figure":"none"},20:{"x":191, "y":285,"figure":"none"},21:{"x":238, "y":285,"figure":"none"},22:{"x":285, "y":285,"figure":"none"},23:{"x":332, "y":285,"figure":"none"},24:{"x":379, "y":285,"figure":"none"},25:{"x":50, "y":238,"figure":"none"},26:{"x":97, "y":238,"figure":"none"},27:{"x":144, "y":238,"figure":"none"},28:{"x":191, "y":238,"figure":"none"},29:{"x":238, "y":238,"figure":"none"},30:{"x":285, "y":238,"figure":"none"},31:{"x":332, "y":238,"figure":"none"},32:{"x":379, "y":238,"figure":"none"},33:{"x":50, "y":191,"figure":"none"},34:{"x":97, "y":191,"figure":"none"},35:{"x":144, "y":191,"figure":"none"},36:{"x":191, "y":191,"figure":"none"},37:{"x":238, "y":191,"figure":"none"},38:{"x":285, "y":191,"figure":"none"},39:{"x":332, "y":191,"figure":"none"},40:{"x":379, "y":191,"figure":"none"},41:{"x":50, "y":144,"figure":"none"},42:{"x":97, "y":144,"figure":"none"},43:{"x":144, "y":144,"figure":"none"},44:{"x":191, "y":144,"figure":"none"},45:{"x":238, "y":144,"figure":"none"},46:{"x":285, "y":144,"figure":"none"},47:{"x":332, "y":144,"figure":"none"},48:{"x":379, "y":144,"figure":"none"},49:{"x":50, "y":97,"figure":bauer1_s},50:{"x":97, "y":97,"figure":bauer2_s},51:{"x":144, "y":97,"figure":bauer3_s},52:{"x":191, "y":97,"figure":bauer4_s},53:{"x":238, "y":97,"figure":bauer5_s},54:{"x":285, "y":97,"figure":bauer6_s},55:{"x":332, "y":97,"figure":bauer7_s},56:{"x":379, "y":97,"figure":bauer8_s},57:{"x":50, "y":50,"figure":turm1_s},58:{"x":97, "y":50,"figure":springer1_s},59:{"x":144, "y":50,"figure":laeufer1_s},60:{"x":191, "y":50,"figure":dame_s},61:{"x":238, "y":50,"figure":koenig_s},62:{"x":285, "y":50,"figure":laeufer2_s},63:{"x":332, "y":50,"figure":springer2_s},64:{"x":379, "y":50,"figure":turm2_s}}
+felder_kopie=kopie_ausgeben(felder)
+rochade_kopie=copy.deepcopy(rochade)
+verlauf=[[felder_kopie, rochade]]
 punkte=[punkt1, punkt2, punkt3, punkt4, punkt5, punkt6, punkt7, punkt8, punkt9, punkt10, punkt11, punkt12, punkt13, punkt14, punkt15, punkt16, punkt17, punkt18, punkt19, punkt20, punkt21, punkt22, punkt23, punkt24, punkt25, punkt26, punkt27, punkt28, punkt29, punkt30, punkt31, punkt32, punkt33, punkt34, punkt35, punkt36, punkt37, punkt38, punkt39, punkt40, punkt41, punkt42, punkt43, punkt44, punkt45, punkt46, punkt47, punkt48, punkt49, punkt50, punkt51, punkt52, punkt53, punkt54, punkt55, punkt56, punkt57, punkt58, punkt59, punkt60, punkt61, punkt62, punkt63, punkt64, punkt_lange_rochade_weiss, punkt_kurze_rochade_weiss, punkt_kurze_rochade_schwarz, punkt_lange_rochade_schwarz]
 alle_figuren=[bauer1_w, bauer2_w, bauer3_w, bauer4_w, bauer5_w, bauer6_w, bauer7_w, bauer8_w, turm1_w, turm2_w, springer1_w, springer2_w, laeufer1_w, laeufer2_w, koenig_w, dame_w, bauer1_s, bauer2_s, bauer3_s, bauer4_s, bauer5_s, bauer6_s, bauer7_s, bauer8_s, turm1_s, turm2_s, springer1_s, springer2_s, laeufer1_s, laeufer2_s, koenig_s, dame_s]
 en_passant={bauer1_w: False, bauer2_w: False, bauer3_w: False, bauer4_w: False, bauer5_w: False, bauer6_w: False, bauer7_w: False, bauer8_w: False, bauer1_s: False, bauer2_s: False, bauer3_s: False, bauer4_s: False, bauer5_s: False, bauer6_s: False, bauer7_s: False, bauer8_s:False}
