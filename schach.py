@@ -856,7 +856,7 @@ def schachSchwarzBerechnen():
                     YKönig=felder[i]["y"]
     for i in moegliche_zuege:
         if i["x"]==XKönig and i["y"]==YKönig:
-            NeuesNchachSchwarz=True
+            NeuesSchachSchwarz=True
             punkt_rot.place(x=XKönig, y=YKönig)
     for figur in alle_figuren:
         if figur.farbe=="schwarz":
