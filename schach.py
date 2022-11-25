@@ -10,70 +10,70 @@ fenster.geometry("500x500")
 #schachbrett=Label(rahmen, image=schachbrett_bild)
 #schachbrett.pack(expand=True, padx=30, pady=30)
 pixelVirtual=PhotoImage(width=1, height=1)
-feld1=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld2=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld3=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld4=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld5=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld6=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld7=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld8=Button(rahmen, bg="#8b4531", image=pixelVirtual, height=45, width=45, compound="center")
-feld9=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld10=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld11=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld12=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld13=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld14=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld15=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld16=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld17=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld18=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld19=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld20=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld21=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld22=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld23=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld24=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld25=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld26=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld27=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld28=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld29=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld30=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld31=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld32=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld33=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld34=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld35=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld36=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld37=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld38=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld39=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld40=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld41=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld42=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld43=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld44=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld45=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld46=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld47=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld48=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld49=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld50=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld51=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld52=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld53=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld54=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld55=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld56=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld57=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld58=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld59=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld60=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld61=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld62=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
-feld63=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center")
-feld64=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center")
+feld1=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,50))
+feld2=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,50))
+feld3=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,50))
+feld4=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,50))
+feld5=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,50))
+feld6=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,50))
+feld7=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,50))
+feld8=Button(rahmen, bg="#8b4531", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,50))
+feld9=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,97))
+feld10=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,97))
+feld11=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,97))
+feld12=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,97))
+feld13=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,97))
+feld14=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,97))
+feld15=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,97))
+feld16=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,97))
+feld17=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,144))
+feld18=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,144))
+feld19=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,144))
+feld20=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,144))
+feld21=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,144))
+feld22=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,144))
+feld23=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,144))
+feld24=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,144))
+feld25=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,191))
+feld26=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,191))
+feld27=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,191))
+feld28=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,191))
+feld29=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,191))
+feld30=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,191))
+feld31=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,191))
+feld32=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,191))
+feld33=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,238))
+feld34=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,238))
+feld35=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,238))
+feld36=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,238))
+feld37=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,238))
+feld38=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,238))
+feld39=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,238))
+feld40=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,238))
+feld41=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,285))
+feld42=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,285))
+feld43=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,285))
+feld44=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,285))
+feld45=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,285))
+feld46=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,285))
+feld47=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,285))
+feld48=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,285))
+feld49=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,332))
+feld50=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,332))
+feld51=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,332))
+feld52=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,332))
+feld53=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,332))
+feld54=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,332))
+feld55=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,332))
+feld56=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,332))
+feld57=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,379))
+feld58=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,379))
+feld59=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,379))
+feld60=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,379))
+feld61=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,379))
+feld62=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,379))
+feld63=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,379))
+feld64=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,379))
 feld1.place(x=40, y=40)
 feld2.place(x=40+47*1, y=40)
 feld3.place(x=40+47*2, y=40)
@@ -138,6 +138,8 @@ feld61.place(x=40+47*4, y=40+7*47)
 feld62.place(x=40+47*5, y=40+7*47)
 feld63.place(x=40+47*6, y=40+7*47)
 feld64.place(x=40+47*7, y=40+7*47)
+
+felder_buttons=[0, feld1, feld2, feld3, feld4, feld5, feld6, feld7, feld8, feld9, feld10, feld11, feld12, feld13, feld14, feld15, feld16, feld17, feld18, feld19, feld20, feld21, feld22, feld23, feld24, feld25, feld26, feld27, feld28, feld29, feld30, feld31, feld32, feld33, feld34, feld35, feld36, feld37, feld38, feld39, feld40, feld41, feld42, feld43, feld44, feld45, feld46, feld47, feld48, feld49, feld50, feld51, feld52, feld53, feld54, feld55, feld56, feld57, feld58, feld59, feld60, feld61, feld62, feld63, feld64]
 
 weristdran="weiss"
 aktuelle_figur="none"
@@ -242,7 +244,7 @@ for i in verwandelte_figuren:
             k.art="springer"
             k.farbe="weiss"
 
-moegliche_ziele={1:{"button_Nr": "none", "x":"none", "y":"none"}, 2:{"button_Nr": "none", "x":"none", "y":"none"}, 3:{"button_Nr": "none", "x":"none", "y":"none"}, 4:{"button_Nr": "none", "x":"none", "y":"none"}, 5:{"button_Nr": "none", "x":"none", "y":"none"}, 6:{"button_Nr": "none", "x":"none", "y":"none"}, 7:{"button_Nr": "none", "x":"none", "y":"none"}, 8:{"button_Nr": "none", "x":"none", "y":"none"}, 9:{"button_Nr": "none", "x":"none", "y":"none"}, 10:{"button_Nr": "none", "x":"none", "y":"none"}, 11:{"button_Nr": "none", "x":"none", "y":"none"}, 12:{"button_Nr": "none", "x":"none", "y":"none"}, 13:{"button_Nr": "none", "x":"none", "y":"none"}, 14:{"button_Nr": "none", "x":"none", "y":"none"}, 15:{"button_Nr": "none", "x":"none", "y":"none"}, 16:{"button_Nr": "none", "x":"none", "y":"none"}, 17:{"button_Nr": "none", "x":"none", "y":"none"}, 18:{"button_Nr": "none", "x":"none", "y":"none"}, 19:{"button_Nr": "none", "x":"none", "y":"none"}, 20:{"button_Nr": "none", "x":"none", "y":"none"}, 21:{"button_Nr": "none", "x":"none", "y":"none"}, 22:{"button_Nr": "none", "x":"none", "y":"none"}, 23:{"button_Nr": "none", "x":"none", "y":"none"}, 24:{"button_Nr": "none", "x":"none", "y":"none"}, 25:{"button_Nr": "none", "x":"none", "y":"none"}, 26:{"button_Nr": "none", "x":"none", "y":"none"}, 27:{"button_Nr": "none", "x":"none", "y":"none"}}
+moegliche_ziele={1:{"Feld_Nr": "none", "x":"none", "y":"none"}, 2:{"Feld_Nr": "none", "x":"none", "y":"none"}, 3:{"Feld_Nr": "none", "x":"none", "y":"none"}, 4:{"Feld_Nr": "none", "x":"none", "y":"none"}, 5:{"Feld_Nr": "none", "x":"none", "y":"none"}, 6:{"Feld_Nr": "none", "x":"none", "y":"none"}, 7:{"Feld_Nr": "none", "x":"none", "y":"none"}, 8:{"Feld_Nr": "none", "x":"none", "y":"none"}, 9:{"Feld_Nr": "none", "x":"none", "y":"none"}, 10:{"Feld_Nr": "none", "x":"none", "y":"none"}, 11:{"Feld_Nr": "none", "x":"none", "y":"none"}, 12:{"Feld_Nr": "none", "x":"none", "y":"none"}, 13:{"Feld_Nr": "none", "x":"none", "y":"none"}, 14:{"Feld_Nr": "none", "x":"none", "y":"none"}, 15:{"Feld_Nr": "none", "x":"none", "y":"none"}, 16:{"Feld_Nr": "none", "x":"none", "y":"none"}, 17:{"Feld_Nr": "none", "x":"none", "y":"none"}, 18:{"Feld_Nr": "none", "x":"none", "y":"none"}, 19:{"Feld_Nr": "none", "x":"none", "y":"none"}, 20:{"Feld_Nr": "none", "x":"none", "y":"none"}, 21:{"Feld_Nr": "none", "x":"none", "y":"none"}, 22:{"Feld_Nr": "none", "x":"none", "y":"none"}, 23:{"Feld_Nr": "none", "x":"none", "y":"none"}, 24:{"Feld_Nr": "none", "x":"none", "y":"none"}, 25:{"Feld_Nr": "none", "x":"none", "y":"none"}, 26:{"Feld_Nr": "none", "x":"none", "y":"none"}, 27:{"Feld_Nr": "none", "x":"none", "y":"none"}}
 
 def alleZuegeBerechnenWeiss(felder_kopie):
     global moegliche_zuege
@@ -1036,7 +1038,7 @@ def schachSchwarzBerechnen():
 
 def setzeZieleAufNull():
     global moegliche_ziele
-    moegliche_ziele={1:{"button_Nr": "none", "x":"none", "y":"none"}, 2:{"button_Nr": "none", "x":"none", "y":"none"}, 3:{"button_Nr": "none", "x":"none", "y":"none"}, 4:{"button_Nr": "none", "x":"none", "y":"none"}, 5:{"button_Nr": "none", "x":"none", "y":"none"}, 6:{"button_Nr": "none", "x":"none", "y":"none"}, 7:{"button_Nr": "none", "x":"none", "y":"none"}, 8:{"button_Nr": "none", "x":"none", "y":"none"}, 9:{"button_Nr": "none", "x":"none", "y":"none"}, 10:{"button_Nr": "none", "x":"none", "y":"none"}, 11:{"button_Nr": "none", "x":"none", "y":"none"}, 12:{"button_Nr": "none", "x":"none", "y":"none"}, 13:{"button_Nr": "none", "x":"none", "y":"none"}, 14:{"button_Nr": "none", "x":"none", "y":"none"}, 15:{"button_Nr": "none", "x":"none", "y":"none"}, 16:{"button_Nr": "none", "x":"none", "y":"none"}, 17:{"button_Nr": "none", "x":"none", "y":"none"}, 18:{"button_Nr": "none", "x":"none", "y":"none"}, 19:{"button_Nr": "none", "x":"none", "y":"none"}, 20:{"button_Nr": "none", "x":"none", "y":"none"}, 21:{"button_Nr": "none", "x":"none", "y":"none"}, 22:{"button_Nr": "none", "x":"none", "y":"none"}, 23:{"button_Nr": "none", "x":"none", "y":"none"}, 24:{"button_Nr": "none", "x":"none", "y":"none"}, 25:{"button_Nr": "none", "x":"none", "y":"none"}, 26:{"button_Nr": "none", "x":"none", "y":"none"}, 27:{"button_Nr": "none", "x":"none", "y":"none"}}
+    moegliche_ziele={1:{"Feld_Nr": "none", "x":"none", "y":"none"}, 2:{"Feld_Nr": "none", "x":"none", "y":"none"}, 3:{"Feld_Nr": "none", "x":"none", "y":"none"}, 4:{"Feld_Nr": "none", "x":"none", "y":"none"}, 5:{"Feld_Nr": "none", "x":"none", "y":"none"}, 6:{"Feld_Nr": "none", "x":"none", "y":"none"}, 7:{"Feld_Nr": "none", "x":"none", "y":"none"}, 8:{"Feld_Nr": "none", "x":"none", "y":"none"}, 9:{"Feld_Nr": "none", "x":"none", "y":"none"}, 10:{"Feld_Nr": "none", "x":"none", "y":"none"}, 11:{"Feld_Nr": "none", "x":"none", "y":"none"}, 12:{"Feld_Nr": "none", "x":"none", "y":"none"}, 13:{"Feld_Nr": "none", "x":"none", "y":"none"}, 14:{"Feld_Nr": "none", "x":"none", "y":"none"}, 15:{"Feld_Nr": "none", "x":"none", "y":"none"}, 16:{"Feld_Nr": "none", "x":"none", "y":"none"}, 17:{"Feld_Nr": "none", "x":"none", "y":"none"}, 18:{"Feld_Nr": "none", "x":"none", "y":"none"}, 19:{"Feld_Nr": "none", "x":"none", "y":"none"}, 20:{"Feld_Nr": "none", "x":"none", "y":"none"}, 21:{"Feld_Nr": "none", "x":"none", "y":"none"}, 22:{"Feld_Nr": "none", "x":"none", "y":"none"}, 23:{"Feld_Nr": "none", "x":"none", "y":"none"}, 24:{"Feld_Nr": "none", "x":"none", "y":"none"}, 25:{"Feld_Nr": "none", "x":"none", "y":"none"}, 26:{"Feld_Nr": "none", "x":"none", "y":"none"}, 27:{"Feld_Nr": "none", "x":"none", "y":"none"}}
     for i in punkte:
         i.place_forget()
 
@@ -1062,12 +1064,14 @@ def punkte_auswählen():
             rechenvariable3=(rechenvariable1-3)/47
             rechenvariable4=(rechenvariable2-3)/47
             ergebniss=(rechenvariable3+((rechenvariable4-1)*8)-1)
-            moegliche_ziele[i]["button_Nr"]=int(ergebniss)
+            moegliche_ziele[i]["Feld_Nr"]=int(ergebniss)
+            print(ergebniss)
 
 def punkte_plazieren():
     for i in moegliche_ziele:
-        if moegliche_ziele[i]["button_Nr"]!="none":
-            punkte[int(moegliche_ziele[i]["button_Nr"])].place(x=moegliche_ziele[i]["x"], y=moegliche_ziele[i]["y"])
+        if moegliche_ziele[i]["Feld_Nr"]!="none":
+            print("Ja")
+            felder_buttons[(moegliche_ziele[i]["Feld_Nr"])+1].configure(bg="#00F700")
 
 def zuege_bauer_weiss(figur):
     setzeZieleAufNull()
@@ -2845,7 +2849,7 @@ verlauf=[[felder_kopie, rochade]]
 punkte=[punkt1, punkt2, punkt3, punkt4, punkt5, punkt6, punkt7, punkt8, punkt9, punkt10, punkt11, punkt12, punkt13, punkt14, punkt15, punkt16, punkt17, punkt18, punkt19, punkt20, punkt21, punkt22, punkt23, punkt24, punkt25, punkt26, punkt27, punkt28, punkt29, punkt30, punkt31, punkt32, punkt33, punkt34, punkt35, punkt36, punkt37, punkt38, punkt39, punkt40, punkt41, punkt42, punkt43, punkt44, punkt45, punkt46, punkt47, punkt48, punkt49, punkt50, punkt51, punkt52, punkt53, punkt54, punkt55, punkt56, punkt57, punkt58, punkt59, punkt60, punkt61, punkt62, punkt63, punkt64, punkt_lange_rochade_weiss, punkt_kurze_rochade_weiss, punkt_kurze_rochade_schwarz, punkt_lange_rochade_schwarz]
 alle_figuren=[bauer1_w, bauer2_w, bauer3_w, bauer4_w, bauer5_w, bauer6_w, bauer7_w, bauer8_w, turm1_w, turm2_w, springer1_w, springer2_w, laeufer1_w, laeufer2_w, koenig_w, dame_w, bauer1_s, bauer2_s, bauer3_s, bauer4_s, bauer5_s, bauer6_s, bauer7_s, bauer8_s, turm1_s, turm2_s, springer1_s, springer2_s, laeufer1_s, laeufer2_s, koenig_s, dame_s]
 en_passant={bauer1_w: False, bauer2_w: False, bauer3_w: False, bauer4_w: False, bauer5_w: False, bauer6_w: False, bauer7_w: False, bauer8_w: False, bauer1_s: False, bauer2_s: False, bauer3_s: False, bauer4_s: False, bauer5_s: False, bauer6_s: False, bauer7_s: False, bauer8_s:False}
-
+felder_buttons=[0, feld1, feld2, feld3, feld4, feld5, feld6, feld7, feld8, feld9, feld10, feld11, feld12, feld13, feld14, feld15, feld16, feld17, feld18, feld19, feld20, feld21, feld22, feld23, feld24, feld25, feld26, feld27, feld28, feld29, feld30, feld31, feld32, feld33, feld34, feld35, feld36, feld37, feld38, feld39, feld40, feld41, feld42, feld43, feld44, feld45, feld46, feld47, feld48, feld49, feld50, feld51, feld52, feld53, feld54, feld55, feld56, feld57, feld58, feld59, feld60, feld61, feld62, feld63, feld64]
 def figuren_plazieren():
     for i in felder:
         if felder[i]["figure"]!="none":
