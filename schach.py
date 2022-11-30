@@ -139,7 +139,7 @@ feld62.place(x=40+47*5, y=40+7*47)
 feld63.place(x=40+47*6, y=40+7*47)
 feld64.place(x=40+47*7, y=40+7*47)
 
-felder_buttons=[0, feld1, feld2, feld3, feld4, feld5, feld6, feld7, feld8, feld9, feld10, feld11, feld12, feld13, feld14, feld15, feld16, feld17, feld18, feld19, feld20, feld21, feld22, feld23, feld24, feld25, feld26, feld27, feld28, feld29, feld30, feld31, feld32, feld33, feld34, feld35, feld36, feld37, feld38, feld39, feld40, feld41, feld42, feld43, feld44, feld45, feld46, feld47, feld48, feld49, feld50, feld51, feld52, feld53, feld54, feld55, feld56, feld57, feld58, feld59, feld60, feld61, feld62, feld63, feld64]
+felder_buttons=[feld1, feld2, feld3, feld4, feld5, feld6, feld7, feld8, feld9, feld10, feld11, feld12, feld13, feld14, feld15, feld16, feld17, feld18, feld19, feld20, feld21, feld22, feld23, feld24, feld25, feld26, feld27, feld28, feld29, feld30, feld31, feld32, feld33, feld34, feld35, feld36, feld37, feld38, feld39, feld40, feld41, feld42, feld43, feld44, feld45, feld46, feld47, feld48, feld49, feld50, feld51, feld52, feld53, feld54, feld55, feld56, feld57, feld58, feld59, feld60, feld61, feld62, feld63, feld64]
 
 weristdran="weiss"
 aktuelle_figur="none"
@@ -964,8 +964,7 @@ def schachWeissBerechnen():
                     if moegliche_ziele[i]["x"]!="none":
                         schachMatt=False
                         break
-    for punkt in punkte:
-        punkt.place_forget()
+    setzeZieleAufNull()
     if schachMatt==True and NeuesSchachWeiss==False:
         schrift=Label(text="Patt:\nunentschieden", font="Arial, 30")
         schrift.place(x=100, y=200)
@@ -1027,8 +1026,7 @@ def schachSchwarzBerechnen():
                     if moegliche_ziele[i]["x"]!="none":
                         schachMatt=False
                         break
-    for punkt in punkte:
-        punkt.place_forget()
+    setzeZieleAufNull()
     if schachMatt==True and NeuesSchachSchwarz==False:
         schrift=Label(text="Patt:\nunentschieden", font="Arial, 30")
         schrift.place(x=100, y=200)
@@ -1039,8 +1037,15 @@ def schachSchwarzBerechnen():
 def setzeZieleAufNull():
     global moegliche_ziele
     moegliche_ziele={1:{"Feld_Nr": "none", "x":"none", "y":"none"}, 2:{"Feld_Nr": "none", "x":"none", "y":"none"}, 3:{"Feld_Nr": "none", "x":"none", "y":"none"}, 4:{"Feld_Nr": "none", "x":"none", "y":"none"}, 5:{"Feld_Nr": "none", "x":"none", "y":"none"}, 6:{"Feld_Nr": "none", "x":"none", "y":"none"}, 7:{"Feld_Nr": "none", "x":"none", "y":"none"}, 8:{"Feld_Nr": "none", "x":"none", "y":"none"}, 9:{"Feld_Nr": "none", "x":"none", "y":"none"}, 10:{"Feld_Nr": "none", "x":"none", "y":"none"}, 11:{"Feld_Nr": "none", "x":"none", "y":"none"}, 12:{"Feld_Nr": "none", "x":"none", "y":"none"}, 13:{"Feld_Nr": "none", "x":"none", "y":"none"}, 14:{"Feld_Nr": "none", "x":"none", "y":"none"}, 15:{"Feld_Nr": "none", "x":"none", "y":"none"}, 16:{"Feld_Nr": "none", "x":"none", "y":"none"}, 17:{"Feld_Nr": "none", "x":"none", "y":"none"}, 18:{"Feld_Nr": "none", "x":"none", "y":"none"}, 19:{"Feld_Nr": "none", "x":"none", "y":"none"}, 20:{"Feld_Nr": "none", "x":"none", "y":"none"}, 21:{"Feld_Nr": "none", "x":"none", "y":"none"}, 22:{"Feld_Nr": "none", "x":"none", "y":"none"}, 23:{"Feld_Nr": "none", "x":"none", "y":"none"}, 24:{"Feld_Nr": "none", "x":"none", "y":"none"}, 25:{"Feld_Nr": "none", "x":"none", "y":"none"}, 26:{"Feld_Nr": "none", "x":"none", "y":"none"}, 27:{"Feld_Nr": "none", "x":"none", "y":"none"}}
-    for i in punkte:
-        i.place_forget()
+    for something in range(0, 49, 16):
+        for i in range(0, 7, 2):
+            felder_buttons[i+something]["bg"]="#FFFFFF"
+        for i in range(1, 8, 2):
+            felder_buttons[i+something]["bg"]="#8b4513"
+        for i in range(0, 7, 2):
+            felder_buttons[i+something+8]["bg"]="#8b4513"
+        for i in range(1, 8, 2):
+            felder_buttons[i+something+8]["bg"]="#FFFFFF"
 
 def kopie_ausgeben(felder):
     tkinterObjekte=[]
@@ -1065,13 +1070,11 @@ def punkte_auswählen():
             rechenvariable4=(rechenvariable2-3)/47
             ergebniss=(rechenvariable3+((rechenvariable4-1)*8)-1)
             moegliche_ziele[i]["Feld_Nr"]=int(ergebniss)
-            print(ergebniss)
 
 def punkte_plazieren():
     for i in moegliche_ziele:
         if moegliche_ziele[i]["Feld_Nr"]!="none":
-            print("Ja")
-            felder_buttons[(moegliche_ziele[i]["Feld_Nr"])+1].configure(bg="#00F700")
+            felder_buttons[moegliche_ziele[i]["Feld_Nr"]].configure(bg="#00F700")
 
 def zuege_bauer_weiss(figur):
     setzeZieleAufNull()
@@ -2379,8 +2382,7 @@ def lange_rochade_machen_weiss():
     felder[3]["figure"]=koenig_w
     rochade["koenig_w_gezogen"]=True
     figuren_plazieren()
-    for punkt in punkte:
-        punkt.place_forget()
+    setzeZieleAufNull()
 
 def kurze_rochade_machen_weiss():
     global felder
@@ -2392,8 +2394,7 @@ def kurze_rochade_machen_weiss():
     felder[7]["figure"]=koenig_w
     rochade["koenig_w_gezogen"]=True
     figuren_plazieren()
-    for punkt in punkte:
-        punkt.place_forget()
+    setzeZieleAufNull()
 
 def lange_rochade_machen_schwarz():
     global felder
@@ -2405,8 +2406,7 @@ def lange_rochade_machen_schwarz():
     felder[59]["figure"]=koenig_s
     rochade["koenig_s_gezogen"]=True
     figuren_plazieren()
-    for punkt in punkte:
-        punkt.place_forget()
+    setzeZieleAufNull()
 
 def kurze_rochade_machen_schwarz():
     global felder
@@ -2418,8 +2418,7 @@ def kurze_rochade_machen_schwarz():
     felder[63]["figure"]=koenig_s
     rochade["koenig_s_gezogen"]=True
     figuren_plazieren()
-    for punkt in punkte:
-        punkt.place_forget()
+    setzeZieleAufNull()
 
 def bauer_verwandeln_schwarz(aktuelle_figur, verwandel_figur, xpos, ypos):
     global felder
@@ -2674,8 +2673,7 @@ auswahlSpringer=Button()
 auswahlLaeufer=Button()
 
 def figur_ziehen(xpos, ypos):
-    for i in range(0, 64, 1):
-        punkte[i].place_forget()
+    setzeZieleAufNull()
     global felder
     global weristdran
     global rochade
@@ -2768,72 +2766,9 @@ def figur_ziehen(xpos, ypos):
             schrift=Label(text="Remis:\nunentschieden", font="Arial, 30")
             weristdran="?"
             schrift.place(x=100, y=200)
+    setzeZieleAufNull()
 
-gruener_punkt_bild=ImageTk.PhotoImage(Image.open("Bilder\Gruener_Punkt.png"))
-punkt1=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(50, 50))
-punkt2=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(97, 50))
-punkt3=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(144, 50))
-punkt4=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(191, 50))
-punkt5=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(238, 50))
-punkt6=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(285, 50))
-punkt7=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(332, 50))
-punkt8=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(379, 50))
-punkt9=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(50, 97))
-punkt10=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(97, 97))
-punkt11=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(144, 97))
-punkt12=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(191, 97))
-punkt13=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(238, 97))
-punkt14=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(285, 97))
-punkt15=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(332, 97))
-punkt16=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(379, 97))
-punkt17=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(50, 144))
-punkt18=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(97, 144))
-punkt19=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(144, 144))
-punkt20=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(191, 144))
-punkt21=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(238, 144))
-punkt22=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(285, 144))
-punkt23=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(332, 144))
-punkt24=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(379, 144))
-punkt25=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(50, 191))
-punkt26=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(97, 191))
-punkt27=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(144, 191))
-punkt28=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(191, 191))
-punkt29=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(238, 191))
-punkt30=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(285, 191))
-punkt31=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(332, 191))
-punkt32=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(379, 191))
-punkt33=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(50, 238))
-punkt34=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(97, 238))
-punkt35=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(144, 238))
-punkt36=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(191, 238))
-punkt37=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(238, 238))
-punkt38=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(285, 238))
-punkt39=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(332, 238))
-punkt40=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(379, 238))
-punkt41=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(50, 285))
-punkt42=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(97, 285))
-punkt43=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(144, 285))
-punkt44=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(191, 285))
-punkt45=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(238, 285))
-punkt46=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(285, 285))
-punkt47=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(332, 285))
-punkt48=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(379, 285))
-punkt49=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(50, 332))
-punkt50=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(97, 332))
-punkt51=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(144, 332))
-punkt52=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(191, 332))
-punkt53=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(238, 332))
-punkt54=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(285, 332))
-punkt55=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(332, 332))
-punkt56=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(379, 332))
-punkt57=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(50, 379))
-punkt58=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(97, 379))
-punkt59=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(144, 379))
-punkt60=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(191, 379))
-punkt61=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(238, 379))
-punkt62=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(285, 379))
-punkt63=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(332, 379))
-punkt64=Button(rahmen, image=gruener_punkt_bild, command=lambda:figur_ziehen(379, 379))
+gruener_punkt_bild=ImageTk.PhotoImage(Image.open("Bilder\Roter_Punkt.png"))
 punkt_lange_rochade_weiss=Button(rahmen, image=gruener_punkt_bild, command=lambda:lange_rochade_machen_weiss())
 punkt_kurze_rochade_weiss=Button(rahmen, image=gruener_punkt_bild, command=lambda:kurze_rochade_machen_weiss())
 punkt_lange_rochade_schwarz=Button(rahmen, image=gruener_punkt_bild, command=lambda:lange_rochade_machen_schwarz())
@@ -2846,14 +2781,15 @@ felder={1:{"x":50, "y":379,"figure":turm1_w},2:{"x":97, "y":379,"figure":springe
 felder_kopie=kopie_ausgeben(felder)
 rochade_kopie=copy.deepcopy(rochade)
 verlauf=[[felder_kopie, rochade]]
-punkte=[punkt1, punkt2, punkt3, punkt4, punkt5, punkt6, punkt7, punkt8, punkt9, punkt10, punkt11, punkt12, punkt13, punkt14, punkt15, punkt16, punkt17, punkt18, punkt19, punkt20, punkt21, punkt22, punkt23, punkt24, punkt25, punkt26, punkt27, punkt28, punkt29, punkt30, punkt31, punkt32, punkt33, punkt34, punkt35, punkt36, punkt37, punkt38, punkt39, punkt40, punkt41, punkt42, punkt43, punkt44, punkt45, punkt46, punkt47, punkt48, punkt49, punkt50, punkt51, punkt52, punkt53, punkt54, punkt55, punkt56, punkt57, punkt58, punkt59, punkt60, punkt61, punkt62, punkt63, punkt64, punkt_lange_rochade_weiss, punkt_kurze_rochade_weiss, punkt_kurze_rochade_schwarz, punkt_lange_rochade_schwarz]
 alle_figuren=[bauer1_w, bauer2_w, bauer3_w, bauer4_w, bauer5_w, bauer6_w, bauer7_w, bauer8_w, turm1_w, turm2_w, springer1_w, springer2_w, laeufer1_w, laeufer2_w, koenig_w, dame_w, bauer1_s, bauer2_s, bauer3_s, bauer4_s, bauer5_s, bauer6_s, bauer7_s, bauer8_s, turm1_s, turm2_s, springer1_s, springer2_s, laeufer1_s, laeufer2_s, koenig_s, dame_s]
 en_passant={bauer1_w: False, bauer2_w: False, bauer3_w: False, bauer4_w: False, bauer5_w: False, bauer6_w: False, bauer7_w: False, bauer8_w: False, bauer1_s: False, bauer2_s: False, bauer3_s: False, bauer4_s: False, bauer5_s: False, bauer6_s: False, bauer7_s: False, bauer8_s:False}
-felder_buttons=[0, feld1, feld2, feld3, feld4, feld5, feld6, feld7, feld8, feld9, feld10, feld11, feld12, feld13, feld14, feld15, feld16, feld17, feld18, feld19, feld20, feld21, feld22, feld23, feld24, feld25, feld26, feld27, feld28, feld29, feld30, feld31, feld32, feld33, feld34, feld35, feld36, feld37, feld38, feld39, feld40, feld41, feld42, feld43, feld44, feld45, feld46, feld47, feld48, feld49, feld50, feld51, feld52, feld53, feld54, feld55, feld56, feld57, feld58, feld59, feld60, feld61, feld62, feld63, feld64]
+
 def figuren_plazieren():
     for i in felder:
         if felder[i]["figure"]!="none":
             felder[i]["figure"].place(x=felder[i]["x"], y=felder[i]["y"])
+
+setzeZieleAufNull()
 
 figuren_plazieren()
 fenster.mainloop()
