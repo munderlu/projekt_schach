@@ -141,6 +141,7 @@ feld64.place(x=40+47*7, y=40+7*47)
 
 felder_buttons=[feld1, feld2, feld3, feld4, feld5, feld6, feld7, feld8, feld9, feld10, feld11, feld12, feld13, feld14, feld15, feld16, feld17, feld18, feld19, feld20, feld21, feld22, feld23, feld24, feld25, feld26, feld27, feld28, feld29, feld30, feld31, feld32, feld33, feld34, feld35, feld36, feld37, feld38, feld39, feld40, feld41, feld42, feld43, feld44, feld45, feld46, feld47, feld48, feld49, feld50, feld51, feld52, feld53, feld54, feld55, feld56, feld57, feld58, feld59, feld60, feld61, feld62, feld63, feld64]
 
+aktuelle_figur="none"
 weristdran="weiss"
 aktuelle_figur="none"
 schachWeiss=False
@@ -1037,6 +1038,7 @@ def schachSchwarzBerechnen():
 def setzeZieleAufNull():
     global moegliche_ziele
     moegliche_ziele={1:{"Feld_Nr": "none", "x":"none", "y":"none"}, 2:{"Feld_Nr": "none", "x":"none", "y":"none"}, 3:{"Feld_Nr": "none", "x":"none", "y":"none"}, 4:{"Feld_Nr": "none", "x":"none", "y":"none"}, 5:{"Feld_Nr": "none", "x":"none", "y":"none"}, 6:{"Feld_Nr": "none", "x":"none", "y":"none"}, 7:{"Feld_Nr": "none", "x":"none", "y":"none"}, 8:{"Feld_Nr": "none", "x":"none", "y":"none"}, 9:{"Feld_Nr": "none", "x":"none", "y":"none"}, 10:{"Feld_Nr": "none", "x":"none", "y":"none"}, 11:{"Feld_Nr": "none", "x":"none", "y":"none"}, 12:{"Feld_Nr": "none", "x":"none", "y":"none"}, 13:{"Feld_Nr": "none", "x":"none", "y":"none"}, 14:{"Feld_Nr": "none", "x":"none", "y":"none"}, 15:{"Feld_Nr": "none", "x":"none", "y":"none"}, 16:{"Feld_Nr": "none", "x":"none", "y":"none"}, 17:{"Feld_Nr": "none", "x":"none", "y":"none"}, 18:{"Feld_Nr": "none", "x":"none", "y":"none"}, 19:{"Feld_Nr": "none", "x":"none", "y":"none"}, 20:{"Feld_Nr": "none", "x":"none", "y":"none"}, 21:{"Feld_Nr": "none", "x":"none", "y":"none"}, 22:{"Feld_Nr": "none", "x":"none", "y":"none"}, 23:{"Feld_Nr": "none", "x":"none", "y":"none"}, 24:{"Feld_Nr": "none", "x":"none", "y":"none"}, 25:{"Feld_Nr": "none", "x":"none", "y":"none"}, 26:{"Feld_Nr": "none", "x":"none", "y":"none"}, 27:{"Feld_Nr": "none", "x":"none", "y":"none"}}
+    aktuelle_figur="none"
     for something in range(0, 49, 16):
         for i in range(0, 7, 2):
             felder_buttons[i+something]["bg"]="#FFFFFF"
@@ -2537,7 +2539,7 @@ def bauer_verwandeln_weiss(aktuelle_figur, verwandel_figur, xpos, ypos):
     auswahlTurm.place_forget()
     auswahlLaeufer.place_forget()
     auswahlSpringer.place_forget()
-           
+
 #acht Bauern weiss
 bauer_w_bild=ImageTk.PhotoImage(Image.open("Bilder\Bauer_weiss.png"))
 bauer1_w=Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiss(bauer1_w))
@@ -2605,28 +2607,28 @@ dame_w.art="dame"
 
 #acht Bauern schwarz
 bauer_s_bild=ImageTk.PhotoImage(Image.open("Bilder\Bauer_schwarz.png"))
-bauer1_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer1_s))
+bauer1_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda:zuege_bauer_schwarz(bauer1_s))
 bauer1_s.farbe="schwarz"
 bauer1_s.art="bauer"
-bauer2_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer2_s))
+bauer2_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda:zuege_bauer_schwarz(bauer2_s))
 bauer2_s.farbe="schwarz"
 bauer2_s.art="bauer"
-bauer3_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer3_s))
+bauer3_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda:zuege_bauer_schwarz(bauer3_s))
 bauer3_s.farbe="schwarz"
 bauer3_s.art="bauer"
-bauer4_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer4_s))
+bauer4_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda:zuege_bauer_schwarz(bauer4_s))
 bauer4_s.farbe="schwarz"
 bauer4_s.art="bauer"
-bauer5_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer5_s))
+bauer5_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda:zuege_bauer_schwarz(bauer5_s))
 bauer5_s.farbe="schwarz"
 bauer5_s.art="bauer"
-bauer6_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer6_s))
+bauer6_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda:zuege_bauer_schwarz(bauer6_s))
 bauer6_s.farbe="schwarz"
 bauer6_s.art="bauer"
-bauer7_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer7_s))
+bauer7_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda:zuege_bauer_schwarz(bauer7_s))
 bauer7_s.farbe="schwarz"
 bauer7_s.art="bauer"
-bauer8_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda: zuege_bauer_schwarz(bauer8_s))
+bauer8_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda:zuege_bauer_schwarz(bauer8_s))
 bauer8_s.farbe="schwarz"
 bauer8_s.art="bauer"
 
@@ -2673,7 +2675,6 @@ auswahlSpringer=Button()
 auswahlLaeufer=Button()
 
 def figur_ziehen(xpos, ypos):
-    setzeZieleAufNull()
     global felder
     global weristdran
     global rochade
@@ -2683,89 +2684,92 @@ def figur_ziehen(xpos, ypos):
     global auswahlTurm
     global en_passant
     global verlauf
-    for i in felder:
-        if felder[i]["figure"]==aktuelle_figur:
-            davorx=felder[i]["x"]
-            davory=felder[i]["y"]
-            felder[i]["figure"]="none"
-    for i in felder:
-        if felder[i]["x"]==xpos and felder[i]["y"]==ypos:
-            if felder[i]["figure"]!="none":
-                felder[i]["figure"].place_forget()
-                verlauf=[]
-            felder[i]["figure"]=aktuelle_figur
-            felder[i]["figure"].place(x=felder[i]["x"], y=felder[i]["y"])
-    if aktuelle_figur==turm1_w:
-        rochade["turm1_w_gezogen"]=True
-    if aktuelle_figur==turm2_w:
-        rochade["turm2_w_gezogen"]=True
-    if aktuelle_figur==turm1_s:
-        rochade["turm1_s_gezogen"]=True
-    if aktuelle_figur==turm2_s:
-        rochade["turm2_s_gezogen"]=True
-    if aktuelle_figur==koenig_w:
-        rochade["koenig_w_gezogen"]=True
-    if aktuelle_figur==koenig_s:
-        rochade["koenig_s_gezogen"]=True
-    if aktuelle_figur.art=="bauer" and ypos==379:
-        auswahlDame=Button(image=dame_s_bild, command=lambda:bauer_verwandeln_schwarz(aktuelle_figur, "dame", xpos, ypos))
-        auswahlTurm=Button(image=turm_s_bild, command=lambda:bauer_verwandeln_schwarz(aktuelle_figur, "turm", xpos, ypos))
-        auswahlLaeufer=Button(image=laeufer_s_bild, command=lambda:bauer_verwandeln_schwarz(aktuelle_figur, "laeufer", xpos, ypos))
-        auswahlSpringer=Button(image=springer_s_bild, command=lambda:bauer_verwandeln_schwarz(aktuelle_figur, "springer", xpos, ypos))
-        auswahlDame.place(y=430, x=50)
-        auswahlTurm.place(y=430, x=100)
-        auswahlLaeufer.place(y=430, x=150)
-        auswahlSpringer.place(y=430, x=200)
-        weristdran="?"
-    if aktuelle_figur.art=="bauer" and ypos==50:
-        auswahlDame=Button(image=dame_w_bild, command=lambda:bauer_verwandeln_weiss(aktuelle_figur, "dame", xpos, ypos))
-        auswahlTurm=Button(image=turm_w_bild, command=lambda:bauer_verwandeln_weiss(aktuelle_figur, "turm", xpos, ypos))
-        auswahlLaeufer=Button(image=laeufer_w_bild, command=lambda:bauer_verwandeln_weiss(aktuelle_figur, "laeufer", xpos, ypos))
-        auswahlSpringer=Button(image=springer_w_bild, command=lambda:bauer_verwandeln_weiss(aktuelle_figur, "springer", xpos, ypos))
-        auswahlDame.place(y=430, x=50)
-        auswahlTurm.place(y=430, x=100)
-        auswahlLaeufer.place(y=430, x=150)
-        auswahlSpringer.place(y=430, x=200)
-        weristdran="?"
-    for i in en_passant:
-        en_passant[i]=False
-    if davory==332 and ypos==238 and aktuelle_figur.farbe=="weiss":
-        en_passant[aktuelle_figur]=True
-    if davory==97 and ypos==191 and aktuelle_figur.farbe=="schwarz":
-        en_passant[aktuelle_figur]=True
-    if aktuelle_figur.art=="bauer" and aktuelle_figur.farbe=="weiss":
-        if davory==191 and ypos==144 and (xpos==davorx+47 or xpos==davorx-47):
-            for i in felder:
-                if felder[i]["y"]==davory and felder[i]["x"]==xpos and felder[i]["figure"]!="none":
-                    if felder[i]["figure"].art=="bauer" and felder[i]["figure"].farbe=="schwarz":
-                        felder[i]["figure"].place_forget()
+    for i in moegliche_ziele:
+        if moegliche_ziele[i]["x"]==xpos:
+            if moegliche_ziele[i]["y"]==ypos:
+                for i in felder:
+                    if felder[i]["figure"]==aktuelle_figur:
+                        davorx=felder[i]["x"]
+                        davory=felder[i]["y"]
                         felder[i]["figure"]="none"
-    if aktuelle_figur.art=="bauer" and aktuelle_figur.farbe=="schwarz":
-        if davory==238 and ypos==285 and (xpos==davorx+47 or xpos==davorx-47):
-            for i in felder:
-                if felder[i]["y"]==davory and felder[i]["x"]==xpos and felder[i]["figure"]!="none":
-                    if felder[i]["figure"].art=="bauer" and felder[i]["figure"].farbe=="weiss":
-                        felder[i]["figure"].place_forget()
-                        felder[i]["figure"]="none"
-    if weristdran=="schwarz":
-        weristdran="weiss"
-        schachWeissBerechnen()
-    elif weristdran=="weiss":
-        weristdran="schwarz"
-        schachSchwarzBerechnen()
-    if aktuelle_figur.art=="bauer":
-        verlauf=[]
-    gefunden=0
-    felder_kopie=kopie_ausgeben(felder)
-    rochade_kopie=copy.deepcopy(rochade)
-    verlauf.append([felder_kopie, rochade])
-    for i in verlauf:
-        if i[0]==felder and i[1]==rochade:
-            gefunden+=1
-        if gefunden==3:
-            schrift=Label(text="Remis:\nunentschieden", font="Arial, 30")
-            weristdran="?"
-            schrift.place(x=100, y=200)
+                for i in felder:
+                    if felder[i]["x"]==xpos and felder[i]["y"]==ypos:
+                        if felder[i]["figure"]!="none":
+                            felder[i]["figure"].place_forget()
+                            verlauf=[]
+                        felder[i]["figure"]=aktuelle_figur
+                        felder[i]["figure"].place(x=felder[i]["x"], y=felder[i]["y"])
+                if aktuelle_figur==turm1_w:
+                    rochade["turm1_w_gezogen"]=True
+                if aktuelle_figur==turm2_w:
+                    rochade["turm2_w_gezogen"]=True
+                if aktuelle_figur==turm1_s:
+                    rochade["turm1_s_gezogen"]=True
+                if aktuelle_figur==turm2_s:
+                    rochade["turm2_s_gezogen"]=True
+                if aktuelle_figur==koenig_w:
+                    rochade["koenig_w_gezogen"]=True
+                if aktuelle_figur==koenig_s:
+                    rochade["koenig_s_gezogen"]=True
+                if aktuelle_figur.art=="bauer" and ypos==379:
+                    auswahlDame=Button(image=dame_s_bild, command=lambda:bauer_verwandeln_schwarz(aktuelle_figur, "dame", xpos, ypos))
+                    auswahlTurm=Button(image=turm_s_bild, command=lambda:bauer_verwandeln_schwarz(aktuelle_figur, "turm", xpos, ypos))
+                    auswahlLaeufer=Button(image=laeufer_s_bild, command=lambda:bauer_verwandeln_schwarz(aktuelle_figur, "laeufer", xpos, ypos))
+                    auswahlSpringer=Button(image=springer_s_bild, command=lambda:bauer_verwandeln_schwarz(aktuelle_figur, "springer", xpos, ypos))
+                    auswahlDame.place(y=430, x=50)
+                    auswahlTurm.place(y=430, x=100)
+                    auswahlLaeufer.place(y=430, x=150)
+                    auswahlSpringer.place(y=430, x=200)
+                    weristdran="?"
+                if aktuelle_figur.art=="bauer" and ypos==50:
+                    auswahlDame=Button(image=dame_w_bild, command=lambda:bauer_verwandeln_weiss(aktuelle_figur, "dame", xpos, ypos))
+                    auswahlTurm=Button(image=turm_w_bild, command=lambda:bauer_verwandeln_weiss(aktuelle_figur, "turm", xpos, ypos))
+                    auswahlLaeufer=Button(image=laeufer_w_bild, command=lambda:bauer_verwandeln_weiss(aktuelle_figur, "laeufer", xpos, ypos))
+                    auswahlSpringer=Button(image=springer_w_bild, command=lambda:bauer_verwandeln_weiss(aktuelle_figur, "springer", xpos, ypos))
+                    auswahlDame.place(y=430, x=50)
+                    auswahlTurm.place(y=430, x=100)
+                    auswahlLaeufer.place(y=430, x=150)
+                    auswahlSpringer.place(y=430, x=200)
+                    weristdran="?"
+                for i in en_passant:
+                    en_passant[i]=False
+                if davory==332 and ypos==238 and aktuelle_figur.farbe=="weiss":
+                    en_passant[aktuelle_figur]=True
+                if davory==97 and ypos==191 and aktuelle_figur.farbe=="schwarz":
+                    en_passant[aktuelle_figur]=True
+                if aktuelle_figur.art=="bauer" and aktuelle_figur.farbe=="weiss":
+                    if davory==191 and ypos==144 and (xpos==davorx+47 or xpos==davorx-47):
+                        for i in felder:
+                            if felder[i]["y"]==davory and felder[i]["x"]==xpos and felder[i]["figure"]!="none":
+                                if felder[i]["figure"].art=="bauer" and felder[i]["figure"].farbe=="schwarz":
+                                    felder[i]["figure"].place_forget()
+                                    felder[i]["figure"]="none"
+                if aktuelle_figur.art=="bauer" and aktuelle_figur.farbe=="schwarz":
+                    if davory==238 and ypos==285 and (xpos==davorx+47 or xpos==davorx-47):
+                        for i in felder:
+                            if felder[i]["y"]==davory and felder[i]["x"]==xpos and felder[i]["figure"]!="none":
+                                if felder[i]["figure"].art=="bauer" and felder[i]["figure"].farbe=="weiss":
+                                    felder[i]["figure"].place_forget()
+                                    felder[i]["figure"]="none"
+                if weristdran=="schwarz":
+                    weristdran="weiss"
+                    schachWeissBerechnen()
+                elif weristdran=="weiss":
+                    weristdran="schwarz"
+                    schachSchwarzBerechnen()
+                if aktuelle_figur.art=="bauer":
+                    verlauf=[]
+                gefunden=0
+                felder_kopie=kopie_ausgeben(felder)
+                rochade_kopie=copy.deepcopy(rochade)
+                verlauf.append([felder_kopie, rochade])
+                for i in verlauf:
+                    if i[0]==felder and i[1]==rochade:
+                        gefunden+=1
+                    if gefunden==3:
+                        schrift=Label(text="Remis:\nunentschieden", font="Arial, 30")
+                        weristdran="?"
+                        schrift.place(x=100, y=200)
     setzeZieleAufNull()
 
 gruener_punkt_bild=ImageTk.PhotoImage(Image.open("Bilder\Roter_Punkt.png"))
@@ -2790,6 +2794,5 @@ def figuren_plazieren():
             felder[i]["figure"].place(x=felder[i]["x"], y=felder[i]["y"])
 
 setzeZieleAufNull()
-
 figuren_plazieren()
 fenster.mainloop()
