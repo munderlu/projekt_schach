@@ -7,71 +7,78 @@ rahmen=Frame(fenster, relief="ridge", borderwidth=5)
 rahmen.pack(fill="both", expand=1)
 fenster.geometry("500x500")
 
+class Schachfigur(Button):
+    farbe="?"
+    art="?"
+
+class Schachfeld(Button):
+    farbe="?"
+
 pixelVirtual=PhotoImage(width=1, height=1)
-feld1=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,50))
-feld2=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,50))
-feld3=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,50))
-feld4=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,50))
-feld5=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,50))
-feld6=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,50))
-feld7=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,50))
-feld8=Button(rahmen, bg="#8b4531", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,50))
-feld9=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,97))
-feld10=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,97))
-feld11=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,97))
-feld12=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,97))
-feld13=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,97))
-feld14=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,97))
-feld15=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,97))
-feld16=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,97))
-feld17=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,144))
-feld18=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,144))
-feld19=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,144))
-feld20=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,144))
-feld21=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,144))
-feld22=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,144))
-feld23=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,144))
-feld24=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,144))
-feld25=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,191))
-feld26=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,191))
-feld27=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,191))
-feld28=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,191))
-feld29=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,191))
-feld30=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,191))
-feld31=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,191))
-feld32=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,191))
-feld33=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,238))
-feld34=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,238))
-feld35=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,238))
-feld36=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,238))
-feld37=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,238))
-feld38=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,238))
-feld39=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,238))
-feld40=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,238))
-feld41=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,285))
-feld42=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,285))
-feld43=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,285))
-feld44=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,285))
-feld45=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,285))
-feld46=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,285))
-feld47=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,285))
-feld48=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,285))
-feld49=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,332))
-feld50=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,332))
-feld51=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,332))
-feld52=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,332))
-feld53=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,332))
-feld54=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,332))
-feld55=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,332))
-feld56=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,332))
-feld57=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,379))
-feld58=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,379))
-feld59=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,379))
-feld60=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,379))
-feld61=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,379))
-feld62=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,379))
-feld63=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,379))
-feld64=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,379))
+feld1=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,50))
+feld2=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,50))
+feld3=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,50))
+feld4=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,50))
+feld5=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,50))
+feld6=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,50))
+feld7=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,50))
+feld8=Schachfeld(rahmen, bg="#8b4531", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,50))
+feld9=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,97))
+feld10=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,97))
+feld11=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,97))
+feld12=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,97))
+feld13=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,97))
+feld14=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,97))
+feld15=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,97))
+feld16=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,97))
+feld17=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,144))
+feld18=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,144))
+feld19=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,144))
+feld20=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,144))
+feld21=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,144))
+feld22=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,144))
+feld23=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,144))
+feld24=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,144))
+feld25=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,191))
+feld26=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,191))
+feld27=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,191))
+feld28=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,191))
+feld29=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,191))
+feld30=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,191))
+feld31=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,191))
+feld32=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,191))
+feld33=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,238))
+feld34=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,238))
+feld35=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,238))
+feld36=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,238))
+feld37=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,238))
+feld38=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,238))
+feld39=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,238))
+feld40=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,238))
+feld41=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,285))
+feld42=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,285))
+feld43=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,285))
+feld44=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,285))
+feld45=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,285))
+feld46=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,285))
+feld47=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,285))
+feld48=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,285))
+feld49=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,332))
+feld50=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,332))
+feld51=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,332))
+feld52=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,332))
+feld53=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,332))
+feld54=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,332))
+feld55=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,332))
+feld56=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,332))
+feld57=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,379))
+feld58=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,379))
+feld59=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,379))
+feld60=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,379))
+feld61=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,379))
+feld62=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,379))
+feld63=Schachfeld(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,379))
+feld64=Schachfeld(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,379))
 feld1.place(x=40, y=40)
 feld2.place(x=40+47*1, y=40)
 feld3.place(x=40+47*2, y=40)
@@ -139,6 +146,16 @@ feld64.place(x=40+47*7, y=40+7*47)
 
 felder_buttons=[feld1, feld2, feld3, feld4, feld5, feld6, feld7, feld8, feld9, feld10, feld11, feld12, feld13, feld14, feld15, feld16, feld17, feld18, feld19, feld20, feld21, feld22, feld23, feld24, feld25, feld26, feld27, feld28, feld29, feld30, feld31, feld32, feld33, feld34, feld35, feld36, feld37, feld38, feld39, feld40, feld41, feld42, feld43, feld44, feld45, feld46, feld47, feld48, feld49, feld50, feld51, feld52, feld53, feld54, feld55, feld56, feld57, feld58, feld59, feld60, feld61, feld62, feld63, feld64]
 
+for something in range(0, 49, 16):
+        for i in range(0, 7, 2):
+            felder_buttons[i+something].farbe="#FFFFFF"
+        for i in range(1, 8, 2):
+            felder_buttons[i+something].farbe="#8b4513"
+        for i in range(0, 7, 2):
+            felder_buttons[i+something+8].farbe="#8b4513"
+        for i in range(1, 8, 2):
+            felder_buttons[i+something+8].farbe="#FFFFFF"
+
 aktuelle_figur="none"
 weristdran="weiss"
 aktuelle_figur="none"
@@ -146,10 +163,6 @@ schachWeiss=False
 schachSchwarz=False
 moegliche_zuege=[]
 rochade={"turm1_w_gezogen": False, "turm2_w_gezogen": False, "koenig_w_gezogen":False, "turm1_s_gezogen": False, "turm2_s_gezogen": False, "koenig_s_gezogen": False}
-
-class Schachfigur(Button):
-    farbe="?"
-    art="?"
 
 dame2_s=Schachfigur(rahmen)
 dame3_s=Schachfigur(rahmen)
@@ -916,22 +929,6 @@ def schachWeissBerechnen():
     schachMatt=True
     alleZuegeBerechnenSchwarz(felder)
     for figur in alle_figuren:
-        if figur.farbe=="weiss" and figur.art=="koenig":
-            for i in felder:
-                if felder[i]["figure"]==figur:
-                    XKönig=felder[i]["x"]
-                    YKönig=felder[i]["y"]
-    for i in moegliche_zuege:
-        if i["x"]==XKönig and i["y"]==YKönig:
-            NeuesSchachWeiss=True
-            rechenvariable1=XKönig
-            rechenvariable2=YKönig
-            rechenvariable3=(rechenvariable1-3)/47
-            rechenvariable4=(rechenvariable2-3)/47
-            ergebniss=(rechenvariable3+((rechenvariable4-1)*8)-1)
-            feld_Nr=int(ergebniss)
-            felder_buttons[feld_Nr]["bg"]="#FF0000"
-    for figur in alle_figuren:
         if figur.farbe=="weiss":
             if figur.art=="bauer":
                 zuege_bauer_weiss(figur)
@@ -976,22 +973,15 @@ def schachWeissBerechnen():
     elif schachMatt==True and NeuesSchachWeiss==True:
         schrift=Label(text="Schach Matt:\nschwarz gewinnt", font="Arial, 30")
         schrift.place(x=100, y=200)
-
-def schachSchwarzBerechnen():
-    setzeZieleAufNull()
-    NeuesSchachSchwarz=False
-    global moegliche_zuege
-    schachMatt=True
-    alleZuegeBerechnenWeiss(felder)
     for figur in alle_figuren:
-        if figur.farbe=="schwarz" and figur.art=="koenig":
+        if figur.farbe=="weiss" and figur.art=="koenig":
             for i in felder:
                 if felder[i]["figure"]==figur:
                     XKönig=felder[i]["x"]
                     YKönig=felder[i]["y"]
     for i in moegliche_zuege:
         if i["x"]==XKönig and i["y"]==YKönig:
-            NeuesSchachSchwarz=True
+            NeuesSchachWeiss=True
             rechenvariable1=XKönig
             rechenvariable2=YKönig
             rechenvariable3=(rechenvariable1-3)/47
@@ -999,6 +989,15 @@ def schachSchwarzBerechnen():
             ergebniss=(rechenvariable3+((rechenvariable4-1)*8)-1)
             feld_Nr=int(ergebniss)
             felder_buttons[feld_Nr]["bg"]="#FF0000"
+            felder_buttons[feld_Nr].farbe="#FF0000"
+            print("rot")
+
+def schachSchwarzBerechnen():
+    setzeZieleAufNull()
+    NeuesSchachSchwarz=False
+    global moegliche_zuege
+    schachMatt=True
+    alleZuegeBerechnenWeiss(felder)
     for figur in alle_figuren:
         if figur.farbe=="schwarz":
             if figur.art=="bauer":
@@ -1044,6 +1043,24 @@ def schachSchwarzBerechnen():
     elif schachMatt==True and NeuesSchachSchwarz==True:
         schrift=Label(text="Schach Matt:\nweiss gewinnt", font="Arial, 30")
         schrift.place(x=100, y=200)
+    for figur in alle_figuren:
+        if figur.farbe=="schwarz" and figur.art=="koenig":
+            for i in felder:
+                if felder[i]["figure"]==figur:
+                    XKönig=felder[i]["x"]
+                    YKönig=felder[i]["y"]
+    for i in moegliche_zuege:
+        if i["x"]==XKönig and i["y"]==YKönig:
+            NeuesSchachSchwarz=True
+            rechenvariable1=XKönig
+            rechenvariable2=YKönig
+            rechenvariable3=(rechenvariable1-3)/47
+            rechenvariable4=(rechenvariable2-3)/47
+            ergebniss=(rechenvariable3+((rechenvariable4-1)*8)-1)
+            feld_Nr=int(ergebniss)
+            felder_buttons[feld_Nr]["bg"]="#FF0000"
+            felder_buttons[feld_Nr].farbe="#FF0000"
+            print("rot")
 
 def setzeZieleAufNull():
     global moegliche_ziele
@@ -1057,13 +1074,44 @@ def setzeZieleAufNull():
 def farbenZurücksetzen():
      for something in range(0, 49, 16):
         for i in range(0, 7, 2):
+            print(felder_buttons[i+something].farbe)
+            if felder_buttons[i+something].farbe!="#FF0000":
+                felder_buttons[i+something]["bg"]="#FFFFFF"
+            if felder_buttons[i+something].farbe=="#FF0000":
+                print("rot erkannt")
+        for i in range(1, 8, 2):
+            print(felder_buttons[i+something].farbe)
+            if felder_buttons[i+something].farbe!="#FF0000":
+                felder_buttons[i+something]["bg"]="#8b4513"
+            if felder_buttons[i+something].farbe=="#FF0000":
+                print("rot erkannt")
+        for i in range(0, 7, 2):
+            print(felder_buttons[i+something].farbe)
+            if felder_buttons[i+something].farbe!="#FF0000":
+                felder_buttons[i+something+8]["bg"]="#8b4513"
+            if felder_buttons[i+something].farbe=="#FF0000":
+                print("rot erkannt")
+        for i in range(1, 8, 2):
+            print(felder_buttons[i+something].farbe)
+            if felder_buttons[i+something].farbe!="#FF0000":
+                felder_buttons[i+something+8]["bg"]="#FFFFFF"
+            if felder_buttons[i+something].farbe=="#FF0000":
+                print("rot erkannt")
+
+def farbeRotZurücksetzen():
+    for something in range(0, 49, 16):
+        for i in range(0, 7, 2):
             felder_buttons[i+something]["bg"]="#FFFFFF"
+            felder_buttons[i+something].farbe="#FFFFFF"
         for i in range(1, 8, 2):
             felder_buttons[i+something]["bg"]="#8b4513"
+            felder_buttons[i+something].farbe="#8b4513"
         for i in range(0, 7, 2):
             felder_buttons[i+something+8]["bg"]="#8b4513"
+            felder_buttons[i+something+8].farbe="#8b4513"
         for i in range(1, 8, 2):
             felder_buttons[i+something+8]["bg"]="#FFFFFF"
+            felder_buttons[i+something+8].farbe="#FFFFFF"
 
 def kopie_ausgeben(felder):
     tkinterObjekte=[]
