@@ -7,71 +7,72 @@ rahmen=Frame(fenster, relief="ridge", borderwidth=5)
 rahmen.pack(fill="both", expand=1)
 fenster.geometry("500x500")
 
+feld_style=35
 pixelVirtual=PhotoImage(width=1, height=1)
-feld1=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,50))
-feld2=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,50))
-feld3=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,50))
-feld4=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,50))
-feld5=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,50))
-feld6=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,50))
-feld7=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,50))
-feld8=Button(rahmen, bg="#8b4531", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,50))
-feld9=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,97))
-feld10=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,97))
-feld11=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,97))
-feld12=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,97))
-feld13=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,97))
-feld14=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,97))
-feld15=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,97))
-feld16=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,97))
-feld17=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,144))
-feld18=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,144))
-feld19=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,144))
-feld20=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,144))
-feld21=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,144))
-feld22=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,144))
-feld23=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,144))
-feld24=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,144))
-feld25=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,191))
-feld26=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,191))
-feld27=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,191))
-feld28=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,191))
-feld29=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,191))
-feld30=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,191))
-feld31=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,191))
-feld32=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,191))
-feld33=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,238))
-feld34=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,238))
-feld35=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,238))
-feld36=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,238))
-feld37=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,238))
-feld38=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,238))
-feld39=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,238))
-feld40=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,238))
-feld41=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,285))
-feld42=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,285))
-feld43=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,285))
-feld44=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,285))
-feld45=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,285))
-feld46=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,285))
-feld47=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,285))
-feld48=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,285))
-feld49=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,332))
-feld50=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,332))
-feld51=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,332))
-feld52=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,332))
-feld53=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,332))
-feld54=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,332))
-feld55=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,332))
-feld56=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,332))
-feld57=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(50,379))
-feld58=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(97,379))
-feld59=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(144,379))
-feld60=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(191,379))
-feld61=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(238,379))
-feld62=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(285,379))
-feld63=Button(rahmen, bg="#8b4513", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(332,379))
-feld64=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, height=45, width=45, compound="center", command=lambda:figur_ziehen(379,379))
+feld1=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(50,50))
+feld2=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(97,50))
+feld3=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(144,50))
+feld4=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(191,50))
+feld5=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(238,50))
+feld6=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(285,50))
+feld7=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(332,50))
+feld8=Button(rahmen, bg="#8b4531", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(379,50))
+feld9=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(50,97))
+feld10=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(97,97))
+feld11=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(144,97))
+feld12=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(191,97))
+feld13=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(238,97))
+feld14=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(285,97))
+feld15=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(332,97))
+feld16=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(379,97))
+feld17=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(50,144))
+feld18=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(97,144))
+feld19=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(144,144))
+feld20=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(191,144))
+feld21=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(238,144))
+feld22=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(285,144))
+feld23=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(332,144))
+feld24=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(379,144))
+feld25=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(50,191))
+feld26=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(97,191))
+feld27=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(144,191))
+feld28=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(191,191))
+feld29=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(238,191))
+feld30=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(285,191))
+feld31=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(332,191))
+feld32=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(379,191))
+feld33=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(50,238))
+feld34=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(97,238))
+feld35=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(144,238))
+feld36=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(191,238))
+feld37=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(238,238))
+feld38=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(285,238))
+feld39=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(332,238))
+feld40=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(379,238))
+feld41=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(50,285))
+feld42=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(97,285))
+feld43=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(144,285))
+feld44=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(191,285))
+feld45=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(238,285))
+feld46=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(285,285))
+feld47=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(332,285))
+feld48=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(379,285))
+feld49=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(50,332))
+feld50=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(97,332))
+feld51=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(144,332))
+feld52=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(191,332))
+feld53=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(238,332))
+feld54=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(285,332))
+feld55=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(332,332))
+feld56=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(379,332))
+feld57=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(50,379))
+feld58=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(97,379))
+feld59=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(144,379))
+feld60=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(191,379))
+feld61=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(238,379))
+feld62=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(285,379))
+feld63=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(332,379))
+feld64=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(379,379))
 feld1.place(x=40, y=40)
 feld2.place(x=40+47*1, y=40)
 feld3.place(x=40+47*2, y=40)
@@ -577,7 +578,7 @@ def alleZuegeBerechnenSchwarz(felder_kopie):
                                 moegliche_zuege.append({"x": felder_kopie[i]["x"]-47, "y": felder_kopie[i]["y"]+47})
                         if felder_kopie[i]["x"]!=379:
                             if felder_kopie[i-7]["figure"]!="none"and felder_kopie[i-7]["figure"].farbe=="weiss":
-                                moegliche_zuege.append({"x": felder_kopie[i]["x"]+47, "y": felder_kopie[i]["x"]+47})
+                                moegliche_zuege.append({"x": felder_kopie[i]["x"]+47, "y": felder_kopie[i]["y"]+47})
             if(figur.art=="turm"):
                 for i in felder_kopie:
                     if felder_kopie[i]["figure"]==figur:
@@ -931,6 +932,7 @@ def schachWeissBerechnen():
             ergebniss=(rechenvariable3+((rechenvariable4-1)*8)-1)
             feld_Nr=int(ergebniss)
             felder_buttons[feld_Nr]["bg"]="#FF0000"
+            print("Schach Weiß")
     for figur in alle_figuren:
         if figur.farbe=="weiss":
             if figur.art=="bauer":
@@ -1057,13 +1059,17 @@ def setzeZieleAufNull():
 def farbenZurücksetzen():
      for something in range(0, 49, 16):
         for i in range(0, 7, 2):
-            felder_buttons[i+something]["bg"]="#FFFFFF"
+            if felder_buttons[i+something]["bg"]!="#FF0000":
+                felder_buttons[i+something]["bg"]="#FFFFFF"
         for i in range(1, 8, 2):
-            felder_buttons[i+something]["bg"]="#8b4513"
+            if felder_buttons[i+something]["bg"]!="#FF0000":
+                felder_buttons[i+something]["bg"]="#8b4513"")
         for i in range(0, 7, 2):
-            felder_buttons[i+something+8]["bg"]="#8b4513"
+            if felder_buttons[i+something]["bg"]!="#FF0000":
+                felder_buttons[i+something+8]["bg"]="#8b4513"
         for i in range(1, 8, 2):
-            felder_buttons[i+something+8]["bg"]="#FFFFFF"
+            if felder_buttons[i+something]["bg"]!="#FF0000":
+                felder_buttons[i+something+8]["bg"]="#FFFFFF"
 
 def kopie_ausgeben(felder):
     tkinterObjekte=[]
@@ -1091,7 +1097,7 @@ def punkte_auswählen():
 
 def punkte_plazieren():
     for i in moegliche_ziele:
-        if moegliche_ziele[i]["Feld_Nr"]!="none":
+        if moegliche_ziele[i]["Feld_Nr"]!="none" and felder_buttons[moegliche_ziele[i]["Feld_Nr"]]["bg"]!="#FF0000":
             felder_buttons[moegliche_ziele[i]["Feld_Nr"]].configure(bg="#00FF00")
 
 def zuege_bauer_weiss(figur):
