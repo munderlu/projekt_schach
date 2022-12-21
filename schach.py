@@ -912,7 +912,6 @@ def schachSchwarzFigurBerechnen(felder_kopie):
 def schachWeissBerechnen():
     setzeZieleAufNull()
     NeuesSchachWeiß=False
-    schachWeiss=False
     global moegliche_zuege
     schachMatt=True
     alleZuegeBerechnenSchwarz(felder)
@@ -1057,13 +1056,13 @@ def setzeZieleAufNull():
     feld63["command"]=lambda:figur_ziehen(332,379)
  
 def farbenZurücksetzen():
-     for something in range(0, 49, 16):
+    for something in range(0, 49, 16):
         for i in range(0, 7, 2):
             if felder_buttons[i+something]["bg"]!="#FF0000":
                 felder_buttons[i+something]["bg"]="#FFFFFF"
         for i in range(1, 8, 2):
             if felder_buttons[i+something]["bg"]!="#FF0000":
-                felder_buttons[i+something]["bg"]="#8b4513"")
+                felder_buttons[i+something]["bg"]="#8b4513"
         for i in range(0, 7, 2):
             if felder_buttons[i+something]["bg"]!="#FF0000":
                 felder_buttons[i+something+8]["bg"]="#8b4513"
