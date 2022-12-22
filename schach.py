@@ -931,7 +931,6 @@ def schachWeissBerechnen():
             ergebniss=(rechenvariable3+((rechenvariable4-1)*8)-1)
             feld_Nr=int(ergebniss)
             felder_buttons[feld_Nr]["bg"]="#FF0000"
-            print("Schach Weiß")
     for figur in alle_figuren:
         if figur.farbe=="weiss":
             if figur.art=="bauer":
@@ -2083,8 +2082,8 @@ def zuege_koenig_schwarz(figur):
                     if schachSchwarz==True:
                         rochadeGehtNicht=True
                     if rochadeGehtNicht==False:
-                        felder_buttons[3]["bg"]="#00FF00"
-                        felder_buttons[3]["command"]=lambda:lange_rochade_machen_schwarz()
+                        felder_buttons[2]["bg"]="#00FF00"
+                        felder_buttons[2]["command"]=lambda:lange_rochade_machen_schwarz()
                         moegliche_ziele[9]["x"]=144
                         moegliche_ziele[9]["y"]=50
                         moegliche_ziele[9]["Feld_Nr"]=3
