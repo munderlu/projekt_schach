@@ -247,6 +247,33 @@ for i in verwandelte_figuren:
 
 moegliche_ziele={1:{"Feld_Nr": "none", "x":"none", "y":"none"}, 2:{"Feld_Nr": "none", "x":"none", "y":"none"}, 3:{"Feld_Nr": "none", "x":"none", "y":"none"}, 4:{"Feld_Nr": "none", "x":"none", "y":"none"}, 5:{"Feld_Nr": "none", "x":"none", "y":"none"}, 6:{"Feld_Nr": "none", "x":"none", "y":"none"}, 7:{"Feld_Nr": "none", "x":"none", "y":"none"}, 8:{"Feld_Nr": "none", "x":"none", "y":"none"}, 9:{"Feld_Nr": "none", "x":"none", "y":"none"}, 10:{"Feld_Nr": "none", "x":"none", "y":"none"}, 11:{"Feld_Nr": "none", "x":"none", "y":"none"}, 12:{"Feld_Nr": "none", "x":"none", "y":"none"}, 13:{"Feld_Nr": "none", "x":"none", "y":"none"}, 14:{"Feld_Nr": "none", "x":"none", "y":"none"}, 15:{"Feld_Nr": "none", "x":"none", "y":"none"}, 16:{"Feld_Nr": "none", "x":"none", "y":"none"}, 17:{"Feld_Nr": "none", "x":"none", "y":"none"}, 18:{"Feld_Nr": "none", "x":"none", "y":"none"}, 19:{"Feld_Nr": "none", "x":"none", "y":"none"}, 20:{"Feld_Nr": "none", "x":"none", "y":"none"}, 21:{"Feld_Nr": "none", "x":"none", "y":"none"}, 22:{"Feld_Nr": "none", "x":"none", "y":"none"}, 23:{"Feld_Nr": "none", "x":"none", "y":"none"}, 24:{"Feld_Nr": "none", "x":"none", "y":"none"}, 25:{"Feld_Nr": "none", "x":"none", "y":"none"}, 26:{"Feld_Nr": "none", "x":"none", "y":"none"}, 27:{"Feld_Nr": "none", "x":"none", "y":"none"}}
 
+def commands_zurücksetzen():
+    for i in alle_figuren:
+        if i.art=="dame" and i.farbe=="weiss":
+            i["command"]=lambda: zuege_dame_weiss(alle_figuren[i])
+        if i.art=="koenig" and i.farbe=="weiss":
+            i["command"]=lambda: zuege_koenig_weiss(alle_figuren[i])
+        if i.art=="springer" and i.farbe=="weiss":
+            i["command"]=lambda: zuege_springer_weiss(alle_figuren[i])
+        if i.art=="turm" and i.farbe=="weiss":
+            i["command"]=lambda: zuege_turm_weiss(alle_figuren[i])
+        if i.art=="laeufer" and i.farbe=="weiss":
+            i["command"]=lambda: zuege_laeufer_weiss(alle_figuren[i])
+        if i.art=="bauer" and i.farbe=="weiss":
+            i["command"]=lambda: zuege_bauer_weiss(alle_figuren[i])
+        if i.art=="dame" and i.farbe=="schwarz":
+            i["command"]=lambda: zuege_dame_weiss(alle_figuren[i])
+        if i.art=="koenig" and i.farbe=="schwarz":
+            i["command"]=lambda: zuege_koenig_schwarz(alle_figuren[i])
+        if i.art=="springer" and i.farbe=="schwarz":
+            i["command"]=lambda: zuege_springer_schwarz(alle_figuren[i])
+        if i.art=="turm" and i.farbe=="schwarz":
+            i["command"]=lambda: zuege_turm_schwarz(alle_figuren[i])
+        if i.art=="laeufer" and i.farbe=="schwarz":
+            i["command"]=lambda: zuege_laeufer_schwarz(alle_figuren[i])
+        if i.art=="bauer" and i.farbe=="schwarz":
+            i["command"]=lambda: zuege_bauer_schwarz(alle_figuren[i])
+
 def alleZuegeBerechnenWeiss(felder_kopie):
     global moegliche_zuege
     for figur in alle_figuren:
@@ -978,6 +1005,7 @@ def schachWeissBerechnen():
     elif schachMatt==True and NeuesSchachWeiss==True:
         schrift=Label(text="Schach Matt:\nschwarz gewinnt", font="Arial, 30")
         schrift.place(x=100, y=200)
+    #commands_zurücksetzen()
 
 def schachSchwarzBerechnen():
     setzeZieleAufNull()
@@ -1047,6 +1075,7 @@ def schachSchwarzBerechnen():
     elif schachMatt==True and NeuesSchachSchwarz==True:
         schrift=Label(text="Schach Matt:\nweiss gewinnt", font="Arial, 30")
         schrift.place(x=100, y=200)
+    #commands_zurücksetzen()
 
 def setzeZieleAufNull():
     global moegliche_ziele
@@ -1071,6 +1100,7 @@ def farbenZurücksetzen():
         for i in range(1, 8, 2):
             if felder_buttons[i+something+8]["bg"]!="#FF0000":
                 felder_buttons[i+something+8]["bg"]="#FFFFFF"
+    #commands_zurücksetzen()
 
 def farbeRotZurücksetzen():
     for something in range(0, 49, 16):
@@ -1109,8 +1139,12 @@ def punkte_auswählen():
 
 def punkte_plazieren():
     for i in moegliche_ziele:
-        if moegliche_ziele[i]["Feld_Nr"]!="none" and felder_buttons[moegliche_ziele[i]["Feld_Nr"]]["bg"]!="#FF0000":
+        if moegliche_ziele[i]["Feld_Nr"]!="none":
             felder_buttons[moegliche_ziele[i]["Feld_Nr"]].configure(bg="#00FF00")
+            for k in felder:
+                if felder[k]["x"]==moegliche_ziele[i]["x"] and felder[k]["y"]==moegliche_ziele[i]["y"]:
+                    if felder[k]["figure"]!="none":
+                        felder[k]["figure"]["command"]=lambda: figur_ziehen(moegliche_ziele[i]["x"], moegliche_ziele[i]["y"])
 
 def zuege_bauer_weiss(figur):
     setzeZieleAufNull()
