@@ -141,16 +141,6 @@ feld64.place(x=40+47*7, y=40+7*47)
 
 felder_buttons=[feld1, feld2, feld3, feld4, feld5, feld6, feld7, feld8, feld9, feld10, feld11, feld12, feld13, feld14, feld15, feld16, feld17, feld18, feld19, feld20, feld21, feld22, feld23, feld24, feld25, feld26, feld27, feld28, feld29, feld30, feld31, feld32, feld33, feld34, feld35, feld36, feld37, feld38, feld39, feld40, feld41, feld42, feld43, feld44, feld45, feld46, feld47, feld48, feld49, feld50, feld51, feld52, feld53, feld54, feld55, feld56, feld57, feld58, feld59, feld60, feld61, feld62, feld63, feld64]
 
-for something in range(0, 49, 16):
-        for i in range(0, 7, 2):
-            felder_buttons[i+something].farbe="#FFFFFF"
-        for i in range(1, 8, 2):
-            felder_buttons[i+something].farbe="#8b4513"
-        for i in range(0, 7, 2):
-            felder_buttons[i+something+8].farbe="#8b4513"
-        for i in range(1, 8, 2):
-            felder_buttons[i+something+8].farbe="#FFFFFF"
-
 aktuelle_figur="none"
 weristdran="weiss"
 aktuelle_figur="none"
@@ -158,6 +148,10 @@ schachWeiss=False
 schachSchwarz=False
 moegliche_zuege=[]
 rochade={"turm1_w_gezogen": False, "turm2_w_gezogen": False, "koenig_w_gezogen":False, "turm1_s_gezogen": False, "turm2_s_gezogen": False, "koenig_s_gezogen": False}
+
+class Schachfigur(Button):
+    farbe="?"
+    art="?"
 
 dame2_s=Schachfigur(rahmen)
 dame3_s=Schachfigur(rahmen)
@@ -924,6 +918,22 @@ def schachWeissBerechnen():
     schachMatt=True
     alleZuegeBerechnenSchwarz(felder)
     for figur in alle_figuren:
+        if figur.farbe=="weiss" and figur.art=="koenig":
+            for i in felder:
+                if felder[i]["figure"]==figur:
+                    XKönig=felder[i]["x"]
+                    YKönig=felder[i]["y"]
+    for i in moegliche_zuege:
+        if i["x"]==XKönig and i["y"]==YKönig:
+            NeuesSchachWeiss=True
+            rechenvariable1=XKönig
+            rechenvariable2=YKönig
+            rechenvariable3=(rechenvariable1-3)/47
+            rechenvariable4=(rechenvariable2-3)/47
+            ergebniss=(rechenvariable3+((rechenvariable4-1)*8)-1)
+            feld_Nr=int(ergebniss)
+            felder_buttons[feld_Nr]["bg"]="#FF0000"
+    for figur in alle_figuren:
         if figur.farbe=="weiss":
             if figur.art=="bauer":
                 zuege_bauer_weiss(figur)
@@ -977,14 +987,14 @@ def schachSchwarzBerechnen():
     schachMatt=True
     alleZuegeBerechnenWeiss(felder)
     for figur in alle_figuren:
-        if figur.farbe=="weiss" and figur.art=="koenig":
+        if figur.farbe=="schwarz" and figur.art=="koenig":
             for i in felder:
                 if felder[i]["figure"]==figur:
                     XKönig=felder[i]["x"]
                     YKönig=felder[i]["y"]
     for i in moegliche_zuege:
         if i["x"]==XKönig and i["y"]==YKönig:
-            NeuesSchachWeiss=True
+            NeuesSchachSchwarz=True
             rechenvariable1=XKönig
             rechenvariable2=YKönig
             rechenvariable3=(rechenvariable1-3)/47
@@ -992,15 +1002,6 @@ def schachSchwarzBerechnen():
             ergebniss=(rechenvariable3+((rechenvariable4-1)*8)-1)
             feld_Nr=int(ergebniss)
             felder_buttons[feld_Nr]["bg"]="#FF0000"
-            felder_buttons[feld_Nr].farbe="#FF0000"
-            print("rot")
-
-def schachSchwarzBerechnen():
-    setzeZieleAufNull()
-    NeuesSchachSchwarz=False
-    global moegliche_zuege
-    schachMatt=True
-    alleZuegeBerechnenWeiss(felder)
     for figur in alle_figuren:
         if figur.farbe=="schwarz":
             if figur.art=="bauer":
@@ -1046,24 +1047,6 @@ def schachSchwarzBerechnen():
     elif schachMatt==True and NeuesSchachSchwarz==True:
         schrift=Label(text="Schach Matt:\nweiss gewinnt", font="Arial, 30")
         schrift.place(x=100, y=200)
-    for figur in alle_figuren:
-        if figur.farbe=="schwarz" and figur.art=="koenig":
-            for i in felder:
-                if felder[i]["figure"]==figur:
-                    XKönig=felder[i]["x"]
-                    YKönig=felder[i]["y"]
-    for i in moegliche_zuege:
-        if i["x"]==XKönig and i["y"]==YKönig:
-            NeuesSchachSchwarz=True
-            rechenvariable1=XKönig
-            rechenvariable2=YKönig
-            rechenvariable3=(rechenvariable1-3)/47
-            rechenvariable4=(rechenvariable2-3)/47
-            ergebniss=(rechenvariable3+((rechenvariable4-1)*8)-1)
-            feld_Nr=int(ergebniss)
-            felder_buttons[feld_Nr]["bg"]="#FF0000"
-            felder_buttons[feld_Nr].farbe="#FF0000"
-            print("rot")
 
 def setzeZieleAufNull():
     global moegliche_ziele
