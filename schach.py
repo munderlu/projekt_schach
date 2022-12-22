@@ -1,4 +1,5 @@
 from tkinter import *
+import time
 from PIL import ImageTk, Image
 import copy
 fenster=Tk()
@@ -911,6 +912,7 @@ def schachSchwarzFigurBerechnen(felder_kopie):
 
 def schachWeissBerechnen():
     setzeZieleAufNull()
+    farbeRotZurücksetzen()
     NeuesSchachWeiß=False
     global moegliche_zuege
     schachMatt=True
@@ -979,6 +981,7 @@ def schachWeissBerechnen():
 
 def schachSchwarzBerechnen():
     setzeZieleAufNull()
+    farbeRotZurücksetzen()
     NeuesSchachSchwarz=False
     global moegliche_zuege
     schachMatt=True
@@ -1063,11 +1066,22 @@ def farbenZurücksetzen():
             if felder_buttons[i+something]["bg"]!="#FF0000":
                 felder_buttons[i+something]["bg"]="#8b4513"
         for i in range(0, 7, 2):
-            if felder_buttons[i+something]["bg"]!="#FF0000":
+            if felder_buttons[i+something+8]["bg"]!="#FF0000":
                 felder_buttons[i+something+8]["bg"]="#8b4513"
         for i in range(1, 8, 2):
-            if felder_buttons[i+something]["bg"]!="#FF0000":
+            if felder_buttons[i+something+8]["bg"]!="#FF0000":
                 felder_buttons[i+something+8]["bg"]="#FFFFFF"
+
+def farbeRotZurücksetzen():
+    for something in range(0, 49, 16):
+        for i in range(0, 7, 2):
+            felder_buttons[i+something]["bg"]="#FFFFFF"
+        for i in range(1, 8, 2):
+            felder_buttons[i+something]["bg"]="#8b4513"
+        for i in range(0, 7, 2):
+            felder_buttons[i+something+8]["bg"]="#8b4513"
+        for i in range(1, 8, 2):
+            felder_buttons[i+something+8]["bg"]="#FFFFFF"
 
 def kopie_ausgeben(felder):
     tkinterObjekte=[]
