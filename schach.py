@@ -1100,6 +1100,17 @@ def farbenZurücksetzen():
         for i in range(1, 8, 2):
             felder_buttons[i+something+8]["bg"]="#FFFFFF"
 
+def farbeRotZurücksetzen():
+    for something in range(0, 49, 16):
+        for i in range(0, 7, 2):
+            felder_buttons[i+something]["bg"]="#FFFFFF"
+        for i in range(1, 8, 2):
+            felder_buttons[i+something]["bg"]="#8b4513"
+        for i in range(0, 7, 2):
+            felder_buttons[i+something+8]["bg"]="#8b4513"
+        for i in range(1, 8, 2):
+            felder_buttons[i+something+8]["bg"]="#FFFFFF"
+
 def kopie_ausgeben(felder):
     tkinterObjekte=[]
     for i in felder:
