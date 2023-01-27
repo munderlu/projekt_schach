@@ -250,29 +250,29 @@ moegliche_ziele={1:{"Feld_Nr": "none", "x":"none", "y":"none"}, 2:{"Feld_Nr": "n
 def commands_zurücksetzen():
     for i in alle_figuren:
         if i.art=="dame" and i.farbe=="weiss":
-            i["command"]=lambda: zuege_dame_weiss(alle_figuren[i])
+            i["command"]=lambda: zuege_dame_weiss(i)
         if i.art=="koenig" and i.farbe=="weiss":
-            i["command"]=lambda: zuege_koenig_weiss(alle_figuren[i])
+            i["command"]=lambda: zuege_koenig_weiss(i)
         if i.art=="springer" and i.farbe=="weiss":
-            i["command"]=lambda: zuege_springer_weiss(alle_figuren[i])
+            i["command"]=lambda: zuege_springer_weiss(i)
         if i.art=="turm" and i.farbe=="weiss":
-            i["command"]=lambda: zuege_turm_weiss(alle_figuren[i])
+            i["command"]=lambda: zuege_turm_weiss(i)
         if i.art=="laeufer" and i.farbe=="weiss":
-            i["command"]=lambda: zuege_laeufer_weiss(alle_figuren[i])
+            i["command"]=lambda: zuege_laeufer_weiss(i)
         if i.art=="bauer" and i.farbe=="weiss":
-            i["command"]=lambda: zuege_bauer_weiss(alle_figuren[i])
+            i["command"]=lambda: zuege_bauer_weiss(i)
         if i.art=="dame" and i.farbe=="schwarz":
-            i["command"]=lambda: zuege_dame_weiss(alle_figuren[i])
+            i["command"]=lambda: zuege_dame_schwarz(i)
         if i.art=="koenig" and i.farbe=="schwarz":
-            i["command"]=lambda: zuege_koenig_schwarz(alle_figuren[i])
+            i["command"]=lambda: zuege_koenig_schwarz(i)
         if i.art=="springer" and i.farbe=="schwarz":
-            i["command"]=lambda: zuege_springer_schwarz(alle_figuren[i])
+            i["command"]=lambda: zuege_springer_schwarz(i)
         if i.art=="turm" and i.farbe=="schwarz":
-            i["command"]=lambda: zuege_turm_schwarz(alle_figuren[i])
+            i["command"]=lambda: zuege_turm_schwarz(i)
         if i.art=="laeufer" and i.farbe=="schwarz":
-            i["command"]=lambda: zuege_laeufer_schwarz(alle_figuren[i])
+            i["command"]=lambda: zuege_laeufer_schwarz(i)
         if i.art=="bauer" and i.farbe=="schwarz":
-            i["command"]=lambda: zuege_bauer_schwarz(alle_figuren[i])
+            i["command"]=lambda: zuege_bauer_schwarz(i)
 
 def alleZuegeBerechnenWeiss(felder_kopie):
     global moegliche_zuege
@@ -1005,7 +1005,6 @@ def schachWeissBerechnen():
     elif schachMatt==True and NeuesSchachWeiss==True:
         schrift=Label(text="Schach Matt:\nschwarz gewinnt", font="Arial, 30")
         schrift.place(x=100, y=200)
-    #commands_zurücksetzen()
 
 def schachSchwarzBerechnen():
     setzeZieleAufNull()
@@ -1075,7 +1074,6 @@ def schachSchwarzBerechnen():
     elif schachMatt==True and NeuesSchachSchwarz==True:
         schrift=Label(text="Schach Matt:\nweiss gewinnt", font="Arial, 30")
         schrift.place(x=100, y=200)
-    #commands_zurücksetzen()
 
 def setzeZieleAufNull():
     global moegliche_ziele
@@ -1100,7 +1098,7 @@ def farbenZurücksetzen():
         for i in range(1, 8, 2):
             if felder_buttons[i+something+8]["bg"]!="#FF0000":
                 felder_buttons[i+something+8]["bg"]="#FFFFFF"
-    #commands_zurücksetzen()
+    commands_zurücksetzen()
 
 def farbeRotZurücksetzen():
     for something in range(0, 49, 16):
@@ -1144,6 +1142,7 @@ def punkte_plazieren():
             for k in felder:
                 if felder[k]["x"]==moegliche_ziele[i]["x"] and felder[k]["y"]==moegliche_ziele[i]["y"]:
                     if felder[k]["figure"]!="none":
+                        print("hallo")
                         felder[k]["figure"]["command"]=lambda: figur_ziehen(moegliche_ziele[i]["x"], moegliche_ziele[i]["y"])
 
 def zuege_bauer_weiss(figur):
