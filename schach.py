@@ -960,7 +960,6 @@ def schachWeissBerechnen():
             ergebniss=(rechenvariable3+((rechenvariable4-1)*8)-1)
             feld_Nr=int(ergebniss)
             felder_buttons[feld_Nr]["bg"]="#FF0000"
-            print("Schach Weiß")
     for figur in alle_figuren:
         if figur.farbe=="weiss":
             if figur.art=="bauer":
@@ -1096,9 +1095,12 @@ def farbenZurücksetzen():
             if felder_buttons[i+something]["bg"]!="#FF0000":
                 felder_buttons[i+something]["bg"]="#8b4513"
         for i in range(0, 7, 2):
-            felder_buttons[i+something+8]["bg"]="#8b4513"
+            if felder_buttons[i+something+8]["bg"]!="#FF0000":
+                felder_buttons[i+something+8]["bg"]="#8b4513"
         for i in range(1, 8, 2):
-            felder_buttons[i+something+8]["bg"]="#FFFFFF"
+            if felder_buttons[i+something+8]["bg"]!="#FF0000":
+                felder_buttons[i+something+8]["bg"]="#FFFFFF"
+    #commands_zurücksetzen()
 
 def farbeRotZurücksetzen():
     for something in range(0, 49, 16):
@@ -1139,6 +1141,10 @@ def punkte_plazieren():
     for i in moegliche_ziele:
         if moegliche_ziele[i]["Feld_Nr"]!="none":
             felder_buttons[moegliche_ziele[i]["Feld_Nr"]].configure(bg="#00FF00")
+            for k in felder:
+                if felder[k]["x"]==moegliche_ziele[i]["x"] and felder[k]["y"]==moegliche_ziele[i]["y"]:
+                    if felder[k]["figure"]!="none":
+                        felder[k]["figure"]["command"]=lambda: figur_ziehen(moegliche_ziele[i]["x"], moegliche_ziele[i]["y"])
 
 def zuege_bauer_weiss(figur):
     setzeZieleAufNull()
