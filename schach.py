@@ -1,8 +1,6 @@
 from tkinter import *
-import time
 from PIL import ImageTk, Image
 import copy
-import json
 fenster=Tk()
 fenster.title("Schach Projekt")
 rahmen=Frame(fenster, relief="ridge", borderwidth=5)
@@ -249,38 +247,38 @@ for i in verwandelte_figuren:
 moegliche_ziele={1:{"Feld_Nr": "none", "x":"none", "y":"none"}, 2:{"Feld_Nr": "none", "x":"none", "y":"none"}, 3:{"Feld_Nr": "none", "x":"none", "y":"none"}, 4:{"Feld_Nr": "none", "x":"none", "y":"none"}, 5:{"Feld_Nr": "none", "x":"none", "y":"none"}, 6:{"Feld_Nr": "none", "x":"none", "y":"none"}, 7:{"Feld_Nr": "none", "x":"none", "y":"none"}, 8:{"Feld_Nr": "none", "x":"none", "y":"none"}, 9:{"Feld_Nr": "none", "x":"none", "y":"none"}, 10:{"Feld_Nr": "none", "x":"none", "y":"none"}, 11:{"Feld_Nr": "none", "x":"none", "y":"none"}, 12:{"Feld_Nr": "none", "x":"none", "y":"none"}, 13:{"Feld_Nr": "none", "x":"none", "y":"none"}, 14:{"Feld_Nr": "none", "x":"none", "y":"none"}, 15:{"Feld_Nr": "none", "x":"none", "y":"none"}, 16:{"Feld_Nr": "none", "x":"none", "y":"none"}, 17:{"Feld_Nr": "none", "x":"none", "y":"none"}, 18:{"Feld_Nr": "none", "x":"none", "y":"none"}, 19:{"Feld_Nr": "none", "x":"none", "y":"none"}, 20:{"Feld_Nr": "none", "x":"none", "y":"none"}, 21:{"Feld_Nr": "none", "x":"none", "y":"none"}, 22:{"Feld_Nr": "none", "x":"none", "y":"none"}, 23:{"Feld_Nr": "none", "x":"none", "y":"none"}, 24:{"Feld_Nr": "none", "x":"none", "y":"none"}, 25:{"Feld_Nr": "none", "x":"none", "y":"none"}, 26:{"Feld_Nr": "none", "x":"none", "y":"none"}, 27:{"Feld_Nr": "none", "x":"none", "y":"none"}}
 
 def commands_zurücksetzen():
-    bauer1_w=Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiss(bauer1_w))
-    bauer2_w=Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiss(bauer2_w))
-    bauer3_w=Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiss(bauer3_w))
-    bauer4_w=Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiss(bauer4_w))
-    bauer5_w=Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiss(bauer5_w))
-    bauer6_w=Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiss(bauer6_w))
-    bauer7_w=Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiss(bauer7_w))
-    bauer8_w=Schachfigur(rahmen, image=bauer_w_bild, command=lambda:zuege_bauer_weiss(bauer8_w))
-    turm1_w=Schachfigur(rahmen, image=turm_w_bild, command=lambda:zuege_turm_weiss(turm1_w))
-    turm2_w=Schachfigur(rahmen, image=turm_w_bild, command=lambda:zuege_turm_weiss(turm2_w))
-    springer1_w=Schachfigur(rahmen, image=springer_w_bild, command=lambda:zuege_springer_weiss(springer1_w))
-    springer2_w=Schachfigur(rahmen, image=springer_w_bild, command=lambda:zuege_springer_weiss(springer2_w))
-    laeufer1_w=Schachfigur(rahmen, image=laeufer_w_bild, command=lambda:zuege_laeufer_weiss(laeufer1_w))
-    laeufer2_w=Schachfigur(rahmen, image=laeufer_w_bild, command=lambda:zuege_laeufer_weiss(laeufer2_w))
-    koenig_w=Schachfigur(rahmen, image=koenig_w_bild, command=lambda:zuege_koenig_weiss(koenig_w))
-    dame_w=Schachfigur(rahmen, image=dame_w_bild, command=lambda:zuege_dame_weiss(dame_w))
-    bauer1_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda:zuege_bauer_schwarz(bauer1_s))
-    bauer2_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda:zuege_bauer_schwarz(bauer2_s))
-    bauer3_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda:zuege_bauer_schwarz(bauer3_s))
-    bauer4_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda:zuege_bauer_schwarz(bauer4_s))
-    bauer5_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda:zuege_bauer_schwarz(bauer5_s))
-    bauer6_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda:zuege_bauer_schwarz(bauer6_s))
-    bauer7_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda:zuege_bauer_schwarz(bauer7_s))
-    bauer8_s=Schachfigur(rahmen, image=bauer_s_bild, command=lambda:zuege_bauer_schwarz(bauer8_s))
-    turm1_s=Schachfigur(rahmen, image=turm_s_bild, command=lambda:zuege_turm_schwarz(turm1_s))
-    turm2_s=Schachfigur(rahmen, image=turm_s_bild, command=lambda:zuege_turm_schwarz(turm2_s))
-    springer1_s=Schachfigur(rahmen, image=springer_s_bild, command=lambda:zuege_springer_schwarz(springer1_s))
-    springer2_s=Schachfigur(rahmen, image=springer_s_bild, command=lambda:zuege_springer_schwarz(springer2_s))
-    laeufer1_s=Schachfigur(rahmen, image=laeufer_s_bild, command=lambda:zuege_laeufer_schwarz(laeufer1_s))
-    laeufer2_s=Schachfigur(rahmen, image=laeufer_s_bild, command=lambda:zuege_laeufer_schwarz(laeufer2_s))
-    koenig_s=Schachfigur(rahmen, image=koenig_s_bild, command=lambda:zuege_koenig_schwarz(koenig_s))
-    dame_s=Schachfigur(rahmen, image=dame_s_bild, command=lambda:zuege_dame_schwarz(dame_s))
+    bauer1_w["command"]=lambda:zuege_bauer_weiss(bauer1_w)
+    bauer2_w["command"]=lambda:zuege_bauer_weiss(bauer2_w)
+    bauer3_w["command"]=lambda:zuege_bauer_weiss(bauer3_w)
+    bauer4_w["command"]=lambda:zuege_bauer_weiss(bauer4_w)
+    bauer5_w["command"]=lambda:zuege_bauer_weiss(bauer5_w)
+    bauer6_w["command"]=lambda:zuege_bauer_weiss(bauer6_w)
+    bauer7_w["command"]=lambda:zuege_bauer_weiss(bauer7_w)
+    bauer8_w["command"]=lambda:zuege_bauer_weiss(bauer8_w)
+    turm1_w["command"]=lambda:zuege_turm_weiss(turm1_w)
+    turm2_w["command"]=lambda:zuege_turm_weiss(turm2_w)
+    springer1_w["command"]=lambda:zuege_springer_weiss(springer1_w)
+    springer2_w["command"]=lambda:zuege_springer_weiss(springer2_w)
+    laeufer1_w["command"]=lambda:zuege_laeufer_weiss(laeufer1_w)
+    laeufer2_w["command"]=lambda:zuege_laeufer_weiss(laeufer2_w)
+    koenig_w["command"]=lambda:zuege_koenig_weiss(koenig_w)
+    dame_w["command"]=lambda:zuege_dame_weiss(dame_w)
+    bauer1_s["command"]=lambda:zuege_bauer_schwarz(bauer1_s)
+    bauer2_s["command"]=lambda:zuege_bauer_schwarz(bauer2_s)
+    bauer3_s["command"]=lambda:zuege_bauer_schwarz(bauer3_s)
+    bauer4_s["command"]=lambda:zuege_bauer_schwarz(bauer4_s)
+    bauer5_s["command"]=lambda:zuege_bauer_schwarz(bauer5_s)
+    bauer6_s["command"]=lambda:zuege_bauer_schwarz(bauer6_s)
+    bauer7_s["command"]=lambda:zuege_bauer_schwarz(bauer7_s)
+    bauer8_s["command"]=lambda:zuege_bauer_schwarz(bauer8_s)
+    turm1_s["command"]=lambda:zuege_turm_schwarz(turm1_s)
+    turm2_s["command"]=lambda:zuege_turm_schwarz(turm2_s)
+    springer1_s["command"]=lambda:zuege_springer_schwarz(springer1_s)
+    springer2_s["command"]=lambda:zuege_springer_schwarz(springer2_s)
+    laeufer1_s["command"]=lambda:zuege_laeufer_schwarz(laeufer1_s)
+    laeufer2_s["command"]=lambda:zuege_laeufer_schwarz(laeufer2_s)
+    koenig_s["command"]=lambda:zuege_koenig_schwarz(koenig_s)
+    dame_s["command"]=lambda:zuege_dame_schwarz(dame_s)
 
 def alleZuegeBerechnenWeiss(felder_kopie):
     global moegliche_zuege
@@ -1151,14 +1149,14 @@ def punkte_plazieren():
                 if felder[k]["x"]==moegliche_ziele[i]["x"] and felder[k]["y"]==moegliche_ziele[i]["y"]:
                     if felder[k]["figure"]!="none":
                         print("hallo")
-                        felder[k]["figure"]["command"]=lambda: figur_ziehen(moegliche_ziele[i]["x"], moegliche_ziele[i]["y"])
+                        felder[k]["figure"]["command"]=felder_buttons[moegliche_ziele[i]["Feld_Nr"]]["command"]
 
 def zuege_bauer_weiss(figur):
-    setzeZieleAufNull()
-    farbenZurücksetzen()
     global weristdran
     global en_passant
     if weristdran=="weiss":
+        setzeZieleAufNull()
+        farbenZurücksetzen()
         for i in felder:
             if felder[i]["figure"]==figur:
                 global aktuelle_figur
@@ -1223,11 +1221,11 @@ def zuege_bauer_weiss(figur):
         punkte_plazieren()
 
 def zuege_bauer_schwarz(figur):
-    setzeZieleAufNull()
-    farbenZurücksetzen()
     global weristdran
     global en_passant
     if weristdran=="schwarz":
+        setzeZieleAufNull()
+        farbenZurücksetzen()
         for i in felder:
             if felder[i]["figure"]==figur:
                 global aktuelle_figur
@@ -1462,10 +1460,10 @@ def zuege_turm_schwarz(figur):
         punkte_plazieren()
 
 def zuege_springer_weiss(figur):
-    setzeZieleAufNull()
-    farbenZurücksetzen()
     global weristdran
     if weristdran=="weiss":
+        setzeZieleAufNull()
+        farbenZurücksetzen()
         for i in felder:
             if felder[i]["figure"]==figur:
                 global aktuelle_figur
@@ -1549,10 +1547,10 @@ def zuege_springer_weiss(figur):
             punkte_plazieren()
 
 def zuege_springer_schwarz(figur):
-    setzeZieleAufNull()
-    farbenZurücksetzen()
     global weristdran
     if weristdran=="schwarz":
+        setzeZieleAufNull()
+        farbenZurücksetzen()
         for i in felder:
             if felder[i]["figure"]==figur:
                 global aktuelle_figur
