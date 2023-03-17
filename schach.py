@@ -7,6 +7,8 @@ rahmen=Frame(fenster, relief="ridge", borderwidth=5)
 rahmen.pack(fill="both", expand=1)
 fenster.geometry("500x500")
 
+feldstatus="klein"
+
 feld_style=35
 pixelVirtual=PhotoImage(width=1, height=1)
 feld1=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(50,50))
@@ -16,7 +18,7 @@ feld4=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_sty
 feld5=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(238,50))
 feld6=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(285,50))
 feld7=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(332,50))
-feld8=Button(rahmen, bg="#8b4531", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(379,50))
+feld8=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(379,50))
 feld9=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(50,97))
 feld10=Button(rahmen, bg="#FFFFFF", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(97,97))
 feld11=Button(rahmen, bg="#8b4513", image=pixelVirtual, border=5, height=feld_style, width=feld_style, compound="center", command=lambda:figur_ziehen(144,97))
@@ -279,6 +281,70 @@ def commands_zurücksetzen():
     laeufer2_s["command"]=lambda:zuege_laeufer_schwarz(laeufer2_s)
     koenig_s["command"]=lambda:zuege_koenig_schwarz(koenig_s)
     dame_s["command"]=lambda:zuege_dame_schwarz(dame_s)
+    dame2_s["command"]=lambda: zuege_dame_schwarz(dame2_s)
+    dame3_s["command"]=lambda: zuege_dame_schwarz(dame3_s)
+    dame4_s["command"]=lambda: zuege_dame_schwarz(dame4_s)
+    dame5_s["command"]=lambda: zuege_dame_schwarz(dame5_s)
+    dame6_s["command"]=lambda: zuege_dame_schwarz(dame6_s)
+    dame7_s["command"]=lambda: zuege_dame_schwarz(dame7_s)
+    dame8_s["command"]=lambda: zuege_dame_schwarz(dame8_s)
+    dame9_s["command"]=lambda: zuege_dame_schwarz(dame9_s)
+    dame2_w["command"]=lambda: zuege_dame_weiss(dame2_w)
+    dame3_w["command"]=lambda: zuege_dame_weiss(dame3_w)
+    dame4_w["command"]=lambda: zuege_dame_weiss(dame4_w)
+    dame5_w["command"]=lambda: zuege_dame_weiss(dame5_w)
+    dame6_w["command"]=lambda: zuege_dame_weiss(dame6_w)
+    dame7_w["command"]=lambda: zuege_dame_weiss(dame7_w)
+    dame8_w["command"]=lambda: zuege_dame_weiss(dame8_w)
+    dame9_w["command"]=lambda: zuege_dame_weiss(dame9_w)
+    turm3_s["command"]=lambda: zuege_turm_schwarz(turm3_s)
+    turm4_s["command"]=lambda: zuege_turm_schwarz(turm4_s)
+    turm5_s["command"]=lambda: zuege_turm_schwarz(turm5_s)
+    turm6_s["command"]=lambda: zuege_turm_schwarz(turm6_s)
+    turm7_s["command"]=lambda: zuege_turm_schwarz(turm7_s)
+    turm8_s["command"]=lambda: zuege_turm_schwarz(turm8_s)
+    turm9_s["command"]=lambda: zuege_turm_schwarz(turm9_s)
+    turm10_s["command"]=lambda: zuege_turm_schwarz(turm10_s)
+    turm3_w["command"]=lambda: zuege_turm_weiss(turm3_w)
+    turm4_w["command"]=lambda: zuege_turm_weiss(turm4_w)
+    turm5_w["command"]=lambda: zuege_turm_weiss(turm5_w)
+    turm6_w["command"]=lambda: zuege_turm_weiss(turm6_w)
+    turm7_w["command"]=lambda: zuege_turm_weiss(turm7_w)
+    turm8_w["command"]=lambda: zuege_turm_weiss(turm8_w)
+    turm9_w["command"]=lambda: zuege_turm_weiss(turm9_w)
+    turm10_w["command"]=lambda: zuege_turm_weiss(turm10_w)
+    laeufer3_s["command"]=lambda: zuege_laeufer_schwarz(laeufer3_s)
+    laeufer4_s["command"]=lambda: zuege_laeufer_schwarz(laeufer4_s)
+    laeufer5_s["command"]=lambda: zuege_laeufer_schwarz(laeufer5_s)
+    laeufer6_s["command"]=lambda: zuege_laeufer_schwarz(laeufer6_s)
+    laeufer7_s["command"]=lambda: zuege_laeufer_schwarz(laeufer7_s)
+    laeufer8_s["command"]=lambda: zuege_laeufer_schwarz(laeufer8_s)
+    laeufer9_s["command"]=lambda: zuege_laeufer_schwarz(laeufer9_s)
+    laeufer10_s["command"]=lambda: zuege_laeufer_schwarz(laeufer10_s)
+    laeufer3_w["command"]=lambda: zuege_laeufer_weiss(laeufer3_w)
+    laeufer4_w["command"]=lambda: zuege_laeufer_weiss(laeufer4_w)
+    laeufer5_w["command"]=lambda: zuege_laeufer_weiss(laeufer5_w)
+    laeufer6_w["command"]=lambda: zuege_laeufer_weiss(laeufer6_w)
+    laeufer7_w["command"]=lambda: zuege_laeufer_weiss(laeufer7_w)
+    laeufer8_w["command"]=lambda: zuege_laeufer_weiss(laeufer8_w)
+    laeufer9_w["command"]=lambda: zuege_laeufer_weiss(laeufer9_w)
+    laeufer10_w["command"]=lambda: zuege_laeufer_weiss(laeufer10_w)
+    springer3_s["command"]=lambda: zuege_springer_schwarz(springer3_s)
+    springer4_s["command"]=lambda: zuege_springer_schwarz(springer4_s)
+    springer5_s["command"]=lambda: zuege_springer_schwarz(springer5_s)
+    springer6_s["command"]=lambda: zuege_springer_schwarz(springer6_s)
+    springer7_s["command"]=lambda: zuege_springer_schwarz(springer7_s)
+    springer8_s["command"]=lambda: zuege_springer_schwarz(springer8_s)
+    springer9_s["command"]=lambda: zuege_springer_schwarz(springer9_s)
+    springer10_s["command"]=lambda: zuege_springer_schwarz(springer10_s)
+    springer3_w["command"]=lambda: zuege_springer_weiss(springer3_w)
+    springer4_w["command"]=lambda: zuege_springer_weiss(springer4_w)
+    springer5_w["command"]=lambda: zuege_springer_weiss(springer5_w)
+    springer6_w["command"]=lambda: zuege_springer_weiss(springer6_w)
+    springer7_w["command"]=lambda: zuege_springer_weiss(springer7_w)
+    springer8_w["command"]=lambda: zuege_springer_weiss(springer8_w)
+    springer9_w["command"]=lambda: zuege_springer_weiss(springer9_w)
+    springer10_w["command"]=lambda: zuege_springer_weiss(springer10_w)
 
 def alleZuegeBerechnenWeiss(felder_kopie):
     global moegliche_zuege
@@ -1148,7 +1214,6 @@ def punkte_plazieren():
             for k in felder:
                 if felder[k]["x"]==moegliche_ziele[i]["x"] and felder[k]["y"]==moegliche_ziele[i]["y"]:
                     if felder[k]["figure"]!="none":
-                        print("hallo")
                         felder[k]["figure"]["command"]=felder_buttons[moegliche_ziele[i]["Feld_Nr"]]["command"]
 
 def zuege_bauer_weiss(figur):
@@ -2581,6 +2646,7 @@ def bauer_verwandeln_schwarz(aktuelle_figur, verwandel_figur, xpos, ypos):
         verwandelte_figuren["laeufer_schwarz"].pop(0)
     weristdran="weiss"
     schachWeissBerechnen()
+    farbenZurücksetzen()
     auswahlDame.place_forget()
     auswahlTurm.place_forget()
     auswahlLaeufer.place_forget()
@@ -2640,6 +2706,7 @@ def bauer_verwandeln_weiss(aktuelle_figur, verwandel_figur, xpos, ypos):
         verwandelte_figuren["laeufer_weiss"].pop(0)
     weristdran="schwarz"
     schachSchwarzBerechnen()
+    farbenZurücksetzen()
     auswahlDame.place_forget()
     auswahlTurm.place_forget()
     auswahlLaeufer.place_forget()
@@ -2789,6 +2856,7 @@ def figur_ziehen(xpos, ypos):
     global auswahlTurm
     global en_passant
     global verlauf
+    global feldstatus
     for i in moegliche_ziele:
         if moegliche_ziele[i]["x"]==xpos:
             if moegliche_ziele[i]["y"]==ypos:
@@ -2803,7 +2871,10 @@ def figur_ziehen(xpos, ypos):
                             felder[i]["figure"].place_forget()
                             verlauf=[]
                         felder[i]["figure"]=aktuelle_figur
-                        felder[i]["figure"].place(x=felder[i]["x"], y=felder[i]["y"])
+                        if feldstatus=="klein":
+                            felder[i]["figure"].place(x=felder[i]["x"], y=felder[i]["y"])
+                        if feldstatus=="gross":
+                            felder[i]["figure"].place(x=40+((felder[i]["x"]-40)/47)*94, y=40+((felder[i]["y"]-40)/47)*94)
                 if aktuelle_figur==turm1_w:
                     rochade["turm1_w_gezogen"]=True
                 if aktuelle_figur==turm2_w:
@@ -2892,4 +2963,28 @@ def figuren_plazieren():
 
 setzeZieleAufNull()
 figuren_plazieren()
+
+def feldvergroessern():
+    global feldstatus
+    print("gross")
+    for i in felder_buttons:
+        i["height"]=70
+        i["width"]=70
+        i["border"]=10
+    zahl=0
+    for j in range(0, 8):
+        for k in range(0, 8):
+            felder_buttons[zahl].place(x=40+k*94, y=40+j*94)
+            zahl+=1
+    fenster.geometry("1000x1000")
+    for i in felder:
+        if felder[i]["figure"]!="none":
+            felder[i]["figure"].place(x=40+((felder[i]["x"]-40)/47)*94, y=40+((felder[i]["y"]-40)/47)*94)
+            felder[i]["figure"]["height"]=35
+            felder[i]["figure"]["width"]=35
+    feldstatus="gross"
+
+grossButton=Button(rahmen, command=lambda: feldvergroessern(), text="Großes Fenster")
+grossButton.pack(side="bottom")
+
 fenster.mainloop()
