@@ -1150,7 +1150,6 @@ def schachSchwarzBerechnen():
 def setzeZieleAufNull():
     global moegliche_ziele
     moegliche_ziele={1:{"Feld_Nr": "none", "x":"none", "y":"none"}, 2:{"Feld_Nr": "none", "x":"none", "y":"none"}, 3:{"Feld_Nr": "none", "x":"none", "y":"none"}, 4:{"Feld_Nr": "none", "x":"none", "y":"none"}, 5:{"Feld_Nr": "none", "x":"none", "y":"none"}, 6:{"Feld_Nr": "none", "x":"none", "y":"none"}, 7:{"Feld_Nr": "none", "x":"none", "y":"none"}, 8:{"Feld_Nr": "none", "x":"none", "y":"none"}, 9:{"Feld_Nr": "none", "x":"none", "y":"none"}, 10:{"Feld_Nr": "none", "x":"none", "y":"none"}, 11:{"Feld_Nr": "none", "x":"none", "y":"none"}, 12:{"Feld_Nr": "none", "x":"none", "y":"none"}, 13:{"Feld_Nr": "none", "x":"none", "y":"none"}, 14:{"Feld_Nr": "none", "x":"none", "y":"none"}, 15:{"Feld_Nr": "none", "x":"none", "y":"none"}, 16:{"Feld_Nr": "none", "x":"none", "y":"none"}, 17:{"Feld_Nr": "none", "x":"none", "y":"none"}, 18:{"Feld_Nr": "none", "x":"none", "y":"none"}, 19:{"Feld_Nr": "none", "x":"none", "y":"none"}, 20:{"Feld_Nr": "none", "x":"none", "y":"none"}, 21:{"Feld_Nr": "none", "x":"none", "y":"none"}, 22:{"Feld_Nr": "none", "x":"none", "y":"none"}, 23:{"Feld_Nr": "none", "x":"none", "y":"none"}, 24:{"Feld_Nr": "none", "x":"none", "y":"none"}, 25:{"Feld_Nr": "none", "x":"none", "y":"none"}, 26:{"Feld_Nr": "none", "x":"none", "y":"none"}, 27:{"Feld_Nr": "none", "x":"none", "y":"none"}}
-    aktuelle_figur="none"
     feld4["command"]=lambda:figur_ziehen(191,50)
     feld7["command"]=lambda:figur_ziehen(332,50)
     feld59["command"]=lambda:figur_ziehen(144,379)
@@ -1208,6 +1207,7 @@ def punkte_auswählen():
             moegliche_ziele[i]["Feld_Nr"]=int(ergebniss)
 
 def punkte_plazieren():
+    global aktuelle_figur
     for i in moegliche_ziele:
         if moegliche_ziele[i]["Feld_Nr"]!="none":
             felder_buttons[moegliche_ziele[i]["Feld_Nr"]].configure(bg="#00FF00")
@@ -1215,6 +1215,18 @@ def punkte_plazieren():
                 if felder[k]["x"]==moegliche_ziele[i]["x"] and felder[k]["y"]==moegliche_ziele[i]["y"]:
                     if felder[k]["figure"]!="none":
                         felder[k]["figure"]["command"]=felder_buttons[moegliche_ziele[i]["Feld_Nr"]]["command"]
+    for i in felder:
+        if felder[i]["figure"]==aktuelle_figur:
+            xpos=felder[i]["x"]
+            ypos=felder[i]["y"]
+    rechenvariable1=xpos
+    rechenvariable2=ypos
+    rechenvariable3=(rechenvariable1-3)/47
+    rechenvariable4=(rechenvariable2-3)/47
+    ergebniss=(rechenvariable3+((rechenvariable4-1)*8)-1)
+    feld_nr=int(ergebniss)
+    if felder_buttons[feld_nr]["bg"]!="#FF0000":
+        felder_buttons[feld_nr].configure(bg="#DDFF00")
 
 def zuege_bauer_weiss(figur):
     global weristdran
@@ -1608,8 +1620,8 @@ def zuege_springer_weiss(figur):
                             if schachWeiss==False:
                                 moegliche_ziele[8]["x"]=felder[j]["x"]
                                 moegliche_ziele[8]["y"]=felder[j]["y"]
-            punkte_auswählen()
-            punkte_plazieren()
+                punkte_auswählen()
+                punkte_plazieren()
 
 def zuege_springer_schwarz(figur):
     global weristdran
@@ -1695,8 +1707,8 @@ def zuege_springer_schwarz(figur):
                             if schachSchwarz==False:
                                 moegliche_ziele[8]["x"]=felder[j]["x"]
                                 moegliche_ziele[8]["y"]=felder[j]["y"]
-            punkte_auswählen()
-            punkte_plazieren()
+                punkte_auswählen()
+                punkte_plazieren()
 
 def zuege_laeufer_weiss(figur):
     global weristdran
@@ -2552,6 +2564,8 @@ def lange_rochade_machen_weiss():
     figuren_plazieren()
     setzeZieleAufNull()
     farbenZurücksetzen()
+    if feldstatus=="gross":
+        feldvergroessern()
 
 def kurze_rochade_machen_weiss():
     global felder
@@ -2565,6 +2579,8 @@ def kurze_rochade_machen_weiss():
     figuren_plazieren()
     setzeZieleAufNull()
     farbenZurücksetzen()
+    if feldstatus=="gross":
+        feldvergroessern()
 
 def lange_rochade_machen_schwarz():
     global felder
@@ -2578,6 +2594,8 @@ def lange_rochade_machen_schwarz():
     figuren_plazieren()
     setzeZieleAufNull()
     farbenZurücksetzen()
+    if feldstatus=="gross":
+        feldvergroessern()
 
 def kurze_rochade_machen_schwarz():
     global felder
@@ -2591,6 +2609,8 @@ def kurze_rochade_machen_schwarz():
     figuren_plazieren()
     setzeZieleAufNull()
     farbenZurücksetzen()
+    if feldstatus=="gross":
+        feldvergroessern()
 
 def bauer_verwandeln_schwarz(aktuelle_figur, verwandel_figur, xpos, ypos):
     global felder
@@ -2647,6 +2667,8 @@ def bauer_verwandeln_schwarz(aktuelle_figur, verwandel_figur, xpos, ypos):
     weristdran="weiss"
     schachWeissBerechnen()
     farbenZurücksetzen()
+    if feldstatus=="gross":
+        feldvergroessern()
     auswahlDame.place_forget()
     auswahlTurm.place_forget()
     auswahlLaeufer.place_forget()
@@ -2707,6 +2729,8 @@ def bauer_verwandeln_weiss(aktuelle_figur, verwandel_figur, xpos, ypos):
     weristdran="schwarz"
     schachSchwarzBerechnen()
     farbenZurücksetzen()
+    if feldstatus=="gross":
+        feldvergroessern()
     auswahlDame.place_forget()
     auswahlTurm.place_forget()
     auswahlLaeufer.place_forget()
@@ -2892,20 +2916,64 @@ def figur_ziehen(xpos, ypos):
                     auswahlTurm=Button(image=turm_s_bild, command=lambda:bauer_verwandeln_schwarz(aktuelle_figur, "turm", xpos, ypos))
                     auswahlLaeufer=Button(image=laeufer_s_bild, command=lambda:bauer_verwandeln_schwarz(aktuelle_figur, "laeufer", xpos, ypos))
                     auswahlSpringer=Button(image=springer_s_bild, command=lambda:bauer_verwandeln_schwarz(aktuelle_figur, "springer", xpos, ypos))
-                    auswahlDame.place(y=430, x=50)
-                    auswahlTurm.place(y=430, x=100)
-                    auswahlLaeufer.place(y=430, x=150)
-                    auswahlSpringer.place(y=430, x=200)
+                    if feldstatus=="gross":
+                        auswahlDame["height"]=35
+                        auswahlTurm["height"]=35
+                        auswahlSpringer["height"]=35
+                        auswahlLaeufer["height"]=35
+                        auswahlDame["width"]=35
+                        auswahlTurm["width"]=35
+                        auswahlSpringer["width"]=35
+                        auswahlLaeufer["width"]=35
+                        auswahlDame.place(y=300, x=850)
+                        auswahlTurm.place(y=400, x=850)
+                        auswahlLaeufer.place(y=500, x=850)
+                        auswahlSpringer.place(y=600, x=850)
+                    else:
+                        auswahlDame["height"]=25
+                        auswahlTurm["height"]=25
+                        auswahlSpringer["height"]=25
+                        auswahlLaeufer["height"]=25
+                        auswahlDame["width"]=25
+                        auswahlTurm["width"]=25
+                        auswahlSpringer["width"]=25
+                        auswahlLaeufer["width"]=25
+                        auswahlDame.place(y=430, x=50)
+                        auswahlTurm.place(y=430, x=100)
+                        auswahlLaeufer.place(y=430, x=150)
+                        auswahlSpringer.place(y=430, x=200)
                     weristdran="?"
                 if aktuelle_figur.art=="bauer" and ypos==50:
                     auswahlDame=Button(image=dame_w_bild, command=lambda:bauer_verwandeln_weiss(aktuelle_figur, "dame", xpos, ypos))
                     auswahlTurm=Button(image=turm_w_bild, command=lambda:bauer_verwandeln_weiss(aktuelle_figur, "turm", xpos, ypos))
                     auswahlLaeufer=Button(image=laeufer_w_bild, command=lambda:bauer_verwandeln_weiss(aktuelle_figur, "laeufer", xpos, ypos))
                     auswahlSpringer=Button(image=springer_w_bild, command=lambda:bauer_verwandeln_weiss(aktuelle_figur, "springer", xpos, ypos))
-                    auswahlDame.place(y=430, x=50)
-                    auswahlTurm.place(y=430, x=100)
-                    auswahlLaeufer.place(y=430, x=150)
-                    auswahlSpringer.place(y=430, x=200)
+                    if feldstatus=="gross":
+                        auswahlDame["height"]=35
+                        auswahlTurm["height"]=35
+                        auswahlSpringer["height"]=35
+                        auswahlLaeufer["height"]=35
+                        auswahlDame["width"]=35
+                        auswahlTurm["width"]=35
+                        auswahlSpringer["width"]=35
+                        auswahlLaeufer["width"]=35
+                        auswahlDame.place(y=300, x=850)
+                        auswahlTurm.place(y=400, x=850)
+                        auswahlLaeufer.place(y=500, x=850)
+                        auswahlSpringer.place(y=600, x=850)
+                    else:
+                        auswahlDame["height"]=25
+                        auswahlTurm["height"]=25
+                        auswahlSpringer["height"]=25
+                        auswahlLaeufer["height"]=25
+                        auswahlDame["width"]=25
+                        auswahlTurm["width"]=25
+                        auswahlSpringer["width"]=25
+                        auswahlLaeufer["width"]=25
+                        auswahlDame.place(y=430, x=50)
+                        auswahlTurm.place(y=430, x=100)
+                        auswahlLaeufer.place(y=430, x=150)
+                        auswahlSpringer.place(y=430, x=200)
                     weristdran="?"
                 for i in en_passant:
                     en_passant[i]=False
@@ -2964,9 +3032,29 @@ def figuren_plazieren():
 setzeZieleAufNull()
 figuren_plazieren()
 
+def feldverkleinern():
+    global feldstatus
+    for i in felder_buttons:
+        i["height"]=35
+        i["width"]=35
+        i["border"]=5
+    zahl=0
+    for j in range(0, 8):
+        for k in range(0, 8):
+            felder_buttons[zahl].place(x=40+k*47, y=40+j*47)
+            zahl+=1
+    fenster.geometry("500x500")
+    for i in felder:
+        if felder[i]["figure"]!="none":
+            felder[i]["figure"].place(x=40+((felder[i]["x"]-40)/47)*47, y=40+((felder[i]["y"]-40)/47)*47)
+            felder[i]["figure"]["height"]=25
+            felder[i]["figure"]["width"]=25
+    feldstatus="klein"
+    grossButton["command"]=lambda: feldvergroessern()
+    grossButton["text"]="Großes Fenster"
+
 def feldvergroessern():
     global feldstatus
-    print("gross")
     for i in felder_buttons:
         i["height"]=70
         i["width"]=70
@@ -2983,6 +3071,8 @@ def feldvergroessern():
             felder[i]["figure"]["height"]=35
             felder[i]["figure"]["width"]=35
     feldstatus="gross"
+    grossButton["command"]=lambda: feldverkleinern()
+    grossButton["text"]="Kleines Fenster"
 
 grossButton=Button(rahmen, command=lambda: feldvergroessern(), text="Großes Fenster")
 grossButton.pack(side="bottom")
