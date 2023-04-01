@@ -2624,7 +2624,10 @@ def bauer_verwandeln_schwarz(aktuelle_figur, verwandel_figur, xpos, ypos):
         verwandelte_figuren["damen_schwarz"][0]["image"]=dame_s_bild
         figur=verwandelte_figuren["damen_schwarz"][0]
         verwandelte_figuren["damen_schwarz"][0]["command"]=lambda:zuege_dame_schwarz(figur)
-        verwandelte_figuren["damen_schwarz"][0].place(x=xpos, y=ypos)
+        if feldstatus=="gross":
+            verwandelte_figuren["damen_schwarz"][0].place(x=40+((xpos-40)/47)*94, y=40+((ypos-40)/47)*94)
+        else:
+            verwandelte_figuren["damen_schwarz"][0].place(x=xpos, y=ypos)
         aktuelle_figur.place_forget()
         alle_figuren.append(verwandelte_figuren["damen_schwarz"][0])
         for i in felder:
@@ -2635,7 +2638,10 @@ def bauer_verwandeln_schwarz(aktuelle_figur, verwandel_figur, xpos, ypos):
         verwandelte_figuren["tuerme_schwarz"][0]["image"]=turm_s_bild
         figur=verwandelte_figuren["tuerme_schwarz"][0]
         verwandelte_figuren["tuerme_schwarz"][0]["command"]=lambda:zuege_turm_schwarz(figur)
-        verwandelte_figuren["tuerme_schwarz"][0].place(x=xpos, y=ypos)
+        if feldstatus=="gross":
+            verwandelte_figuren["tuerme_schwarz"][0].place(x=40+((xpos-40)/47)*94, y=40+((ypos-40)/47)*94)
+        else:
+            verwandelte_figuren["tuerme_schwarz"][0].place(x=xpos, y=ypos)
         aktuelle_figur.place_forget()
         alle_figuren.append(verwandelte_figuren["tuerme_schwarz"][0])
         for i in felder:
@@ -2646,7 +2652,10 @@ def bauer_verwandeln_schwarz(aktuelle_figur, verwandel_figur, xpos, ypos):
         verwandelte_figuren["springer_schwarz"][0]["image"]=springer_s_bild
         figur=verwandelte_figuren["springer_schwarz"][0]
         verwandelte_figuren["springer_schwarz"][0]["command"]=lambda:zuege_springer_schwarz(figur)
-        verwandelte_figuren["springer_schwarz"][0].place(x=xpos, y=ypos)
+        if feldstatus=="gross":
+            verwandelte_figuren["springer_schwarz"][0].place(x=40+((xpos-40)/47)*94, y=40+((ypos-40)/47)*94)
+        else:
+            verwandelte_figuren["springer_schwarz"][0].place(x=xpos, y=ypos)
         aktuelle_figur.place_forget()
         alle_figuren.append(verwandelte_figuren["springer_schwarz"][0])
         for i in felder:
@@ -2657,7 +2666,10 @@ def bauer_verwandeln_schwarz(aktuelle_figur, verwandel_figur, xpos, ypos):
         verwandelte_figuren["laeufer_schwarz"][0]["image"]=laeufer_s_bild
         figur=verwandelte_figuren["laeufer_schwarz"][0]
         verwandelte_figuren["laeufer_schwarz"][0]["command"]=lambda:zuege_laeufer_schwarz(figur)
-        verwandelte_figuren["laeufer_schwarz"][0].place(x=xpos, y=ypos)
+        if feldstatus=="gross":
+            verwandelte_figuren["laeufer_schwarz"][0].place(x=40+((xpos-40)/47)*94, y=40+((ypos-40)/47)*94)
+        else:
+            verwandelte_figuren["laeufer_schwarz"][0].place(x=xpos, y=ypos)
         aktuelle_figur.place_forget()
         alle_figuren.append(verwandelte_figuren["laeufer_schwarz"][0])
         for i in felder:
@@ -2686,7 +2698,10 @@ def bauer_verwandeln_weiss(aktuelle_figur, verwandel_figur, xpos, ypos):
         verwandelte_figuren["damen_weiss"][0]["image"]=dame_w_bild
         figur=verwandelte_figuren["damen_weiss"][0]
         verwandelte_figuren["damen_weiss"][0]["command"]=lambda:zuege_dame_weiss(figur)
-        verwandelte_figuren["damen_weiss"][0].place(x=xpos, y=ypos)
+        if feldstatus=="gross":
+            verwandelte_figuren["damen_weiss"][0].place(x=40+((xpos-40)/47)*94, y=40+((ypos-40)/47)*94)
+        else:
+            verwandelte_figuren["damen_weiss"][0].place(x=xpos, y=ypos)
         aktuelle_figur.place_forget()
         alle_figuren.append(verwandelte_figuren["damen_weiss"][0])
         for i in felder:
@@ -2697,7 +2712,10 @@ def bauer_verwandeln_weiss(aktuelle_figur, verwandel_figur, xpos, ypos):
         verwandelte_figuren["tuerme_weiss"][0]["image"]=turm_w_bild
         figur=verwandelte_figuren["tuerme_weiss"][0]
         verwandelte_figuren["tuerme_weiss"][0]["command"]=lambda:zuege_turm_weiss(figur)
-        verwandelte_figuren["tuerme_weiss"][0].place(x=xpos, y=ypos)
+        if feldstatus=="gross":
+            verwandelte_figuren["tuerme_weiss"][0].place(x=40+((xpos-40)/47)*94, y=40+((ypos-40)/47)*94)
+        else:
+            verwandelte_figuren["tuerme_weiss"][0].place(x=xpos, y=ypos)
         aktuelle_figur.place_forget()
         alle_figuren.append(verwandelte_figuren["tuerme_weiss"][0])
         for i in felder:
@@ -2708,7 +2726,10 @@ def bauer_verwandeln_weiss(aktuelle_figur, verwandel_figur, xpos, ypos):
         verwandelte_figuren["springer_weiss"][0]["image"]=springer_w_bild
         figur=verwandelte_figuren["springer_weiss"][0]
         verwandelte_figuren["springer_weiss"][0]["command"]=lambda:zuege_springer_weiss(figur)
-        verwandelte_figuren["springer_weiss"][0].place(x=xpos, y=ypos)
+        if feldstatus=="gross":
+            verwandelte_figuren["springer_weiss"][0].place(x=40+((xpos-40)/47)*94, y=40+((ypos-40)/47)*94)
+        else:
+            verwandelte_figuren["springer_weiss"][0].place(x=xpos, y=ypos)
         aktuelle_figur.place_forget()
         alle_figuren.append(verwandelte_figuren["springer_weiss"][0])
         for i in felder:
@@ -2719,7 +2740,10 @@ def bauer_verwandeln_weiss(aktuelle_figur, verwandel_figur, xpos, ypos):
         verwandelte_figuren["laeufer_weiss"][0]["image"]=laeufer_w_bild
         figur=verwandelte_figuren["laeufer_weiss"][0]
         verwandelte_figuren["laeufer_weiss"][0]["command"]=lambda:zuege_laeufer_weiss(figur)
-        verwandelte_figuren["laeufer_weiss"][0].place(x=xpos, y=ypos)
+        if feldstatus=="gross":
+            verwandelte_figuren["laeufer_weiss"][0].place(x=40+((xpos-40)/47)*94, y=40+((ypos-40)/47)*94)
+        else:
+            verwandelte_figuren["laeufer_weiss"][0].place(x=xpos, y=ypos)
         aktuelle_figur.place_forget()
         alle_figuren.append(verwandelte_figuren["laeufer_weiss"][0])
         for i in felder:
